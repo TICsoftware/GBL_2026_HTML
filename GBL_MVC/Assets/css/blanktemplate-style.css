@@ -1,0 +1,13 @@
+.innerbanner-title-heading { overflow: visible;}
+.innerbanner-title-heading {color: var(--color-secondary); display: inline-block; position: relative;font-weight: 500; perspective: 1000px; }
+.innerbanner-title-heading .char {display: inline-block;will-change: transform, opacity;backface-visibility: hidden;transform-origin: center;}
+.innerbanner-title-heading .word {display: inline-block; white-space: nowrap;}
+.innerbanner-title-heading.innerbanner-title-heading-white {color: #fff;}
+.innerbanner-title-heading .highlight-span { color: var(--color-primary);}
+
+@media (max-width: 1023px) {
+
+}
+@media (max-width: 767px) {
+
+}
