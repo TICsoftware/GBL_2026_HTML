@@ -59,6 +59,7 @@ public class CspMiddleware
             "frame-src 'self' " +
             "https://www.google.com " +
             "https://www.youtube.com " +
+            "https://www.linkedin.com; " +
 
             "object-src 'none'; " +
             "base-uri 'self'; " +

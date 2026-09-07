@@ -19,7 +19,7 @@
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
 
   @RenderSection("head", required: false)
   
@@ -32,7 +32,8 @@
   <link rel="preload" href="~/Assets/css/common-style.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/common-style.css">
 
-
+  <link rel="preload" href="~/Assets/css/homepage-style.css" as="style">
+  <link rel="stylesheet" href="~/Assets/css/homepage-style.css">
 
   @RenderSection("Styles", required: false)
 </head>
@@ -46,35 +47,19 @@
     ViewContext.RouteData.Values["action"]?.ToString() == "Index";
   }
 
-  @if (isHomePage)
-  {
-    @* Preloader — sibling of header, first thing in <body> so it paints
-       before anything else. Logic in homepage-preloader.js. *@
-    <div id="sitePreloader" class="site-preloader" aria-hidden="true">
-      <div class="site-preloader__logo-wrap">
-        <img id="sitePreloaderLogo" class="site-preloader__logo" src="~/Assets/images/common-images/dahad-2.gif" alt="" />
-      </div>
-      <div class="site-preloader__progress">
-        <div class="site-preloader__bar"><span class="site-preloader__bar-fill" id="sitePreloaderFill"></span></div>
-        <div class="site-preloader__counter" id="sitePreloaderCounter">0<span>%</span></div>
-      </div>
-    </div>
-  }
+
 
  @Html.Partial("~/Views/Shared/_Header.cshtml")
-
-
-      <main id="main-content">
-            @RenderBody()
-
-         @Html.Partial("~/Views/Shared/_Footer.cshtml")
-
-      </main>
+    <main id="main-content">
+        @RenderBody()       
+        
+        @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    </main>
 
 
 
-      <!-- Back to top -->
-      <button type="button"
+     <!-- Back to top -->
+    <button type="button"
               class="back-to-top fixed bottom-3 right-5 w-8 h-8 sm:w-10 sm:h-10 rounded-full
                      bg-black/70 text-white flex items-center justify-center
                      cursor-pointer z-50 opacity-0 pointer-events-none
@@ -119,11 +104,11 @@
   <script src="~/Assets/js/ScrollTrigger.min.js"></script>
   <script src="~/Assets/js/lenis.min.js"></script>
   <script src="~/Assets/js/common-script.js"></script>
-  <script src="~/Assets/js/title-animation.js"></script>
+  <script src="~/Assets/js/text-animtion.js" asp-append-version="true"></script>
+  <script src="~/Assets/js/title-animation.js" asp-append-version="true"></script>
+  <script src="~/Assets/js/intro-text-fill.js" asp-append-version="true"></script>
+  <script src="~/Assets/js/image-parallax.js"></script>
 
-
-
-  
 
 
 

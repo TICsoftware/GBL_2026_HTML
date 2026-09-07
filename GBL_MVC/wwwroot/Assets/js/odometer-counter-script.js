@@ -12,9 +12,17 @@ const DURATION_PER_ROLL = 220;     // ms per full 10-digit roll
 /* ---------------------------------------------
    FORMAT NUMBER WITH COMMAS
 --------------------------------------------- */
-function formatNumberString(nStr) {
+function formatNumberString(nStr, locale) {
   const num = Number(nStr);
   if (isNaN(num)) return "0";
+
+  if (locale) {
+    try {
+      return new Intl.NumberFormat(locale).format(Math.abs(num));
+    } catch (e) {
+      /* fall through to default */
+    }
+  }
 
   const abs = Math.abs(num);
   const [intPartRaw, decPartRaw] = abs.toString().split(".");
@@ -40,7 +48,8 @@ function formatNumberString(nStr) {
 function buildOdometer(counterEl) {
   const rawTarget = counterEl.getAttribute("data-target") || "0";
   const suffix = counterEl.getAttribute("data-suffix") || "";
-  const targetStr = formatNumberString(rawTarget);
+  const locale = counterEl.getAttribute("data-locale") || "";
+  const targetStr = formatNumberString(rawTarget, locale);
 
   counterEl.textContent = "";
 
