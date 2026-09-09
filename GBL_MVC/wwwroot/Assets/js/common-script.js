@@ -209,11 +209,27 @@ if (yearFoot) yearFoot.innerHTML = String(new Date().getFullYear());
 
 
 // --------------------------------------------
-// HEADER
+// HEADER HEIGHT (sets --header-h from live header)
 // --------------------------------------------
+(function initHeaderHeight() {
+  const header =
+    document.querySelector(".site-header") ||
+    document.querySelector("#header") ||
+    document.querySelector("header");
+  if (!header) return;
 
+  const setHeaderH = () => {
+    const h = Math.round(header.getBoundingClientRect().height);
+    if (h > 0) {
+      document.documentElement.style.setProperty("--header-h", h + "px");
+    }
+  };
 
+  setHeaderH();
+  window.addEventListener("resize", setHeaderH);
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(setHeaderH).observe(header);
+  }
+})();
 
-
-  
 });

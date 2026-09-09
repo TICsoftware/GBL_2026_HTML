@@ -4,8 +4,8 @@
     {
       "name": "priya-cement-mvc",
       "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "--project", "GBL_MVC/GBL_MVC.csproj", "--urls", "http://localhost:5200"],
-      "port": 5200
+      "runtimeArgs": ["run", "--project", "GBL_MVC/GBL_MVC.csproj", "--urls", "http://localhost:62233"],
+      "port": 62233
     }
   ]
 }
