@@ -52,10 +52,11 @@ SECTION INTRO (common — all pages)
 Title left | copy + CTA right
 =====================================**/
 .section-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
+  justify-content: space-between;
 }
 
 .section-intro__title {
@@ -329,6 +330,7 @@ ODOMETER CSS
 
 
 
+
 /* Image on the right, content on the left â€” no HTML reorder */
 @media (min-width: 1024px) {
  
@@ -336,6 +338,11 @@ ODOMETER CSS
 
 
 @media (prefers-reduced-motion: reduce) {
+  .inside-banner-outer .innerbanner-image {
+    will-change: auto;
+    transform: none !important;
+  }
+
   .parallax-img {
     height: 100%;
     will-change: auto;
