@@ -327,6 +327,24 @@ ODOMETER CSS
 
 
 
+/**=====================================
+IMAGE card COMMON CSS
+=====================================**/
+.image-card {
+  margin: 0;
+  background: var(--color-gray, #f4f4f4);
+  padding: 10px;
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.image-card .image-box{ overflow: hidden; margin-bottom: 20px;}
+.image-card  figcaption{ font-size: var(--text-20);}
 
 
 
