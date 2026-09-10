@@ -146,7 +146,7 @@ INNER BANNER CSS
 /* ==========================================================
    Common Link/Button Style
    ========================================================== */
-.site-link{
+/* .site-link{
   --link-color: var(--color-primary);
   --link-hover: var(--color-secondary);
   --link-ease: cubic-bezier(.22,1,.36,1);
@@ -162,8 +162,6 @@ INNER BANNER CSS
   font-size: var(--text-button);
   width: max-content;
 }
-
-/* base underline â€” always visible, default color */
 .site-link::before{
   content:"";
   position:absolute;
@@ -174,7 +172,6 @@ INNER BANNER CSS
   background: var(--link-color);
 }
 
-/* traveling underline â€” hidden, scales in on hover */
 .site-link::after{
   content:"";
   position:absolute;
@@ -208,8 +205,6 @@ INNER BANNER CSS
 .site-link:hover .site-link-arrow{
   transform: translateX(6px);
 }
-
-/* dark hero override */
 .hero-slide-link{
   --link-color: #fff;
   --link-hover: #ED1C24;
@@ -241,7 +236,7 @@ INNER BANNER CSS
     width:34px;
     height:34px;
     /* border-radius:50%;
-    background:rgba(255,255,255,.12); */
+    background:rgba(255,255,255,.12); 
     display:flex;
     align-items:center;
     justify-content:center;
@@ -265,6 +260,169 @@ INNER BANNER CSS
 
 .fill-site-link:hover .fill-site-link-arrow{
     transform:translateX(2px);
+} */
+
+/* ==========================================================
+   Site buttons (3 types) — use anywhere
+   1. .site-btn--outline  black border → green fill
+   2. .site-btn--fill     green fill → black fill
+   3. .site-btn--line     black underline → green fill
+   Arrow travels right on hover on all three.
+   ========================================================== */
+.site-btn {
+  --btn-black: var(--color-primary, #282b31);
+  --btn-green: var(--color-secondary, #67815a);
+  --btn-white: var(--color-white, #fff);
+  --btn-ease: var(--ease, cubic-bezier(.22, 1, .36, 1));
+  --btn-fill: var(--btn-green);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0;
+  width: max-content;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.25rem;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--btn-black);
+  font-family: inherit;
+  font-size: var(--text-button);
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.4s var(--btn-ease), border-color 0.4s var(--btn-ease);
+}
+
+.site-btn__label {
+  position: relative;
+  z-index: 1;
+}
+
+.site-btn__arrow {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 0.9rem;
+  height: 0.9rem;
+  transition: transform 0.4s var(--btn-ease);
+}
+
+.site-btn__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.site-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--btn-fill);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s var(--btn-ease);
+  pointer-events: none;
+}
+
+.site-btn:hover,
+.site-btn:focus-visible {
+  color: var(--btn-white);
+}
+
+.site-btn:hover::before,
+.site-btn:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.site-btn:hover .site-btn__arrow,
+.site-btn:focus-visible .site-btn__arrow {
+  transform: translateX(6px);
+}
+
+.site-btn:focus-visible {
+  outline: 2px solid var(--btn-green);
+  outline-offset: 3px;
+}
+
+/* 1 — outline: black border + black text */
+.site-btn--outline {
+  border-color: var(--btn-black);
+  color: var(--btn-black);
+  --btn-fill: var(--btn-green);
+}
+
+.site-btn--outline:hover,
+.site-btn--outline:focus-visible {
+  border-color: var(--btn-green);
+}
+
+/* 2 — fill: green background + white text */
+.site-btn--fill {
+  background: var(--btn-green);
+  border-color: var(--btn-green);
+  color: var(--btn-white);
+  --btn-fill: var(--btn-black);
+}
+
+.site-btn--fill:hover,
+.site-btn--fill:focus-visible {
+  border-color: var(--btn-black);
+}
+
+/* 3 — line: black text + bottom border */
+.site-btn--line {
+  min-height: 0;
+  padding: 0.35rem 0.15rem 0.55rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--btn-black);
+  --btn-fill: var(--btn-green);
+}
+
+.site-btn--line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 1px;
+  background: var(--btn-black);
+  transform-origin: left center;
+  transition: transform 0.45s var(--btn-ease), background 0.45s var(--btn-ease);
+}
+
+.site-btn--line:hover::after,
+.site-btn--line:focus-visible::after {
+  background: var(--btn-green);
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-btn,
+  .site-btn::before,
+  .site-btn__arrow,
+  .site-btn--line::after {
+    transition: none;
+  }
+
+  .site-btn:hover .site-btn__arrow,
+  .site-btn:focus-visible .site-btn__arrow {
+    transform: none;
+  }
 }
 
 .parallax-wrap {
@@ -327,6 +485,24 @@ ODOMETER CSS
 
 
 
+/**=====================================
+IMAGE card COMMON CSS
+=====================================**/
+.image-card {
+  margin: 0;
+  background: var(--color-gray, #f4f4f4);
+  padding: 10px;
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.image-card .image-box{ overflow: hidden; margin-bottom: 20px;}
+.image-card  figcaption{ font-size: var(--text-20);}
 
 
 

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     soloEnd: 'top 58%',
   };
 
-
+  
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

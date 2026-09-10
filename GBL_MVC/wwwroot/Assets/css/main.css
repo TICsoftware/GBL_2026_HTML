@@ -109,7 +109,7 @@ html {
 
 body {
  font-family: var(--font-body); 
-  font-size: 1rem;
+  font-size: var(--text-p);
   line-height: 1.25;
   color: var(--color-primary);
    transition:background-color 0.35s ease,color 0.35s ease;
