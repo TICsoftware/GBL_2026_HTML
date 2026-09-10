@@ -13,12 +13,53 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = header.querySelector("#headerSearchInput");
   const triggers = Array.from(header.querySelectorAll("[data-mega-trigger]"));
   const menus = Array.from(header.querySelectorAll(".mega-menu"));
+  const navWrap = header.querySelector(".site-header__nav-wrap");
+  const headerInner = header.querySelector(".site-header__inner");
+  const headerUtility = header.querySelector(".site-header__utility");
+  const headerTools = header.querySelector(".site-header__tools");
+  const somaiyaLogo = header.querySelector(".site-header__logo--somaiya");
 
   let openTimer = 0;
   let closeTimer = 0;
   let closeAnimTimer = 0;
   let activeMenu = null;
-  const navWrap = header.querySelector(".site-header__nav-wrap");
+  const l3Homes = new Map();
+
+  const placeHeaderTools = () => {
+    if (!headerTools || !headerUtility || !headerInner) return;
+    if (isMobile()) {
+      if (somaiyaLogo) headerInner.insertBefore(headerTools, somaiyaLogo);
+      else headerInner.appendChild(headerTools);
+      return;
+    }
+    if (headerTools.parentElement !== headerUtility) headerUtility.appendChild(headerTools);
+  };
+
+  placeHeaderTools();
+  if (typeof MQ.addEventListener === "function") MQ.addEventListener("change", placeHeaderTools);
+  else MQ.addListener(placeHeaderTools);
+
+  header.querySelectorAll(".mega-l3-panel").forEach((panel) => {
+    l3Homes.set(panel, panel.parentElement);
+  });
+
+  const restoreL3Panels = (scope) => {
+    const root = scope || header;
+    root.querySelectorAll(".mega-l3-panel").forEach((panel) => {
+      const home = l3Homes.get(panel);
+      if (home && panel.parentElement !== home) home.appendChild(panel);
+    });
+  };
+
+  const placeL3Panel = (item, panel) => {
+    if (isMobile()) {
+      const li = item.closest("li");
+      if (li && panel.parentElement !== li) li.appendChild(panel);
+      return;
+    }
+    const home = l3Homes.get(panel);
+    if (home && panel.parentElement !== home) home.appendChild(panel);
+  };
 
   const getScrollY = () => {
     if (window.lenis && typeof window.lenis.scroll === "number") {
@@ -81,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
       panel.classList.remove("is-active");
       panel.hidden = true;
     });
+    restoreL3Panels(menu);
   };
 
   const closeAllL4 = (scope, instant) => {
@@ -117,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!panel) return;
     panel.hidden = false;
     panel.classList.add("is-active");
+    placeL3Panel(item, panel);
   };
 
   const toggleL4 = (item) => {
@@ -138,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const activateFirstL2 = (menu) => {
+    if (isMobile()) return;
     const first = menu.querySelector("[data-l2]");
     if (first) activateL2(first);
   };
@@ -305,10 +349,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       item.addEventListener("click", (event) => {
         if (item.getAttribute("href") === "#") event.preventDefault();
-        if (item.hasAttribute("data-panel")) {
-          event.preventDefault();
-          activateL2(item);
+        if (!item.hasAttribute("data-panel")) return;
+        event.preventDefault();
+        if (isMobile() && item.classList.contains("is-active")) {
+          closeAllL2(item.closest(".mega-menu"));
+          return;
         }
+        activateL2(item);
       });
     });
 
@@ -379,6 +426,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("resize", () => {
+    placeHeaderTools();
+    const activeL2 = header.querySelector(".mega-l2__item.is-active");
+    restoreL3Panels();
     if (!isMobile()) {
       header.classList.remove("is-nav-open");
       if (toggleBtn) {
@@ -386,6 +436,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleBtn.setAttribute("aria-label", "Open menu");
       }
     }
+    if (activeL2) activateL2(activeL2);
     if (activeMenu && !activeMenu.hidden) {
       const trigger = header.querySelector('[data-mega-trigger][aria-expanded="true"]');
       positionCaret(trigger, true);

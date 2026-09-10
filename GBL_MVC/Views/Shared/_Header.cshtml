@@ -25,12 +25,19 @@
             <li><a href="#">Careers</a></li>
             <li><a href="#">Contact Us</a></li>
           </ul>
-          <button type="button" class="site-header__search-btn" data-search-toggle aria-label="Open search" aria-expanded="false" aria-controls="headerSearch">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </button>
+          <div class="site-header__tools">
+            <button type="button" class="site-header__search-btn" data-search-toggle aria-label="Open search" aria-expanded="false" aria-controls="headerSearch">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button type="button" class="site-header__toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="siteHeaderNav">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
 
         <nav class="site-header__nav" aria-label="Primary">
@@ -80,6 +87,10 @@
                 </div>
                 <h3 class="mega-featured__title">About Us</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -117,6 +128,10 @@
                 </div>
                 <h3 class="mega-featured__title">Business</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -154,6 +169,10 @@
                 </div>
                 <h3 class="mega-featured__title">Innovation</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -203,6 +222,10 @@
                 </div>
                 <h3 class="mega-featured__title">Sustainability</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -288,6 +311,10 @@
                 </div>
                 <h3 class="mega-featured__title">Investors</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -322,6 +349,10 @@
                 </div>
                 <h3 class="mega-featured__title">CSR</h3>
                 <p class="mega-featured__copy">@featuredCopy</p>
+                <a href="#" class="mega-featured__cta">
+                  <span aria-hidden="true">&rarr;</span>
+                  Read more
+                </a>
               </article>
             </div>
           </div>
@@ -330,11 +361,6 @@
           </ul>
         </nav>
       </div>
-
-      <button type="button" class="site-header__toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="siteHeaderNav">
-        <span></span>
-        <span></span>
-      </button>
 
       <a class="site-header__logo site-header__logo--somaiya" href="https://www.somaiya.com/" target="_blank" rel="noopener noreferrer" aria-label="Somaiya Group (opens in a new tab)">
         <img src="@Url.Content("~/Assets/images/logo/somaiya-logo.svg")" alt="Somaiya GROUP" width="152" height="114">
