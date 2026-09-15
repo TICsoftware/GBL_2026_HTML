@@ -275,17 +275,20 @@ INNER BANNER CSS
   --btn-white: var(--color-white, #fff);
   --btn-ease: var(--ease, cubic-bezier(.22, 1, .36, 1));
   --btn-fill: var(--btn-green);
+  --btn-pad-x: 1.25rem;
+  --btn-arrow: 0.9rem;
+  --btn-gap: 0.55rem;
   position: relative;
   isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0;
   margin: 0;
   width: max-content;
   min-height: 2.75rem;
-  padding: 0.6rem 1.25rem;
-  overflow: hidden;
+  padding: 0.6rem calc(var(--btn-pad-x) + var(--btn-arrow) + var(--btn-gap));
+  overflow: visible;
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
@@ -307,15 +310,19 @@ INNER BANNER CSS
 }
 
 .site-btn__arrow {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: var(--btn-pad-x);
   z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  width: 0.9rem;
-  height: 0.9rem;
-  transition: transform 0.4s var(--btn-ease);
+  width: var(--btn-arrow);
+  height: var(--btn-arrow);
+  overflow: visible;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: left 0.45s var(--btn-ease);
 }
 
 .site-btn__arrow svg {
@@ -330,6 +337,7 @@ INNER BANNER CSS
   inset: 0;
   z-index: 0;
   background: var(--btn-fill);
+  border-radius: inherit;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.45s var(--btn-ease);
@@ -337,18 +345,24 @@ INNER BANNER CSS
 }
 
 .site-btn:hover,
-.site-btn:focus-visible {
+.site-btn:focus-visible,
+.site-btn:active {
   color: var(--btn-white);
 }
 
 .site-btn:hover::before,
-.site-btn:focus-visible::before {
+.site-btn:focus-visible::before,
+.site-btn:active::before {
   transform: scaleX(1);
 }
 
 .site-btn:hover .site-btn__arrow,
-.site-btn:focus-visible .site-btn__arrow {
-  transform: translateX(6px);
+.site-btn:focus-visible .site-btn__arrow,
+.site-btn:active .site-btn__arrow,
+a:hover .site-btn .site-btn__arrow,
+a:focus-visible .site-btn .site-btn__arrow,
+a:active .site-btn .site-btn__arrow {
+  left: calc(100% - var(--btn-pad-x) - var(--btn-arrow));
 }
 
 .site-btn:focus-visible {
@@ -381,18 +395,44 @@ INNER BANNER CSS
   border-color: var(--btn-black);
 }
 
-/* 3 — line: black text + bottom border */
+/* 3 — line: black text + bottom border
+   Hover / active / focus (site-wide, including when nested in <a>):
+   green text + green border travels left → right + arrow moves */
 .site-btn--line {
+  --btn-pad-x: 0px;
   min-height: 0;
-  padding: 0.35rem 0.15rem 0.55rem;
+  padding: 0.35rem 0 0.5rem;
+  padding-left: calc(var(--btn-arrow) + var(--btn-gap));
+  padding-right: calc(var(--btn-arrow) + var(--btn-gap));
+  overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--btn-black);
-  --btn-fill: var(--btn-green);
+  display: inline-flex;
 }
 
-.site-btn--line::after {
+.site-btn.site-btn--line::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  z-index: 2;
+  background: var(--btn-green);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.site-btn.site-btn--line::after {
   content: "";
   position: absolute;
   left: 0;
@@ -401,27 +441,41 @@ INNER BANNER CSS
   z-index: 1;
   height: 1px;
   background: var(--btn-black);
-  transform-origin: left center;
-  transition: transform 0.45s var(--btn-ease), background 0.45s var(--btn-ease);
+  transform: none;
+  pointer-events: none;
 }
 
-.site-btn--line:hover::after,
-.site-btn--line:focus-visible::after {
-  background: var(--btn-green);
+.site-btn--line:hover,
+.site-btn--line:focus-visible,
+.site-btn--line:active,
+a:hover .site-btn--line,
+a:focus-visible .site-btn--line,
+a:active .site-btn--line {
+  color: var(--btn-green);
+}
+
+.site-btn--line:hover::before,
+.site-btn--line:focus-visible::before,
+.site-btn--line:active::before,
+a:hover .site-btn--line::before,
+a:focus-visible .site-btn--line::before,
+a:active .site-btn--line::before {
   transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-btn,
   .site-btn::before,
-  .site-btn__arrow,
-  .site-btn--line::after {
+  .site-btn__arrow {
     transition: none;
   }
 
   .site-btn:hover .site-btn__arrow,
-  .site-btn:focus-visible .site-btn__arrow {
-    transform: none;
+  .site-btn:focus-visible .site-btn__arrow,
+  .site-btn:active .site-btn__arrow,
+  a:hover .site-btn .site-btn__arrow,
+  a:active .site-btn .site-btn__arrow {
+    left: var(--btn-pad-x);
   }
 }
 

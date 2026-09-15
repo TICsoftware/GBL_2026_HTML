@@ -4,6 +4,7 @@
 
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/product-only-inside.css" asp-append-version="true" />
 }
    <!--===========================
@@ -11,8 +12,8 @@
    ============================-->
    <section class="product-inside-banner-outer section-spacing">
       <div class="container">
-         <div class="product-inside-banner">
-            <div class="product-inside-banner__copy">               
+         <div class="product-inside-banner ">
+            <div class="product-inside-banner__copy ">               
                <!--Breadcrumb-->             
                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
                   <ol class="flex items-center gap-2 text-sm">
@@ -28,7 +29,9 @@
                   <h1 class="text-h1 title-animation">2-Ethyl-1,3-Hexanediol</h1>
                </div>
 
-               <p class="product-inside-banner__intro">2-Ethyl-1,3-Hexanediol is a colourless viscous liquid, which is used as a plasticiser in the plastics and resins industry. It is also used in ink formulations, where it increases the penetration properties of ink on paper.</p>
+               <div class="page-intro-inner product-inside-banner__intro">
+                  <p>2-Ethyl-1,3-Hexanediol is a colourless viscous liquid, which is used as a plasticiser in the plastics and resins industry. It is also used in ink formulations, where it increases the penetration properties of ink on paper.</p>
+               </div>
             </div>
 
             <div class="product-inside-banner__media">
@@ -97,7 +100,7 @@
 
            <div class="application-block">
                <div class="title-section">
-                     <h2 class="text-h2">Applications</h2>
+                     <h2 class="text-h2 title-animation">Applications</h2>
                </div>
               <ul class="application-list">
                  <li>Diol or solvent in urethane manufacturing</li>
@@ -158,24 +161,26 @@
 
            <div class="application-block">
                <div class="title-section">
-                     <h2 class="text-h2">Safety Data Sheet (SDS)</h2>
+                     <h2 class="text-h2 title-animation">Safety Data Sheet (SDS)</h2>
                </div>
                <div class="sds-panel">
                   <p class="sds-panel__name">2-Ethyl-1,3-Hexanediol</p>
                   <div class="sds-panel__actions">
-                     <a href="@Url.Content("~/Assets/docs/2-Ethyl-1,3-Hexanediol-SDS.pdf")"
-                        class="sds-download"
-                        data-sds-download
-                        download="2-Ethyl-1,3-Hexanediol-SDS.pdf">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                     <a  href="@Url.Content("~/Assets/docs/2-Ethyl-1,3-Hexanediol-SDS.pdf")" class="site-btn site-btn--fill">
+                     <span class="site-btn__label">Download (Pdf)</span>
+                     <span class="site-btn__arrow" aria-hidden="true">
+                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                            <path d="M12 4v10m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        Download (Pdf)
+                     </span>
                      </a>
-                     <a href="#" class="sds-enquire">
-                        <span aria-hidden="true">&rarr;</span>
-                        Order Sample / Enquire Now
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">  Order Sample / Enquire Now</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
                      </a>
+                    
                   </div>
                </div>
            </div>
@@ -185,7 +190,6 @@
 
 @section Scripts {
    <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
-   <script src="~/Assets/js/title-animtion.js" asp-append-version="true"></script>
    <script src="~/Assets/js/product-only-inside.js" asp-append-version="true"></script>
 
 }
