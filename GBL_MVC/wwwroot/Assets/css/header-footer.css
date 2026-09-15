@@ -774,6 +774,11 @@ html.is-header-locked .site-header{
     --header-bar-h: 72px;
   }
 
+  /* Inside pages only: clear fixed header. Homepage layout has no .is-inner-page. */
+  body.is-inner-page #main-content{
+    padding-top: var(--header-bar-h, 72px);
+  }
+
   .site-header__inner{
     display: flex;
     align-items: center;

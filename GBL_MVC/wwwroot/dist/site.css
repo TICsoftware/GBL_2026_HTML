@@ -1,4 +1,4 @@
-/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -15,10 +15,7 @@
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
-    --text-base--line-height: calc(1.5 / 1);
     --font-weight-light: 300;
-    --radius-sm: 0.25rem;
-    --radius-md: 0.375rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -28,16 +25,16 @@
     --font-body: 'uni_neueregular', sans-serif;
     --font-uniNeueRegular: 'uni_neueregular', sans-serif;
     --font-uniNeueBold: 'uni_neuebold', sans-serif;
-    --text-h1: clamp(2rem, calc(40px + 2.82vw), 70px);
-    --text-h2: clamp(2rem, 1.5rem + 1.14vw, 2.75rem);
-    --text-h3: clamp(1.75rem, 1.5rem + 0.65vw, 2.1875rem);
+    --text-h1: clamp(2rem, calc(1.65rem + 2.82vw), 70px);
+    --text-h2: clamp(1.5rem, 1.25rem + 1.14vw, 2.75rem);
+    --text-h3: clamp(1.25rem, 1rem + 0.65vw, 2.1875rem);
     --text-h4: clamp(1.25rem, 1rem + 0.52vw, 1.5rem);
     --text-24: clamp(1.25rem, 1rem + 0.52vw, 1.5rem);
     --text-h5: clamp(1.125rem, 1rem + 0.26vw, 1.25rem);
-    --text-20: clamp(1.125rem, 1rem + 0.26vw, 1.25rem);
-    --text-p: clamp(1rem, 0.875rem + 0.26vw, 1.125rem);
+    --text-20: clamp(1rem, 0.875rem + 0.26vw, 1.25rem);
+    --text-p: clamp(0.875rem, 0.65rem + 0.26vw, 1.125rem);
     --text-small: 0.875rem;
-    --text-button: clamp(1rem, 0.875rem + 0.26vw, 1rem);
+    --text-button: clamp(0.875rem, 0.65rem + 0.26vw, 1rem);
     --text-intro: clamp(1.125rem, 0.875rem + 0.52vw, 1.375rem);
     --text-22: clamp(1.125rem, 0.875rem + 0.52vw, 1.375rem);
     --color-primary: #282B31;
@@ -246,7 +243,16 @@
     position: sticky;
   }
   .inset-0 {
-    inset: 0px;
+    inset: calc(var(--spacing) * 0);
+  }
+  .\!start {
+    inset-inline-start: var(--spacing) !important;
+  }
+  .-start {
+    inset-inline-start: calc(var(--spacing) * -1);
+  }
+  .start {
+    inset-inline-start: var(--spacing);
   }
   .start-0 {
     inset-inline-start: calc(var(--spacing) * 0);
@@ -256,6 +262,12 @@
   }
   .start-100 {
     inset-inline-start: calc(var(--spacing) * 100);
+  }
+  .-end {
+    inset-inline-end: calc(var(--spacing) * -1);
+  }
+  .end {
+    inset-inline-end: var(--spacing);
   }
   .end-0 {
     inset-inline-end: calc(var(--spacing) * 0);
@@ -267,7 +279,7 @@
     inset-inline-end: calc(var(--spacing) * 100);
   }
   .top-0 {
-    top: 0px;
+    top: calc(var(--spacing) * 0);
   }
   .top-50 {
     top: calc(var(--spacing) * 50);
@@ -279,7 +291,7 @@
     right: calc(var(--spacing) * 5);
   }
   .bottom-0 {
-    bottom: 0px;
+    bottom: calc(var(--spacing) * 0);
   }
   .bottom-3 {
     bottom: calc(var(--spacing) * 3);
@@ -291,7 +303,7 @@
     bottom: calc(var(--spacing) * 100);
   }
   .left-0 {
-    left: 0px;
+    left: calc(var(--spacing) * 0);
   }
   .z-10 {
     z-index: 10;
@@ -417,10 +429,10 @@
     }
   }
   .m-0 {
-    margin: 0px;
+    margin: calc(var(--spacing) * 0);
   }
   .m-1 {
-    margin: var(--spacing);
+    margin: calc(var(--spacing) * 1);
   }
   .m-2 {
     margin: calc(var(--spacing) * 2);
@@ -438,10 +450,10 @@
     margin: auto;
   }
   .mx-0 {
-    margin-inline: 0px;
+    margin-inline: calc(var(--spacing) * 0);
   }
   .mx-1 {
-    margin-inline: var(--spacing);
+    margin-inline: calc(var(--spacing) * 1);
   }
   .mx-2 {
     margin-inline: calc(var(--spacing) * 2);
@@ -459,10 +471,10 @@
     margin-inline: auto;
   }
   .my-0 {
-    margin-block: 0px;
+    margin-block: calc(var(--spacing) * 0);
   }
   .my-1 {
-    margin-block: var(--spacing);
+    margin-block: calc(var(--spacing) * 1);
   }
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
@@ -480,10 +492,10 @@
     margin-block: auto;
   }
   .ms-0 {
-    margin-inline-start: 0px;
+    margin-inline-start: calc(var(--spacing) * 0);
   }
   .ms-1 {
-    margin-inline-start: var(--spacing);
+    margin-inline-start: calc(var(--spacing) * 1);
   }
   .ms-2 {
     margin-inline-start: calc(var(--spacing) * 2);
@@ -501,10 +513,10 @@
     margin-inline-start: auto;
   }
   .me-0 {
-    margin-inline-end: 0px;
+    margin-inline-end: calc(var(--spacing) * 0);
   }
   .me-1 {
-    margin-inline-end: var(--spacing);
+    margin-inline-end: calc(var(--spacing) * 1);
   }
   .me-2 {
     margin-inline-end: calc(var(--spacing) * 2);
@@ -522,10 +534,10 @@
     margin-inline-end: auto;
   }
   .mt-0 {
-    margin-top: 0px;
+    margin-top: calc(var(--spacing) * 0);
   }
   .mt-1 {
-    margin-top: var(--spacing);
+    margin-top: calc(var(--spacing) * 1);
   }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
@@ -543,10 +555,10 @@
     margin-top: auto;
   }
   .mb-0 {
-    margin-bottom: 0px;
+    margin-bottom: calc(var(--spacing) * 0);
   }
   .mb-1 {
-    margin-bottom: var(--spacing);
+    margin-bottom: calc(var(--spacing) * 1);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -727,10 +739,10 @@
     justify-content: center;
   }
   .gap-0 {
-    gap: 0px;
+    gap: calc(var(--spacing) * 0);
   }
   .gap-1 {
-    gap: var(--spacing);
+    gap: calc(var(--spacing) * 1);
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
@@ -838,10 +850,10 @@
     object-fit: cover;
   }
   .p-0 {
-    padding: 0px;
+    padding: calc(var(--spacing) * 0);
   }
   .p-1 {
-    padding: var(--spacing);
+    padding: calc(var(--spacing) * 1);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -856,10 +868,10 @@
     padding: calc(var(--spacing) * 5);
   }
   .px-0 {
-    padding-inline: 0px;
+    padding-inline: calc(var(--spacing) * 0);
   }
   .px-1 {
-    padding-inline: var(--spacing);
+    padding-inline: calc(var(--spacing) * 1);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -874,10 +886,10 @@
     padding-inline: calc(var(--spacing) * 5);
   }
   .py-0 {
-    padding-block: 0px;
+    padding-block: calc(var(--spacing) * 0);
   }
   .py-1 {
-    padding-block: var(--spacing);
+    padding-block: calc(var(--spacing) * 1);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -892,10 +904,10 @@
     padding-block: calc(var(--spacing) * 5);
   }
   .ps-0 {
-    padding-inline-start: 0px;
+    padding-inline-start: calc(var(--spacing) * 0);
   }
   .ps-1 {
-    padding-inline-start: var(--spacing);
+    padding-inline-start: calc(var(--spacing) * 1);
   }
   .ps-2 {
     padding-inline-start: calc(var(--spacing) * 2);
@@ -910,10 +922,10 @@
     padding-inline-start: calc(var(--spacing) * 5);
   }
   .pe-0 {
-    padding-inline-end: 0px;
+    padding-inline-end: calc(var(--spacing) * 0);
   }
   .pe-1 {
-    padding-inline-end: var(--spacing);
+    padding-inline-end: calc(var(--spacing) * 1);
   }
   .pe-2 {
     padding-inline-end: calc(var(--spacing) * 2);
@@ -928,10 +940,10 @@
     padding-inline-end: calc(var(--spacing) * 5);
   }
   .pt-0 {
-    padding-top: 0px;
+    padding-top: calc(var(--spacing) * 0);
   }
   .pt-1 {
-    padding-top: var(--spacing);
+    padding-top: calc(var(--spacing) * 1);
   }
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
@@ -946,10 +958,10 @@
     padding-top: calc(var(--spacing) * 5);
   }
   .pb-0 {
-    padding-bottom: 0px;
+    padding-bottom: calc(var(--spacing) * 0);
   }
   .pb-1 {
-    padding-bottom: var(--spacing);
+    padding-bottom: calc(var(--spacing) * 1);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
@@ -1161,19 +1173,25 @@
   .backface-hidden {
     backface-visibility: hidden;
   }
-  @media (hover: hover) {
-    .hover\:text-white:hover {
-      color: var(--color-white);
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
     }
   }
-  @media (width >= 40rem) {
-    .sm\:h-10 {
+  .sm\:h-10 {
+    @media (width >= 40rem) {
       height: calc(var(--spacing) * 10);
     }
-    .sm\:h-131\.25 {
-      height: calc(var(--spacing) * 131.25);
+  }
+  .sm\:h-\[700px\] {
+    @media (width >= 40rem) {
+      height: 700px;
     }
-    .sm\:w-10 {
+  }
+  .sm\:w-10 {
+    @media (width >= 40rem) {
       width: calc(var(--spacing) * 10);
     }
   }
@@ -1227,6 +1245,8 @@ body {
 @layer base {
   h1, h2, h3, h4, h5 {
     font-weight: 700;
+  }
+  h1, h2, h3, h4, h5 {
     font-family: var(--font-body);
     color: var(--color-primary);
     line-height: 1.25;
@@ -1308,12 +1328,12 @@ body {
 @media (max-width: 992px) {
   .container {
     width: 100%;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .container-fluid {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 @property --tw-rotate-x {
