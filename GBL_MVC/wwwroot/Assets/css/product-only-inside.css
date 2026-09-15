@@ -4,6 +4,7 @@ PRODUCT INSIDE — split banner
 =====================================**/
 .product-inside-banner-outer {
   background: var(--color-gray, #f4f4f4);
+  padding-top: clamp(10rem, 10vw, 10rem);
 }
 
 .product-inside-banner {
@@ -18,7 +19,20 @@ PRODUCT INSIDE — split banner
 }
 
 .product-inside-banner__intro {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.product-inside-banner__intro p {
   font-size: var(--text-22);
+  margin: 0;
+}
+
+.product-inside-banner__intro .page-intro-fill-word {
+  display: inline;
+  color: #b2b2b2;
 }
 
 .product-inside-banner__media {
