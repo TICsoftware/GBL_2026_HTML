@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const MQ = window.matchMedia("(max-width: 1199px)");
   const isMobile = () => MQ.matches;
-  const isHome = header.dataset.theme === "home";
 
   const backdrop = header.querySelector("[data-header-backdrop]");
   const toggleBtn = header.querySelector("[data-nav-toggle]");
@@ -52,13 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const placeL3Panel = (item, panel) => {
-    if (isMobile()) {
-      const li = item.closest("li");
-      if (li && panel.parentElement !== li) li.appendChild(panel);
-      return;
-    }
-    const home = l3Homes.get(panel);
-    if (home && panel.parentElement !== home) home.appendChild(panel);
+    const li = item.closest("li");
+    if (li && panel.parentElement !== li) li.appendChild(panel);
   };
 
   const getScrollY = () => {
@@ -116,34 +110,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const positionMega = (trigger, instant) => {
+    if (!trigger || !navWrap || isMobile()) return;
+    const key = trigger.getAttribute("data-mega-trigger");
+    const menu = header.querySelector('.mega-menu[data-mega="' + key + '"]');
+    if (!menu) return;
+
+    const wrapRect = navWrap.getBoundingClientRect();
+    const trigRect = trigger.getBoundingClientRect();
+    const width = Math.min(616, wrapRect.width, Math.max(320, window.innerWidth - 40));
+    const center = trigRect.left + trigRect.width / 2 - wrapRect.left;
+    const left = Math.max(0, Math.min(center - width / 2, wrapRect.width - width));
+    menu.style.width = width + "px";
+    menu.style.setProperty("--mega-left", left + "px");
+    positionCaret(trigger, instant);
+  };
+
+  const syncMegaPosition = () => {
+    if (!activeMenu || isMobile()) return;
+    const trigger = header.querySelector('[data-mega-trigger][aria-expanded="true"]');
+    if (trigger) positionMega(trigger, true);
+  };
+
+  const stillInMegaHover = (event) => {
+    const next = event.relatedTarget;
+    if (next && next.nodeType === 1 && (
+      next.closest("[data-nav-item]") ||
+      next.closest(".mega-menu") ||
+      next.closest(".site-header__nav")
+    )) return true;
+    if (typeof event.clientX !== "number") return false;
+    const el = document.elementFromPoint(event.clientX, event.clientY);
+    return !!(el && (
+      el.closest("[data-nav-item]") ||
+      el.closest(".mega-menu") ||
+      el.closest(".site-header__nav")
+    ));
+  };
+
   const closeAllL2 = (menu) => {
     menu.querySelectorAll("[data-l2]").forEach((el) => el.classList.remove("is-active"));
     menu.querySelectorAll(".mega-l3-panel").forEach((panel) => {
       panel.classList.remove("is-active");
       panel.hidden = true;
-    });
-    restoreL3Panels(menu);
-  };
-
-  const closeAllL4 = (scope, instant) => {
-    const root = scope || header;
-    root.querySelectorAll("[data-l3][data-l4]").forEach((el) => {
-      el.classList.remove("is-active");
-      el.setAttribute("aria-expanded", "false");
-    });
-    root.querySelectorAll(".mega-l4-card").forEach((card) => {
-      card.classList.remove("is-active");
-      if (instant) {
-        card.hidden = true;
-        return;
-      }
-      const finish = (event) => {
-        if (event && event.target !== card) return;
-        if (!card.classList.contains("is-active")) card.hidden = true;
-        card.removeEventListener("transitionend", finish);
-      };
-      card.addEventListener("transitionend", finish);
-      window.setTimeout(finish, 360);
     });
   };
 
@@ -151,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const menu = item.closest(".mega-menu");
     if (!menu) return;
     closeAllL2(menu);
-    closeAllL4(menu, true);
     item.classList.add("is-active");
     const id = item.getAttribute("data-panel");
     if (!id) return;
@@ -160,30 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
     panel.hidden = false;
     panel.classList.add("is-active");
     placeL3Panel(item, panel);
-  };
-
-  const toggleL4 = (item) => {
-    const menu = item.closest(".mega-menu");
-    if (!menu) return;
-    const already = item.classList.contains("is-active");
-    closeAllL4(menu);
-    if (already) return;
-    item.classList.add("is-active");
-    item.setAttribute("aria-expanded", "true");
-    const id = item.getAttribute("data-l4");
-    if (!id) return;
-    const card = menu.querySelector('.mega-l4-card[data-l4="' + id + '"]');
-    if (!card) return;
-    card.hidden = false;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => card.classList.add("is-active"));
-    });
-  };
-
-  const activateFirstL2 = (menu) => {
-    if (isMobile()) return;
-    const first = menu.querySelector("[data-l2]");
-    if (first) activateL2(first);
   };
 
   const closeMega = () => {
@@ -196,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     header.classList.remove("is-mega-open", "is-mega-switching");
     activeMenu = null;
-    closeAllL4(header, true);
 
     const hideMenus = () => {
       menus.forEach((menu) => {
@@ -223,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(closeAnimTimer);
     const switching = !!(activeMenu && activeMenu !== menu);
     header.classList.toggle("is-mega-switching", switching && !isMobile());
-    if (activeMenu !== menu) activateFirstL2(menu);
 
     menus.forEach((item) => {
       item.hidden = item !== menu;
@@ -239,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
     activeMenu = menu;
     if (!isMobile()) lockPage(true);
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => positionCaret(trigger, !switching));
+      requestAnimationFrame(() => positionMega(trigger, !switching));
     });
   };
 
@@ -289,13 +271,21 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const updateTheme = () => {
-    if (!isHome) return;
-    if (header.classList.contains("is-nav-open") || header.classList.contains("is-search-open")) {
+    const scrolled = getScrollY() > 24;
+    if (!header.classList.contains("is-nav-open")) {
+      const wasCompact = header.classList.contains("is-compact");
+      header.classList.toggle("is-compact", scrolled);
+      if (wasCompact !== scrolled) {
+        requestAnimationFrame(syncMegaPosition);
+        window.setTimeout(syncMegaPosition, 420);
+      }
+    }
+
+    if (header.classList.contains("is-nav-open")) {
       header.classList.add("is-light");
       header.classList.remove("is-dark");
       return;
     }
-    const scrolled = getScrollY() > 24;
     header.classList.toggle("is-light", scrolled);
     header.classList.toggle("is-dark", !scrolled);
   };
@@ -326,9 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
       openTimer = window.setTimeout(() => openMega(trigger), delay);
     });
 
-    item.addEventListener("mouseleave", () => {
+    item.addEventListener("mouseleave", (event) => {
       if (isMobile()) return;
       clearTimeout(openTimer);
+      if (stillInMegaHover(event)) return;
       closeTimer = window.setTimeout(closeMega, 220);
     });
   });
@@ -338,8 +329,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isMobile()) return;
       clearTimeout(closeTimer);
     });
-    menu.addEventListener("mouseleave", () => {
+    menu.addEventListener("mouseleave", (event) => {
       if (isMobile()) return;
+      if (stillInMegaHover(event)) return;
       closeTimer = window.setTimeout(closeMega, 220);
     });
 
@@ -361,11 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     menu.querySelectorAll("[data-l3]").forEach((item) => {
       item.addEventListener("click", (event) => {
-        if (item.hasAttribute("data-l4")) {
-          event.preventDefault();
-          toggleL4(item);
-          return;
-        }
         if (item.getAttribute("href") === "#") event.preventDefault();
       });
     });
@@ -419,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
   header.addEventListener("click", (event) => {
     const link = event.target.closest('a[href="#"]');
     if (link && header.contains(link) && !link.hasAttribute("data-mega-trigger")) {
-      if (!link.hasAttribute("data-l2") && !link.hasAttribute("data-l3") && !link.hasAttribute("data-l4")) {
+      if (!link.hasAttribute("data-l2") && !link.hasAttribute("data-l3")) {
         event.preventDefault();
       }
     }
@@ -436,10 +423,16 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleBtn.setAttribute("aria-label", "Open menu");
       }
     }
+    if (isMobile()) {
+      menus.forEach((menu) => {
+        menu.style.removeProperty("width");
+        menu.style.removeProperty("--mega-left");
+      });
+    }
     if (activeL2) activateL2(activeL2);
     if (activeMenu && !activeMenu.hidden) {
       const trigger = header.querySelector('[data-mega-trigger][aria-expanded="true"]');
-      positionCaret(trigger, true);
+      positionMega(trigger, true);
     }
     updateTheme();
   });
@@ -448,6 +441,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.lenis && typeof window.lenis.on === "function") {
     window.lenis.on("scroll", updateTheme);
   }
-  menus.forEach(activateFirstL2);
+  header.querySelector(".site-header__bar")?.addEventListener("transitionend", (event) => {
+    if (event.propertyName === "height") syncMegaPosition();
+  });
   updateTheme();
 });
