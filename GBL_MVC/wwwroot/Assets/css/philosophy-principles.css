@@ -86,7 +86,7 @@
   left: 50%;
   top: 56%;
   z-index: 4;
-  width: min(52.5rem, 82vw);
+  width: min(60rem, 82vw);
   height: min(26.5rem, 52vh);
   margin: 0;
   transform: translate(-50%, -46%);
