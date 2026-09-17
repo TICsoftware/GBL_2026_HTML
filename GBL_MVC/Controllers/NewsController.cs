@@ -20,6 +20,20 @@ public class NewsController : Controller
 
     public IActionResult Index()
     {
+        return RedirectPermanent("/news/press-release");
+    }
+
+    public IActionResult PressRelease()
+    {
+        ViewData["Title"] = "Press Release";
+        ViewData["NewsSection"] = "press-release";
+        return View();
+    }
+
+    public IActionResult MediaCoverage()
+    {
+        ViewData["Title"] = "Media Coverage";
+        ViewData["NewsSection"] = "media-coverage";
         return View();
     }
 

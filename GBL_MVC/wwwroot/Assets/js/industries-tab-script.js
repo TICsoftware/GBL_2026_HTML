@@ -215,8 +215,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
+    tab.addEventListener("click", function (event) {
+      if (tab.tagName === "A") return;
       if (tab.classList.contains("is-active")) return;
+      event.preventDefault();
       activateTab(tab, true);
     });
   });

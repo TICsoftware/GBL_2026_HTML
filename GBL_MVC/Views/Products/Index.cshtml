@@ -76,7 +76,11 @@
    <section class="relative section-spacing product-filter-outer">
       <div class="container">
          <div class="product-filter-layout">
-            <aside class="product-filter-sidebar" aria-label="Product filters">
+            <aside class="product-filter-sidebar" id="product-filter-sidebar" aria-label="Product filters">
+               <div class="filter-mobile-sheet-head">
+                  <h2 class="filter-mobile-sheet-head__title">Set Filters</h2>
+                  <button type="button" class="filter-mobile-close" data-close-mobile-filter aria-label="Close filters">&times;</button>
+               </div>
                <div class="product-filter-sidebar__head">
                   <h2 class="product-filter-sidebar__title">Filter By</h2>
                   <button type="button" class="product-filter-clear" data-clear-filters>Clear Filter</button>
@@ -89,6 +93,7 @@
                         <span class="pf-dropdown__chevron" aria-hidden="true"></span>
                      </button>
                      <div class="pf-dropdown__panel" id="filter-industry-panel">
+                        <div class="pf-dropdown__panel-clip">
                         <div class="pf-dropdown__panel-inner">
                         <label class="pf-option"><input type="checkbox" name="industry" value="adhesives-lubricants" data-label="Adhesives &amp; Lubricants"> <span class="pf-option__label">Adhesives &amp; Lubricants</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="industry" value="agrochemicals" data-label="Agrochemicals"> <span class="pf-option__label">Agrochemicals</span><span class="pf-option__count">00</span></label>
@@ -102,6 +107,7 @@
                         <label class="pf-option"><input type="checkbox" name="industry" value="plastics-paper-resins" data-label="Plastics, Paper &amp; Resins"> <span class="pf-option__label">Plastics, Paper &amp; Resins</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="industry" value="textiles" data-label="Textiles"> <span class="pf-option__label">Textiles</span><span class="pf-option__count">00</span></label>
                         </div>
+                        </div>
                      </div>
                   </div>
 
@@ -111,6 +117,7 @@
                         <span class="pf-dropdown__chevron" aria-hidden="true"></span>
                      </button>
                      <div class="pf-dropdown__panel" id="filter-application-panel">
+                        <div class="pf-dropdown__panel-clip">
                         <div class="pf-dropdown__panel-inner">
                         <label class="pf-option"><input type="checkbox" name="application" value="additive" data-label="Additive"> <span class="pf-option__label">Additive</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="application" value="coatings" data-label="Coatings"> <span class="pf-option__label">Coatings</span><span class="pf-option__count">00</span></label>
@@ -118,6 +125,7 @@
                         <label class="pf-option"><input type="checkbox" name="application" value="ingredient" data-label="Ingredient"> <span class="pf-option__label">Ingredient</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="application" value="plasticizer" data-label="Plasticizer"> <span class="pf-option__label">Plasticizer</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="application" value="solvent" data-label="Solvent"> <span class="pf-option__label">Solvent</span><span class="pf-option__count">00</span></label>
+                        </div>
                         </div>
                      </div>
                   </div>
@@ -128,19 +136,30 @@
                         <span class="pf-dropdown__chevron" aria-hidden="true"></span>
                      </button>
                      <div class="pf-dropdown__panel" id="filter-category-panel">
+                        <div class="pf-dropdown__panel-clip">
                         <div class="pf-dropdown__panel-inner">
                         <label class="pf-option"><input type="checkbox" name="category" value="bio-based-chemicals" data-label="Bio-based Chemicals"> <span class="pf-option__label">Bio-based Chemicals</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="category" value="biofuels-bio-energy" data-label="Biofuels &amp; Bio-energy"> <span class="pf-option__label">Biofuels &amp; Bio-energy</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="category" value="specialty-chemicals" data-label="Specialty Chemicals"> <span class="pf-option__label">Specialty Chemicals</span><span class="pf-option__count">00</span></label>
                         <label class="pf-option"><input type="checkbox" name="category" value="sugar" data-label="Sugar"> <span class="pf-option__label">Sugar</span><span class="pf-option__count">00</span></label>
                         </div>
+                        </div>
                      </div>
-                  </div>
+                  </div>                  
                </form>
+               <div class="filter-mobile-sheet-foot">
+                  <button type="button" class="filter-mobile-clear" data-clear-filters>Clear Filters</button>
+                  <button type="button" class="filter-mobile-apply" data-apply-mobile-filter>Apply Filters</button>
+               </div>
             </aside>
+            <div class="filter-mobile-backdrop" data-close-mobile-filter></div>
 
             <div class="product-filter-results">
                <div class="product-filter-results__head">
+                  <button type="button" class="filter-mobile-trigger" data-open-mobile-filter aria-controls="product-filter-sidebar" aria-expanded="false">
+                     <span class="filter-mobile-trigger__icon" aria-hidden="true"></span>
+                     Refine by Filters
+                  </button>
                   <h2 class="text-h2 product-filter-results__title">Our product portfolio (<span data-product-count>9</span>)</h2>
                   <div class="product-filter-chips" data-filter-chips></div>
                </div>
@@ -282,4 +301,5 @@
 
 @section Scripts {
    <script src="~/Assets/js/product-filter.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/product-card-animation.js" asp-append-version="true"></script>
 }

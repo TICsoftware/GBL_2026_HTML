@@ -26,7 +26,23 @@ namespace GBL_MVC.Routes
                 defaults: new { controller = "Manage" }
             );
 
-            // ✅ Default route LAST
+            app.MapControllerRoute(
+                name: "news-press-release",
+                pattern: "news/press-release",
+                defaults: new { controller = "News", action = "PressRelease" }
+            );
+
+            app.MapControllerRoute(
+                name: "news-media-coverage",
+                pattern: "news/media-coverage",
+                defaults: new { controller = "News", action = "MediaCoverage" }
+            );
+
+            app.MapControllerRoute(
+                name: "news-index",
+                pattern: "news",
+                defaults: new { controller = "News", action = "Index" }
+            );
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"

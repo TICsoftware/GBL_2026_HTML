@@ -28,6 +28,7 @@
           || node.closest('#products-section')
           || node.closest('.cselect-menu')
           || node.closest('.cselect')
+          || node.closest('.pf-dropdown__panel-inner')
           || node.closest('.mega-menu')
           || node.closest('.site-header__nav-wrap');
       }
@@ -46,7 +47,10 @@
     window.addEventListener(
       "wheel",
       (e) => {
-        const menu = e.target && e.target.closest && e.target.closest(".cselect-menu");
+        const menu =
+          e.target &&
+          e.target.closest &&
+          (e.target.closest(".cselect-menu") || e.target.closest(".pf-dropdown__panel-inner"));
         if (!menu) return;
         e.preventDefault();
         e.stopPropagation();
