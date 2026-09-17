@@ -135,7 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var grid = panel.querySelector(".industry-product-grid");
     var cards = grid
-      ? Array.from(grid.querySelectorAll(".industry-product-card"))
+      ? Array.from(grid.querySelectorAll(".industry-product-card")).filter(function (card) {
+          return !card.hidden;
+        })
       : [];
     if (!cards.length) return;
 

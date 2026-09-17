@@ -5,10 +5,13 @@
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/industries-tab.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/industries-filter.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/news-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/industries-filter.css" asp-append-version="true" />
 }
 
    <partial name="_NewsHeroAndTabs" />
-
+ news-inside-outer
    <section class="relative section-spacing industries-inside-outer">
       <div class="container">
          <div class="industries-tab-content">
@@ -20,4 +23,10 @@
             </div>
          </div>
       </div>
+
+@section Scripts {
+   <script src="~/Assets/js/industries-filter.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/news-script.js" asp-append-version="true"></script>
+}
+   </section>
    </section>
