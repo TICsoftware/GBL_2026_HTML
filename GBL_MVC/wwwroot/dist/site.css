@@ -788,12 +788,6 @@
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
-  .rounded-md {
-    border-radius: var(--radius-md);
-  }
-  .rounded-sm {
-    border-radius: var(--radius-sm);
-  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -993,6 +987,9 @@
   .pb-5 {
     padding-bottom: calc(var(--spacing) * 5);
   }
+  .pb-10\! {
+    padding-bottom: calc(var(--spacing) * 10) !important;
+  }
   .text-center {
     text-align: center;
   }
@@ -1026,16 +1023,9 @@
   .align-top {
     vertical-align: top;
   }
-  .text-base {
-    font-size: var(--text-base);
-    line-height: var(--tw-leading, var(--text-base--line-height));
-  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .text-20 {
-    font-size: var(--text-20);
   }
   .text-h1 {
     font-size: var(--text-h1);

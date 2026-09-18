@@ -48,6 +48,7 @@
 
     <link rel="preload" href="~/Assets/css/translating-products.css" as="style">
     <link rel="stylesheet" href="~/Assets/css/translating-products.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Assets/css/industries-filter.css" asp-append-version="true" />
 
     <link rel="preload" href="~/Assets/css/philosophy-principles.css" as="style">
     <link rel="stylesheet" href="~/Assets/css/philosophy-principles.css" asp-append-version="true" />
@@ -379,51 +380,54 @@
     ===================================-->
     <section class="ourPhilosophy" aria-label="Our Philosophy and Guiding Principles">
       <div class="philosophy-track">
-      <div class="philosophy-sticky">
-        <div class="container philosophy-copy  section-spacing">
-          <div class="section-intro">
-            <div class="section-intro__title title-section">
-              <h2 class="text-h2">Our Philosophy &amp; Guiding Principles</h2>
-            </div>
-            <div class="section-intro__content">
-              <p>Our philosophy, Creating a Beautiful World, demands more than intent. It requires rethinking how we grow, produce and collaborate. At Godavari Biorefineries, everything we do begins with the sun, the soil and the small farmer, and every step from soil to science is guided by our four core principles.</p>
-            </div>
-          </div>
-        </div>
-
-
-         <div class="philosophy-frame" data-philosophy-frame>
-          <img src="@Url.Content("~/Assets/images/homepage/principle-bg.webp")" alt="Our Philosophy &amp; Guiding Principles">
-          <div class="philosophy-frame__veil" aria-hidden="true"></div>
-        </div>
-
-        <div class="philosophy-infographic" data-philosophy-infographic>
-          <div class="philosophy-infographic__grid">
-            <article class="philosophy-card" data-principle="tl">
-              <h3>Innovation at the Core</h3>
-              <p>Where high-performance solutions and planetary health thrive together.</p>
-            </article>
-            <article class="philosophy-card" data-principle="tr">
-              <h3>Creating Value for All</h3>
-              <p>Investors, customers, farmers, the company and the community thrive together.</p>
-            </article>
-            <div class="philosophy-hub">
-              <div class="philosophy-hub__inner">
-                <span>Guiding</span>
-                <span>Principles</span>
+        <div class="philosophy-sticky">
+          <div class="container philosophy-copy">
+            <div class="section-intro">
+              <div class="section-intro__title title-section">
+                <h2 class="text-h2">Our Philosophy &amp; Guiding Principles</h2>
+              </div>
+              <div class="section-intro__content">
+                <p>Our philosophy, Creating a Beautiful World, demands more than intent. It requires rethinking how we grow, produce and collaborate. At Godavari Biorefineries, everything we do begins with the sun, the soil and the small farmer, and every step from soil to science is guided by our four core principles.</p>
               </div>
             </div>
-            <article class="philosophy-card" data-principle="bl">
-              <h3>Shared Future Growth</h3>
-              <p>Co-creation with farmers and customers to fuel shared prosperity and bio-vitality.</p>
-            </article>
-            <article class="philosophy-card" data-principle="br">
-              <h3>Sustainability by Design</h3>
-              <p>Circular systems that keep resources in motion and respect nature.</p>
-            </article>
+          </div>
+
+          <div class="philosophy-frame" data-philosophy-frame>
+            <img src="@Url.Content("~/Assets/images/homepage/principle-bg.webp")" alt="Our Philosophy &amp; Guiding Principles">
+            <div class="philosophy-frame__veil" aria-hidden="true"></div>
+          </div>
+
+          <div class="philosophy-infographic" data-philosophy-infographic>
+            <div class="philosophy-infographic__grid">
+              <article class="philosophy-card" data-principle="tl">
+                <h3>Innovation at the Core</h3>
+                <p>Where high-performance solutions and planetary health thrive together.</p>
+              </article>
+
+              <article class="philosophy-card" data-principle="tr">
+                <h3>Creating Value for All</h3>
+                <p>Investors, customers, farmers, the company and the community thrive together.</p>
+              </article>
+
+              <div class="philosophy-hub">
+                <div class="philosophy-hub__inner">
+                  <span>Guiding</span>
+                  <span>Principles</span>
+                </div>
+              </div>
+
+              <article class="philosophy-card" data-principle="bl">
+                <h3>Shared Future Growth</h3>
+                <p>Co-creation with farmers and customers to fuel shared prosperity and soil vitality.</p>
+              </article>
+              
+              <article class="philosophy-card" data-principle="br">
+                <h3>Sustainability by Design</h3>
+                <p>Circular systems that keep resources in motion and respect nature.</p>
+              </article>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </section> 
 
@@ -568,38 +572,89 @@
             <p class="translating-explore__heading">Products for a Better World</p>
           </div>
 
-          <form class="translating-explore__filters" action="#" method="get">
-            <div class="translating-select">
-              <label class="translating-select__sr" for="translating-industry">By Industries</label>
-              <select id="translating-industry" name="industry" class="translating-select__control">
-                <option value="" selected>By Industries</option>
-                <option value="personal-care">Personal Care</option>
-                <option value="pharmaceuticals">Pharmaceuticals</option>
-                <option value="food-nutrition">Food &amp; Nutrition</option>
-                <option value="flavours-fragrances">Flavours &amp; Fragrances</option>
-                <option value="industrial">Industrial</option>
-              </select>
-            </div>
-
-            <div class="translating-select">
-              <label class="translating-select__sr" for="translating-product">Our Products</label>
-              <select id="translating-product" name="product" class="translating-select__control">
-                <option value="" selected>Our Products</option>
-                <option value="bio-based-chemicals">Bio-based chemicals</option>
-                <option value="biofuels-bio-energy">Biofuels &amp; Bio-energy</option>
-                <option value="sugar">Sugar</option>
-                <option value="jivana">Jivana</option>
-              </select>
-            </div>
-
-            <button type="submit" class="translating-explore__search">
-              <svg class="translating-explore__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="7" cy="7" r="5.25" stroke="currentColor" stroke-width="1.4"/>
-                <path d="M11.2 11.2L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-              Search
+          <div class="filter-outer translating-explore__filters">
+            <button type="button"
+                    class="filter-mobile-trigger"
+                    data-open-industry-filter
+                    aria-controls="home-product-filter"
+                    aria-expanded="false">
+              <span class="filter-mobile-trigger__icon" aria-hidden="true"></span>
+              Refine by Filters
             </button>
-          </form>
+            <div class="filter-mobile-backdrop" data-close-industry-filter></div>
+            <form class="filter-inner" id="home-product-filter" action="#" method="get">
+              <div class="filter-mobile-sheet-head">
+                <h2 class="filter-mobile-sheet-head__title">Set Filters</h2>
+                <button type="button" class="filter-mobile-close" data-close-industry-filter aria-label="Close filters">&times;</button>
+              </div>
+              <div class="industry-filters-desktop">
+                <div class="cselect">
+                  <label class="cselect-sr" for="home-filter-industry">By Industries</label>
+                  <select id="home-filter-industry" name="industry" class="cselect-native">
+                    <option value="" selected>By Industries</option>
+                    <option value="personal-care">Personal Care</option>
+                    <option value="pharmaceuticals">Pharmaceuticals</option>
+                    <option value="food-nutrition">Food &amp; Nutrition</option>
+                    <option value="flavours-fragrances">Flavours &amp; Fragrances</option>
+                    <option value="industrial">Industrial</option>
+                  </select>
+                </div>
+                <div class="cselect">
+                  <label class="cselect-sr" for="home-filter-product">Our Products</label>
+                  <select id="home-filter-product" name="product" class="cselect-native">
+                    <option value="" selected>Our Products</option>
+                    <option value="bio-based-chemicals">Bio-based chemicals</option>
+                    <option value="biofuels-bio-energy">Biofuels &amp; Bio-energy</option>
+                    <option value="sugar">Sugar</option>
+                    <option value="jivana">Jivana</option>
+                  </select>
+                </div>
+                <button type="submit" class="filter-submit">
+                  <span class="filter-submit-arrow" aria-hidden="true">&rarr;</span>
+                  Filter
+                </button>
+              </div>
+              <div class="industry-filters-mobile">
+                <div class="pf-dropdown" data-filter-group="industry" data-native="home-filter-industry" data-default-label="By Industries">
+                  <button type="button" class="pf-dropdown__trigger" aria-expanded="false" aria-controls="home-filter-industry-panel">
+                    <span>By Industries</span>
+                    <span class="pf-dropdown__chevron" aria-hidden="true"></span>
+                  </button>
+                  <div class="pf-dropdown__panel" id="home-filter-industry-panel">
+                    <div class="pf-dropdown__panel-clip">
+                      <div class="pf-dropdown__panel-inner">
+                        <button type="button" class="pf-option" data-value="personal-care">Personal Care</button>
+                        <button type="button" class="pf-option" data-value="pharmaceuticals">Pharmaceuticals</button>
+                        <button type="button" class="pf-option" data-value="food-nutrition">Food &amp; Nutrition</button>
+                        <button type="button" class="pf-option" data-value="flavours-fragrances">Flavours &amp; Fragrances</button>
+                        <button type="button" class="pf-option" data-value="industrial">Industrial</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pf-dropdown" data-filter-group="product" data-native="home-filter-product" data-default-label="Our Products">
+                  <button type="button" class="pf-dropdown__trigger" aria-expanded="false" aria-controls="home-filter-product-panel">
+                    <span>Our Products</span>
+                    <span class="pf-dropdown__chevron" aria-hidden="true"></span>
+                  </button>
+                  <div class="pf-dropdown__panel" id="home-filter-product-panel">
+                    <div class="pf-dropdown__panel-clip">
+                      <div class="pf-dropdown__panel-inner">
+                        <button type="button" class="pf-option" data-value="bio-based-chemicals">Bio-based chemicals</button>
+                        <button type="button" class="pf-option" data-value="biofuels-bio-energy">Biofuels &amp; Bio-energy</button>
+                        <button type="button" class="pf-option" data-value="sugar">Sugar</button>
+                        <button type="button" class="pf-option" data-value="jivana">Jivana</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="filter-mobile-sheet-foot">
+                <button type="button" class="filter-mobile-clear" data-clear-industry-filter>Clear Filters</button>
+                <button type="button" class="filter-mobile-apply" data-apply-industry-filter>Apply Filters</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section> 
@@ -718,7 +773,7 @@
     ===================================-->
     <section class="section-spacing  bg-parallax-section fromSoiltable overflow-hidden">
       <div class="parallax-wrap" aria-hidden="true">
-        <img  src="Assets/images/homepage/soil-table-bg.webp"  alt="" class="parallax-img" onerror="this.onerror=null;this.src='Assets/images/homepage/soil-table-bg.jpg'">
+        <img src="@Url.Content("~/Assets/images/homepage/soil-table-bg.webp")" alt="" class="parallax-img" onerror="this.onerror=null;this.src='@Url.Content("~/Assets/images/homepage/soil-table-bg.png")'">
       </div>
 
       <div class="container relative z-20 ">
@@ -1115,6 +1170,7 @@
   <script src="~/Assets/js/hero-banner.js" asp-append-version="true"></script>
   <script src="~/Assets/js/homepage-script.js" asp-append-version="true"></script>
   <script src="~/Assets/js/translating-products.js" asp-append-version="true"></script>
+  <script src="~/Assets/js/industries-filter.js" asp-append-version="true"></script>
   <script src="~/Assets/js/philosophy-principles.js" asp-append-version="true"></script>
   <script src="~/Assets/js/logo-marquee-script.js" asp-append-version="true"></script>
   <script src="~/Assets/js/giveback-animation.js" asp-append-version="true"></script>

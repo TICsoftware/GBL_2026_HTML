@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("industry-filter");
+  var form = document.querySelector("form.filter-inner");
   var selects = document.querySelectorAll(".cselect");
   if (!selects.length) return;
 
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setFilterOpen(false);
   });
 
-  var filterOuter = document.querySelector(".industries-list-outer .filter-outer");
+  var filterOuter = (form && form.closest(".filter-outer")) || document.querySelector(".filter-outer");
   var openBtn = filterOuter && filterOuter.querySelector("[data-open-industry-filter]");
 
   function setFilterOpen(open) {
@@ -127,10 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function defaultLabel(group) {
-    if (group === "application") return "Application";
-    if (group === "category") return "Product Categories";
-    return "Industry";
+  function defaultLabel(wrap) {
+    return (wrap && wrap.getAttribute("data-default-label")) || "Industry";
   }
 
   function resetNativeSelect(native) {
@@ -222,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var trigger = wrap.querySelector(".pf-dropdown__trigger");
           var panel = wrap.querySelector(".pf-dropdown__panel");
           var triggerLabel = trigger && trigger.querySelector("span:not(.pf-dropdown__chevron)");
-          if (triggerLabel) triggerLabel.textContent = defaultLabel(wrap.getAttribute("data-filter-group"));
+          if (triggerLabel) triggerLabel.textContent = defaultLabel(wrap);
           if (trigger) trigger.setAttribute("aria-expanded", "false");
           if (panel) panel.setAttribute("aria-hidden", "true");
         });
@@ -243,9 +241,10 @@ document.addEventListener("DOMContentLoaded", function () {
         new CustomEvent("industryfilter:apply", {
           bubbles: true,
           detail: {
-            industry: form.industry.value,
-            application: form.application.value,
-            productCategories: form.productCategories.value
+            industry: form.industry ? form.industry.value : "",
+            application: form.application ? form.application.value : "",
+            productCategories: form.productCategories ? form.productCategories.value : "",
+            product: form.product ? form.product.value : ""
           }
         })
       );

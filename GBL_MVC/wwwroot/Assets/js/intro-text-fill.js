@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".section-intro__content p").forEach(function (paragraph, index) {
     if (paragraph.dataset.introFill === "ready") return;
+
+    var philosophyDesktop =
+      paragraph.closest(".ourPhilosophy") &&
+      window.matchMedia("(min-width: 1024px)").matches;
+
     wrapWords(paragraph);
     paragraph.dataset.introFill = "ready";
 
@@ -49,6 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.set(words, { color: fillTo });
       return;
     }
+
+    /* Desktop philosophy pin owns this fill via philosophy-principles.js */
+    if (philosophyDesktop) return;
 
     gsap.to(words, {
       color: fillTo,

@@ -88,10 +88,6 @@ Title left | copy + CTA right
   color: #ccc;
 }
 
-.ourPhilosophy.is-on-media .section-intro__content .intro-fill-word {
-  color: #fff !important;
-}
-
 @media (max-width: 767px) {
   .section-intro {
     grid-template-columns: 1fr;
