@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    var SCALE_START = 0.5;
+    var SCALE_START = 0.1;
     var SCALE_END = 1;
     var INFOGRAPHIC_START = SCALE_START + (SCALE_END - SCALE_START) * 0.6;
 

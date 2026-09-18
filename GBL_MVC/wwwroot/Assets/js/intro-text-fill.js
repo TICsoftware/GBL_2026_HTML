@@ -47,8 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var words = paragraph.querySelectorAll(".intro-fill-word");
     if (!words.length) return;
 
-    var fillTo = paragraph.closest(".white-copy") ? "#fff" : FILL_TO;
-    gsap.set(words, { color: FILL_FROM });
+    var isWhite = !!paragraph.closest(".white-copy, .text-white");
+    var fillFrom = isWhite ? "#f4f4f4" : FILL_FROM;
+    var fillTo = isWhite ? "#ffffff" : FILL_TO;
+    gsap.set(words, { color: fillFrom });
 
     if (reduceMotion) {
       gsap.set(words, { color: fillTo });
