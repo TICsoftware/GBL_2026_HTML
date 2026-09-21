@@ -1,0 +1,268 @@
+@{
+    ViewData["Title"] = "Sustainability";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="~/Assets/css/sustainability-intro.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER END-->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/sustainability-banner.webp">                  
+
+                  <!-- Desktop -->
+                  <img
+                     src="~/Assets/images/banners/sustainability-banner.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+           
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="max-w-4xl text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Sustainability by Design
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">
+                                 Home
+                              </a>
+                           </li>
+
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                              Sustainability
+                           </li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>  
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--PAGE INTRO OUTER-->
+   <section class="page-intro-outer page-intro-outer--mantra section-spacing" aria-label="Our operating principle">
+      <div class="page-intro-mantra__media" aria-hidden="true">
+         <img src="@Url.Content("~/Assets/images/sustanability/Sustainability-img.webp")" alt="" class="page-intro-mantra__img">
+         <div class="page-intro-mantra__veil"></div>
+      </div>
+      <div class="container">
+         <div class="page-intro-mantra h-full">
+            <blockquote class="page-intro-mantra__quote">
+               <h2 class="page-intro-mantra__sanskrit text-h1">माताभूमिः पुत्रोअहं पृथिव्या</h2>
+               <p class="page-intro-mantra__english">The Earth is my mother, I am her child.</p>
+               <cite class="page-intro-mantra__cite">-- Bhumi Sukta, Atharva Veda</cite>
+            </blockquote>
+            <p class="page-intro-mantra__copy">At Godavari Biorefineries Ltd, this mantra is more than a philosophy, it is our operating principle. We believe that sustainability and growth are not parallel priorities but a unified goal, that business can grow and progress can be shared while caring for the planet and its people. We believe in the strength of the sun, the soil and the small farmer and India is abundant in all. By embedding circularity in our processes, restoring the land, investing in renewable capacity and building inclusive partnerships with our communities based on ethical governance, we have made sustainability fundamental to how we create value for all our stakeholders.</p>
+         </div>
+      </div>
+   </section>
+   <!--PAGE INTRO OUTER END-->
+
+   <!--Creating Towards a beautiful world-->
+   <section class="CreatingTowards-outer section-spacing">
+      <div class="container">
+         <div class="CreatingTowards-inner"> 
+            <div class="section-intro">
+               <div class="section-intro__title title-section">
+                  <h2 class="text-h2 text-white">  Creating Towards a <span class="Corinthia__script text-white">beautiful world</span></h2>
+               </div>
+            </div>   
+
+            <div class="CreatingTowards-copy">
+               <p>Protecting the planet and life on it is an ethical compact for us. Our philosophy is anchored on the principles of transparency, accountability and ethical conduct. This enables us to build a resilient, inclusive organisation aligned to the highest global standards and to diverse stakeholder interests.</p>
+               <p>We are committed to sharing our growth with our communities, driven by the values of social welfare enshrined into the Somaiya Group DNA by our founder, Shri K J Somaiya, recipient of the Padma Bhushan. Shri K J Somaiya was guided by the Atharva Veda precept: Earn with a hundred hands, Give with a thousand. This principle continues to drive our community initiatives across education, health, livelihoods, and gender equality and empowerment.</p>
+               <p>We are also committed to both at the workplace and for our communities. That’s why Godavari is a zero-fatality and zero-recordable-work-related-injury organisation with strict adherence to all environmental, health and safety measures.</p>
+               <p>Every action we take carries the promise of tomorrow – to create a beautiful bio-based economy nurtured with innovation at the core and sustainability by design for a shared future.</p>
+            </div>
+
+            <div class="CreatingTowards-media" aria-hidden="false">
+               <figure class="CreatingTowards-media__item parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/beautiful-img1.webp")" alt="Hands holding the Earth as a symbol of environmental care" class="parallax-img img-full">
+               </figure>
+               <figure class="CreatingTowards-media__item parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/beautiful-img2.webp")" alt="Community healthcare for a mother and child" class="parallax-img img-full">
+               </figure>
+               <figure class="CreatingTowards-media__item parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/beautiful-img3.webp")" alt="Children learning with a teacher in a classroom" class="parallax-img img-full">
+               </figure>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Creating Towards a beautiful world END-->
+
+   <!--Turning commitment into action-->
+   <section class="turningCommitment section-spacing bg-gray">
+      <div class="container">
+         <div class="section-intro">
+            <div class="section-intro__title title-section">
+               <h2 class="text-h2">Turning commitment into action</h2>
+            </div>
+
+            <div class="section-intro__content">
+               <p>Our Sustainability principle is embedded across the Environmental, Social, Governance and Health & Safety pillars for meaningful impact.</p>
+            </div>
+         </div>
+
+         <div class="swiper turningCommitment-cards-outer">
+            <div class="swiper-wrapper">
+               <article class="swiper-slide turningCommitment-card">
+                  <div class="turningCommitment-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/sustanability/action-img1.webp")" alt="Circularity and environmental stewardship" class="parallax-img">
+                  </div>
+                  <div class="turningCommitment-card__body">
+                     <h3 class="text-h5">Environmental</h3>
+                     <p>Circularity is embedded in all our operations. We keep materials in use by transforming by-products into valuable inputs, and designing out waste and pollution.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Learn more</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+
+               <article class="swiper-slide turningCommitment-card">
+                  <div class="turningCommitment-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/sustanability/action-img2.webp")" alt="Community education and social programmes" class="parallax-img">
+                  </div>
+                  <div class="turningCommitment-card__body">
+                     <h3 class="text-h5">Social</h3>
+                     <p>Our Corporate Social Responsibility efforts are driven by our founder’s belief that wealth, earned diligently through righteous means, should be shared even more generously with the deserving.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Learn more</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+
+               <article class="swiper-slide turningCommitment-card">
+                  <div class="turningCommitment-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/sustanability/action-img3.webp")" alt="Partnership and governance" class="parallax-img">
+                  </div>
+                  <div class="turningCommitment-card__body">
+                     <h3 class="text-h5">Governance</h3>
+                     <p>At Godavari Biorefineries Ltd, we recognise that enduring value is created when all three ESG pillars — environmental stewardship, social responsibility and strong governance — work in tandem.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Learn more</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+
+               <article class="swiper-slide turningCommitment-card">
+                  <div class="turningCommitment-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/sustanability/action-img4.webp")" alt="Community healthcare and safety" class="parallax-img">
+                  </div>
+                  <div class="turningCommitment-card__body">
+                     <h3 class="text-h5">Health &amp; Safety</h3>
+                     <p>Godavari Biorefineries Ltd is committed to building a safe workplace for its workers and safe environment for its community. We are a zero-fatality and zero-recordable-work-related-injury organisation, with strict adherence to all health and safety measures.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Learn more</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+            </div>
+         </div>
+
+         <div class="turningCommitment-controls">
+            <button type="button" class="turningCommitment-nav turningCommitment-nav--prev" aria-label="Previous card">
+               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="swiper-pagination turningCommitment-pagination"></div>
+            <button type="button" class="turningCommitment-nav turningCommitment-nav--next" aria-label="Next card">
+               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+         </div>
+      </div>
+   </section>
+   <!--Turning commitment into action END-->
+
+   <!--Awards, Certifications & Reports-->
+   <section class="AwardsCertifications section-spacing">
+      <div class="container">
+         <div class="section-intro">
+            <div class="section-intro__title title-section">
+               <h2 class="text-h2">Awards, Certifications & Reports</h2>
+            </div>
+
+            <div class="section-intro__content">
+               <p>Our Sustainability achievements have won global recognition and certification, and our Sustainability reports present a detailed picture of our endeavours in this area.</p>
+            </div>
+         </div>
+
+         <div class="AwardsCertifications-grid">
+            <article class="AwardsCertifications-tile AwardsCertifications-tile--media parallax-wrap">
+               <img src="@Url.Content("~/Assets/images/sustanability/award-img1.webp")" alt="Award trophy" class="parallax-img">
+            </article>
+
+            <article class="AwardsCertifications-tile AwardsCertifications-tile--copy">
+               <h3 class="text-h5">Awards &amp; Certificates</h3>
+               <p>Godavari has won numerous honours at home and abroad for sustainability, quality, safety, innovation and more. Our plants are certified by international and national bodies, including the global platform for sustainable sugar manufacturing, Bonsucro, and the US Department of Agriculture.</p>
+               <a href="#" class="site-btn site-btn--outline">
+                  <span class="site-btn__label">Learn more</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </article>
+
+            <article class="AwardsCertifications-tile AwardsCertifications-tile--copy">
+               <h3 class="text-h5">Sustainability Reports</h3>
+               <p>Our Sustainability Reports provide a comprehensive view of our sustainability performance and strategic direction based on qualitative insights and quantitative metrics.</p>
+               <a href="#" class="site-btn site-btn--outline">
+                  <span class="site-btn__label">Learn more</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </article>
+
+            <article class="AwardsCertifications-tile AwardsCertifications-tile--media parallax-wrap">
+               <img src="@Url.Content("~/Assets/images/sustanability/award-img2.webp")" alt="Laptop showing sustainability performance charts" class="parallax-img">
+            </article>
+         </div>
+      </div>
+   </section>
+   <!--Awards, Certifications & Reports End--> 
+
+  
+
+@section Scripts {
+   <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/sustainability-intro.js" asp-append-version="true"></script>
+}
+

@@ -48,7 +48,7 @@
 
 <section class="relative section-spacing pb-0!">
 <div class="container">
-   <div class="tab-outer mb-3">
+   <div class="news-toolbar tab-outer mb-10">
       <div class="industry-tabs" role="tablist" aria-label="News categories">
          <span class="industry-tabs__thumb" aria-hidden="true"></span>
          <a href="/news/PressRelease"
@@ -70,6 +70,124 @@
             Media Coverage
          </a>
       </div>
+
+      <button type="button"
+              class="filter-mobile-trigger"
+              data-open-news-filter
+              aria-controls="news-filter"
+              aria-expanded="false">
+         <span class="filter-mobile-trigger__icon" aria-hidden="true"></span>
+         Refine by Filters
+      </button>
+      <div class="filter-mobile-backdrop" data-close-news-filter></div>
+      <form class="news-filters" id="news-filter" action="#" method="get">
+         <div class="filter-mobile-sheet-head">
+            <h2 class="filter-mobile-sheet-head__title">Set Filters</h2>
+            <button type="button" class="filter-mobile-close" data-close-news-filter aria-label="Close filters">&times;</button>
+         </div>
+         <div class="news-filters-desktop">
+         <div class="cselect">
+            <label class="cselect-sr" for="filter-topic">Select Topic</label>
+            <select id="filter-topic" name="topic" class="cselect-native">
+               <option value="" selected>Select Topic</option>
+               <option value="awards">Awards</option>
+               <option value="financial">Financial</option>
+               <option value="partnerships">Partnerships</option>
+               <option value="sustainability">Sustainability</option>
+            </select>
+         </div>
+         <div class="cselect">
+            <label class="cselect-sr" for="filter-month">Select Month</label>
+            <select id="filter-month" name="month" class="cselect-native">
+               <option value="" selected>Select Month</option>
+               <option value="01">January</option>
+               <option value="02">February</option>
+               <option value="03">March</option>
+               <option value="04">April</option>
+               <option value="05">May</option>
+               <option value="06">June</option>
+               <option value="07">July</option>
+               <option value="08">August</option>
+               <option value="09">September</option>
+               <option value="10">October</option>
+               <option value="11">November</option>
+               <option value="12">December</option>
+            </select>
+         </div>
+         <div class="cselect">
+            <label class="cselect-sr" for="filter-year">Select Year</label>
+            <select id="filter-year" name="year" class="cselect-native">
+               <option value="" selected>Select Year</option>
+               <option value="2026">2026</option>
+               <option value="2025">2025</option>
+               <option value="2024">2024</option>
+               <option value="2023">2023</option>
+            </select>
+         </div>
+         </div>
+         <div class="news-filters-mobile">
+            <div class="pf-dropdown" data-filter-group="topic">
+               <button type="button" class="pf-dropdown__trigger" aria-expanded="false" aria-controls="news-filter-topic-panel">
+                  <span>Select Topic</span>
+                  <span class="pf-dropdown__chevron" aria-hidden="true"></span>
+               </button>
+               <div class="pf-dropdown__panel" id="news-filter-topic-panel">
+                  <div class="pf-dropdown__panel-clip">
+                     <div class="pf-dropdown__panel-inner">
+                        <button type="button" class="pf-option" data-value="awards">Awards</button>
+                        <button type="button" class="pf-option" data-value="financial">Financial</button>
+                        <button type="button" class="pf-option" data-value="partnerships">Partnerships</button>
+                        <button type="button" class="pf-option" data-value="sustainability">Sustainability</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="pf-dropdown" data-filter-group="month">
+               <button type="button" class="pf-dropdown__trigger" aria-expanded="false" aria-controls="news-filter-month-panel">
+                  <span>Select Month</span>
+                  <span class="pf-dropdown__chevron" aria-hidden="true"></span>
+               </button>
+               <div class="pf-dropdown__panel" id="news-filter-month-panel">
+                  <div class="pf-dropdown__panel-clip">
+                     <div class="pf-dropdown__panel-inner">
+                        <button type="button" class="pf-option" data-value="01">January</button>
+                        <button type="button" class="pf-option" data-value="02">February</button>
+                        <button type="button" class="pf-option" data-value="03">March</button>
+                        <button type="button" class="pf-option" data-value="04">April</button>
+                        <button type="button" class="pf-option" data-value="05">May</button>
+                        <button type="button" class="pf-option" data-value="06">June</button>
+                        <button type="button" class="pf-option" data-value="07">July</button>
+                        <button type="button" class="pf-option" data-value="08">August</button>
+                        <button type="button" class="pf-option" data-value="09">September</button>
+                        <button type="button" class="pf-option" data-value="10">October</button>
+                        <button type="button" class="pf-option" data-value="11">November</button>
+                        <button type="button" class="pf-option" data-value="12">December</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="pf-dropdown" data-filter-group="year">
+               <button type="button" class="pf-dropdown__trigger" aria-expanded="false" aria-controls="news-filter-year-panel">
+                  <span>Select Year</span>
+                  <span class="pf-dropdown__chevron" aria-hidden="true"></span>
+               </button>
+               <div class="pf-dropdown__panel" id="news-filter-year-panel">
+                  <div class="pf-dropdown__panel-clip">
+                     <div class="pf-dropdown__panel-inner">
+                        <button type="button" class="pf-option" data-value="2026">2026</button>
+                        <button type="button" class="pf-option" data-value="2025">2025</button>
+                        <button type="button" class="pf-option" data-value="2024">2024</button>
+                        <button type="button" class="pf-option" data-value="2023">2023</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="filter-mobile-sheet-foot">
+            <button type="button" class="filter-mobile-clear" data-clear-news-filter>Clear Filters</button>
+            <button type="button" class="filter-mobile-apply" data-close-news-filter>Apply Filters</button>
+         </div>
+      </form>
    </div>
 </div>
 </section>

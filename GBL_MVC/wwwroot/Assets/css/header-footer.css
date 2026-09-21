@@ -659,16 +659,16 @@ font-weight: 400;
   color: var(--header-ink);
 }
 
-html.is-header-locked{
+html.is-header-locked.is-header-lock-scroll{
   overflow: hidden;
 }
 
-html.is-header-locked body{
+html.is-header-locked.is-header-lock-scroll body{
   overflow: hidden;
   padding-right: var(--header-scrollbar-w, 0px);
 }
 
-html.is-header-locked .site-header{
+html.is-header-locked.is-header-lock-scroll .site-header{
   padding-right: var(--header-scrollbar-w, 0px);
 }
 

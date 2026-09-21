@@ -209,17 +209,16 @@
    Sticky panel + ScrollTrigger sticky cards (fade + scale overlap)
 ══════════════════════════════ */
 .ataglance {
-  /* Block is shorter than the viewport so it can sit in the vertical center */
   --ataglance-slot-h: clamp(320px, 62vh, 560px);
-  /* Pin image + list at true viewport center, never under the header */
-  --ataglance-pin-top: max(
-    var(--header-h, 5.5rem),
-    calc((100vh - var(--ataglance-slot-h)) / 2)
+  --ataglance-pin-gap: 2rem;
+  --ataglance-title-h: 4.25rem;
+  --ataglance-pin-top: calc(
+    var(--header-h, 5.5rem) + var(--ataglance-pin-gap) + var(--ataglance-title-h)
   );
 }
 
 .ataglance .title-section {
-  margin-bottom: clamp(1rem, 2.5vh, 2.75rem);
+  margin-bottom: clamp(1.25rem, 3vh, 2.75rem);
 }
 
 .ataglance-layout {
@@ -338,9 +337,55 @@
 /*==================================
   06. From Soil to Your Table
 ===================================*/
-.fromSoiltable{ height:100vh; overflow: hidden; position: relative;} 
+.fromSoiltable{ height:100vh; overflow: hidden; position: relative;}
+.fromSoiltable .parallax-img {
+  height: 100%;
+}
 
-/* ══════════════════════════════
+.fromSoiltable .container.relative {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fromSoiltable-image-grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.75rem, 2.5vh, 1.75rem);
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: clamp(1.25rem, 4vh, 3rem);
+  min-height: 28vh;
+  pointer-events: none;
+}
+
+.fromSoiltable-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.fromSoiltable-image--packs {
+  max-width: min(60vw, 100%); position: absolute; bottom: 0; 
+}
+
+.fromSoiltable-image--ingredients {
+  max-width: min(60vw, 92%); position: absolute; bottom: 0;
+} 
+
+.fromSoiltable-image{ position: absolute; bottom: 0; }
+.fromSoiltable-image-1{ left: 15vw; max-width: calc(25vw); bottom: -2vw;}
+.fromSoiltable-image-2{ right: 10vw; max-width: calc(20vw); bottom: -2vw;}
+
+
+/* ══════════════════════════════ 
 07. DESIGNED TO GIVE BACK
    Staggered grid: 100px offset start (row1) / end (row2)
    Wide images (stone + industrial) span 2 tracks → min 470px
@@ -490,7 +535,7 @@
   align-items: center;  
   color: var(--color-white);
 }
-.healthierTomorrow .parallax-wrap::before{ content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(40, 43, 49, 0.30); z-index: 1; }
+/* .healthierTomorrow .parallax-wrap::before{ content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(40, 43, 49, 0.30); z-index: 1; } */
 
 .healthierTomorrow .container {
   position: relative;
@@ -858,10 +903,36 @@ ALL MEDIA QUERIES
 }
 
 @media (min-width: 1024px) {
-  /* Title is GSAP-pinned with the card stack, then releases on the last slide */
+  .ataglance-stage {
+    position: sticky;
+    top: var(--ataglance-pin-top);
+    height: var(--ataglance-slot-h);
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .ataglance-stage .ataglance-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    transform-origin: center center;
+  }
+
+  .ataglance-card-wrapper:last-of-type {
+    height: calc(var(--ataglance-slot-h) + 35vh);
+    margin-bottom: 0;
+  }
+
   .ataglance .title-section {
+    position: sticky;
+    top: calc(var(--header-h, 5.5rem) + var(--ataglance-pin-gap, 2rem));
     z-index: 6;
     width: 100%;
+    margin-left: 0;
+    padding-top: 0.15rem;
+    padding-bottom: 0.5rem;
     background-color: var(--color-white, #fff);
   }
 }

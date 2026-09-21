@@ -66,30 +66,44 @@ document.addEventListener("DOMContentLoaded", function () {
     return Math.max(0, window.innerWidth - document.documentElement.clientWidth);
   };
 
+  const syncScrollTriggers = () => {
+    if (typeof ScrollTrigger === "undefined") return;
+    requestAnimationFrame(() => {
+      ScrollTrigger.update();
+      ScrollTrigger.refresh();
+    });
+  };
+
   const lockPage = (lock) => {
     const root = document.documentElement;
     const body = document.body;
     const already = root.classList.contains("is-header-locked");
+    const freezeLayout = isMobile();
 
     if (lock) {
       if (!already) {
         const gap = getScrollbarWidth();
         root.style.setProperty("--header-scrollbar-w", gap + "px");
         root.classList.add("is-header-locked");
-        body.style.overflow = "hidden";
-        body.style.paddingRight = gap + "px";
-        header.style.paddingRight = gap + "px";
+        if (freezeLayout) {
+          root.classList.add("is-header-lock-scroll");
+          body.style.overflow = "hidden";
+          body.style.paddingRight = gap + "px";
+          header.style.paddingRight = gap + "px";
+        }
       }
       if (window.lenis && typeof window.lenis.stop === "function") window.lenis.stop();
+      if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
       return;
     }
 
-    root.classList.remove("is-header-locked");
+    root.classList.remove("is-header-locked", "is-header-lock-scroll");
     root.style.removeProperty("--header-scrollbar-w");
     body.style.overflow = "";
     body.style.paddingRight = "";
     header.style.paddingRight = "";
     if (window.lenis && typeof window.lenis.start === "function") window.lenis.start();
+    syncScrollTriggers();
   };
 
   const setExpanded = (trigger, expanded) => {
@@ -441,6 +455,15 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.lenis && typeof window.lenis.on === "function") {
     window.lenis.on("scroll", updateTheme);
   }
+
+  const blockPageScrollWhileMega = (event) => {
+    if (!document.documentElement.classList.contains("is-header-locked")) return;
+    if (document.documentElement.classList.contains("is-header-lock-scroll")) return;
+    if (event.target && event.target.closest && event.target.closest(".mega-menu")) return;
+    event.preventDefault();
+  };
+  window.addEventListener("wheel", blockPageScrollWhileMega, { passive: false });
+  window.addEventListener("touchmove", blockPageScrollWhileMega, { passive: false });
   header.querySelector(".site-header__bar")?.addEventListener("transitionend", (event) => {
     if (event.propertyName === "height") syncMegaPosition();
   });

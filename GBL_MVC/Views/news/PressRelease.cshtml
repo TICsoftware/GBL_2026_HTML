@@ -5,11 +5,13 @@
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/industries-tab.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/industries-filter.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/news-style.css" asp-append-version="true" />
 }
 
    <partial name="_NewsHeroAndTabs" />
 
-   <section class="relative industries-inside-outer mb-20">
+   <section class="relative industries-inside-outer news-inside-outer mb-20">
       <div class="container">
          <div class="industries-tab-content">
             <div class="industry-tab-panel is-active"
@@ -17,206 +19,434 @@
                  role="tabpanel"
                  aria-labelledby="tab-btn-PressRelease"
                  data-tab-panel="PressRelease">
-               <div class="industry-product-grid">
+                <div class="industry-product-grid" data-news-grid data-page-size="12">
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/banners/inside-banner1.webp")" alt="2-Ethyl-1,3-Hexanediol">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner1.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Sustainability</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">2-Ethyl-1,3-Hexanediol</h3>
-                        <p>A high-purity specialty diol that improves flow, flexibility and durability in demanding adhesive, coating and personal-care systems.</p>
-                        <div class="industry-product-card__apps">
-                           <h6 class="industry-product-card__apps-label">Other Applications</h6>
-                           <ul>
-                              <li>Agrochemicals</li>
-                              <li>Paints &amp; Coatings</li>
-                              <li>Personal Care</li>
-                              <li>Pharmaceuticals</li>
-                              <li>Plastics</li>
-                              <li>Packaging & Printing Inks</li>
-                              <li>Personal Care & Cosmetics</li>
-                              <li>Textiles</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-06-24">Jun 24, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">NDTV.com</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">India's Godavari Biorefineries to start grain-based distillery in June quarter</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
 
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/banners/inside-banner2.webp")" alt="Alpha Cellulose and Derivatives">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner2.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Ethanol</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">Alpha Cellulose and Derivatives</h3>
-                        <p>A high-purity, plant-derived cellulose range that delivers consistent viscosity, film strength and formulation stability.</p>
-                        <div class="industry-product-card__apps">
-                           <p class="industry-product-card__apps-label">Other Applications</p>
-                           <ul>
-                              <li>Paints &amp; Coatings</li>
-                              <li>Personal Care</li>
-                              <li>Pharmaceuticals</li>
-                              <li>Textiles</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-05-18">May 18, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">The Hindu</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">No Engine Damage, No Insurance Risk: Centre Debunks Viral Ethanol Myths</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
 
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="NATUROWAX">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">NATUROWAX<sup>®</sup></h3>
-                        <p>A high-performance, vegetable-based wax that enhances texture, water resistance and processing in specialty formulations.</p>
-                        <div class="industry-product-card__apps">
-                           <p class="industry-product-card__apps-label">Other Applications</p>
-                           <ul>
-                              <li>Food &amp; Beverages</li>
-                              <li>Personal Care</li>
-                              <li>Pharmaceuticals</li>
-                              <li>Plastics</li>
-                              <li>Textiles</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-04-02">Apr 02, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Business Standard</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">Bio-based feedstocks: The Indian model</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
 
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="Bio-based solvents">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Innovation</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">Bio-based Solvents</h3>
-                        <p>Renewable solvents engineered for high solvency, low odour and cleaner processing in coatings, adhesives and industrial blends.</p>
-                        <div class="industry-product-card__apps">
-                           <p class="industry-product-card__apps-label">Other Applications</p>
-                           <ul>
-                              <li>Paints &amp; Coatings</li>
-                              <li>Agrochemicals</li>
-                              <li>Pharmaceuticals</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-03-12">Mar 12, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Mint</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries secures Japan patent for host-targeting antiviral molecules</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
 
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/industry-page/img9.webp")" alt="Ethyl acetate">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Sustainability</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">Ethyl Acetate</h3>
-                        <p>A fast-evaporating ester solvent that supports consistent film formation and clean application in inks, coatings and adhesives.</p>
-                        <div class="industry-product-card__apps">
-                           <p class="industry-product-card__apps-label">Other Applications</p>
-                           <ul>
-                              <li>Paints &amp; Coatings</li>
-                              <li>Plastics</li>
-                              <li>Textiles</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-02-21">Feb 21, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Economic Times</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">Oil to Soil Economy: Godavari Biorefineries’ vision takes centrestage at APAC Bio Summit</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
 
                   <article class="industry-product-card">
                      <div class="industry-product-card__media">
-                        <img src="@Url.Content("~/Assets/images/industry-page/img10.webp")" alt="Specialty glycol ethers">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Financial</span>
+                        </div>
                      </div>
                      <div class="industry-product-card__body">
-                        <h3 class="text-h5">Specialty Glycol Ethers</h3>
-                        <p>Coupling solvents that balance water miscibility and solvency for high-performance coatings, cleaners and industrial formulations.</p>
-                        <div class="industry-product-card__apps">
-                           <p class="industry-product-card__apps-label">Other Applications</p>
-                           <ul>
-                              <li>Paints &amp; Coatings</li>
-                              <li>Personal Care</li>
-                              <li>Agrochemicals</li>
-                           </ul>
+                        <div class="date-channel">
+                           <time datetime="2026-01-15">Jan 15, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">PTI</span>
                         </div>
-                        <div class="industry-product-card__actions">
-                           <a href="#" class="site-btn site-btn--fill">
-                              <span class="site-btn__label">Learn More</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                           <a href="#" class="site-btn site-btn--outline">
-                              <span class="site-btn__label">Enquire Now</span>
-                              <span class="site-btn__arrow" aria-hidden="true">
-                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                              </span>
-                           </a>
-                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries Reports Strong Q3 FY26 Performance with Improved Profitability and Margin Expansion</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
                      </div>
                   </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner1.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Sustainability</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-06-24">Jun 24, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">NDTV.com</span>
+                        </div>
+                        <h3 class="text-h5">India's Godavari Biorefineries to start grain-based distillery in June quarter</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner2.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Ethanol</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-05-18">May 18, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">The Hindu</span>
+                        </div>
+                        <h3 class="text-h5">No Engine Damage, No Insurance Risk: Centre Debunks Viral Ethanol Myths</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-04-02">Apr 02, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Business Standard</span>
+                        </div>
+                        <h3 class="text-h5">Bio-based feedstocks: The Indian model</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Innovation</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-03-12">Mar 12, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Mint</span>
+                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries secures Japan patent for host-targeting antiviral molecules</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Sustainability</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-02-21">Feb 21, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Economic Times</span>
+                        </div>
+                        <h3 class="text-h5">Oil to Soil Economy: Godavari Biorefineries’ vision takes centrestage at APAC Bio Summit</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card">
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Financial</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-01-15">Jan 15, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">PTI</span>
+                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries Reports Strong Q3 FY26 Performance with Improved Profitability and Margin Expansion</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner1.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Sustainability</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-06-24">Jun 24, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">NDTV.com</span>
+                        </div>
+                        <h3 class="text-h5">India's Godavari Biorefineries to start grain-based distillery in June quarter</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner2.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                           <span class="industry-label">Ethanol</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-05-18">May 18, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">The Hindu</span>
+                        </div>
+                        <h3 class="text-h5">No Engine Damage, No Insurance Risk: Centre Debunks Viral Ethanol Myths</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Corporate</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-04-02">Apr 02, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Business Standard</span>
+                        </div>
+                        <h3 class="text-h5">Bio-based feedstocks: The Indian model</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Innovation</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-03-12">Mar 12, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Mint</span>
+                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries secures Japan patent for host-targeting antiviral molecules</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/banners/inside-banner3.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Sustainability</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-02-21">Feb 21, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">Economic Times</span>
+                        </div>
+                        <h3 class="text-h5">Oil to Soil Economy: Godavari Biorefineries’ vision takes centrestage at APAC Bio Summit</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+
+                  <article class="industry-product-card" hidden>
+                     <div class="industry-product-card__media">
+                        <img src="@Url.Content("~/Assets/images/industry-page/img8.webp")" alt="">
+                        <div class="industry-labels">
+                           <span class="industry-label">Financial</span>
+                        </div>
+                     </div>
+                     <div class="industry-product-card__body">
+                        <div class="date-channel">
+                           <time datetime="2026-01-15">Jan 15, 2026</time>
+                           <span class="date-channel__sep" aria-hidden="true">|</span>
+                           <span class="date-channel__source">PTI</span>
+                        </div>
+                        <h3 class="text-h5">Godavari Biorefineries Reports Strong Q3 FY26 Performance with Improved Profitability and Margin Expansion</h3>
+                        <a href="/NewsInside" class="site-btn site-btn--line">
+                           <span class="site-btn__label">Learn More</span>
+                           <span class="site-btn__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           </span>
+                        </a>
+                     </div>
+                  </article>
+               </div>
+               <div class="news-load-more" data-news-load-more-wrap>
+                  <button type="button" class="site-btn site-btn--fill" data-news-load-more>
+                     <span class="site-btn__label">Load More</span>
+                     <span class="site-btn__arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </span>
+                  </button>
                </div>
             </div>
          </div>
@@ -224,5 +454,6 @@
    </section>
 
 @section Scripts {
-   <script src="~/Assets/js/industries-tab-script.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/industries-filter.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/news-script.js" asp-append-version="true"></script>
 }
