@@ -352,62 +352,17 @@ document.addEventListener("DOMContentLoaded", function () {
           native.dispatchEvent(new Event("change", { bubbles: true }));
           var wrap = native.closest(".cselect");
           if (!wrap) return;
+          wrap.classList.remove("is-open");
+          var menu = wrap.querySelector(".cselect-menu");
+          var trigger = wrap.querySelector(".cselect-trigger");
+          if (menu) menu.hidden = true;
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
           var valueEl = wrap.querySelector(".cselect-value");
           if (valueEl && native.options[0]) valueEl.textContent = native.options[0].text;
           wrap.querySelectorAll(".cselect-option").forEach(function (optionEl, index) {
             optionEl.classList.toggle("is-active", index === 0);
             optionEl.setAttribute("aria-selected", index === 0 ? "true" : "false");
           });
-        });
-        filterForm.querySelectorAll(".news-filters-mobile .pf-dropdown").forEach(function (wrap) {
-          wrap.classList.remove("is-open");
-          wrap.querySelectorAll(".pf-option").forEach(function (optionEl) {
-            optionEl.classList.remove("is-active");
-          });
-          var trigger = wrap.querySelector(".pf-dropdown__trigger");
-          var panel = wrap.querySelector(".pf-dropdown__panel");
-          var triggerLabel = trigger && trigger.querySelector("span:not(.pf-dropdown__chevron)");
-          if (triggerLabel && trigger) {
-            var group = wrap.getAttribute("data-filter-group");
-            triggerLabel.textContent = group === "month" ? "Select Month" : group === "year" ? "Select Year" : "Select Topic";
-            trigger.setAttribute("aria-expanded", "false");
-          }
-          if (panel) panel.setAttribute("aria-hidden", "true");
-        });
-      });
-    }
-
-    if (filterForm) {
-      function setNewsDropdownOpen(wrap, open) {
-        var trigger = wrap.querySelector(".pf-dropdown__trigger");
-        var panel = wrap.querySelector(".pf-dropdown__panel");
-        wrap.classList.toggle("is-open", open);
-        if (trigger) trigger.setAttribute("aria-expanded", open ? "true" : "false");
-        if (panel) panel.setAttribute("aria-hidden", open ? "false" : "true");
-      }
-
-      filterForm.querySelectorAll(".news-filters-mobile .pf-dropdown").forEach(function (wrap) {
-        var trigger = wrap.querySelector(".pf-dropdown__trigger");
-        var panel = wrap.querySelector(".pf-dropdown__panel");
-        if (panel) panel.setAttribute("aria-hidden", "true");
-
-        wrap.addEventListener("click", function (event) {
-          var onTrigger = event.target.closest && event.target.closest(".pf-dropdown__trigger");
-          var onOption = event.target.closest && event.target.closest(".pf-option");
-          if (onTrigger) {
-            var willOpen = !wrap.classList.contains("is-open");
-            filterForm.querySelectorAll(".news-filters-mobile .pf-dropdown").forEach(function (other) {
-              setNewsDropdownOpen(other, willOpen && other === wrap);
-            });
-            return;
-          }
-          if (!onOption) return;
-          wrap.querySelectorAll(".pf-option").forEach(function (optionEl) {
-            optionEl.classList.toggle("is-active", optionEl === onOption);
-          });
-          var triggerLabel = trigger && trigger.querySelector("span:not(.pf-dropdown__chevron)");
-          if (triggerLabel) triggerLabel.textContent = onOption.textContent.trim();
-          setNewsDropdownOpen(wrap, false);
         });
       });
     }

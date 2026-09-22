@@ -21,10 +21,6 @@ NEWS — tabs, filters, press + media cards
   gap: 0.75rem;
 }
 
-.news-filters-mobile {
-  display: none;
-}
-
 .news-filters .cselect-trigger,
 .news-filters .cselect-native {
   min-width: 10.5rem;
@@ -338,12 +334,11 @@ body.is-news-filter-open {
   }
 
   .news-filters-desktop {
-    display: none !important;
-  }
-
-  .news-filters-mobile {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 1rem;
     flex: 1 1 auto;
     min-height: 0;
@@ -351,152 +346,70 @@ body.is-news-filter-open {
     padding: 1.15rem 1.1rem 1rem;
   }
 
-  .news-filters-mobile .pf-dropdown {
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    background: var(--color-white, #fff);
-  }
-
-  .news-filters-mobile .pf-dropdown.is-open {
-    z-index: 8;
-    overflow: visible;
-  }
-
-  .news-filters-mobile .pf-dropdown__trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+  .news-filters-desktop .cselect {
     width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .news-filters-desktop .cselect-trigger,
+  .news-filters-desktop .cselect-native {
+    display: flex;
+    width: 100%;
+    min-width: 0;
     min-height: 3.1rem;
     padding: 0.75rem 1rem 0.75rem 1.1rem;
     border: 1px solid rgba(40, 43, 49, 0.28);
     border-radius: 0;
-    background: var(--color-white, #fff);
-    color: var(--color-primary, #282b31);
     font-family: var(--font-uniNeueBold, "Uni Neue", sans-serif);
-    font-size: var(--text-p);
-    text-align: left;
-    cursor: pointer;
   }
 
-  .news-filters-mobile .pf-dropdown__chevron {
+  .news-filters-desktop .cselect-value {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .news-filters-desktop .cselect-chevron {
     width: 0.55rem;
     height: 0.55rem;
-    margin-top: -0.2rem;
-    border-right: 1.6px solid var(--color-secondary, #67815a);
-    border-bottom: 1.6px solid var(--color-secondary, #67815a);
-    transform: rotate(45deg);
-    flex-shrink: 0;
-    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-                margin-top 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    border-right-color: var(--color-secondary, #67815a);
+    border-bottom-color: var(--color-secondary, #67815a);
   }
 
-  .news-filters-mobile .pf-dropdown.is-open .pf-dropdown__chevron {
-    margin-top: 0.2rem;
-    transform: rotate(-135deg);
-  }
-
-  .news-filters-mobile .pf-dropdown__panel {
-    display: grid;
-    grid-template-rows: 0fr;
-    background: #f1f1f1;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.28s ease,
-                visibility 0.4s;
-  }
-
-  .news-filters-mobile .pf-dropdown.is-open .pf-dropdown__panel {
-    grid-template-rows: 1fr;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .news-filters-mobile .pf-dropdown__panel-clip {
-    min-height: 0;
-    overflow: hidden;
-    padding-right: 10px;
-  }
-
-  .news-filters-mobile .pf-dropdown__panel-inner {
+  .news-filters-desktop .cselect-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    min-width: 0;
+    width: 100%;
     max-height: 14rem;
-    overflow: hidden;
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    margin-top: 0;
     padding: 0 0.7rem 0.7rem 0.85rem;
-    background: transparent;
-  }
-
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar {
-    width: 3px;
-    background: transparent;
-  }
-
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-button {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track:hover,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track:active,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track-piece,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track-piece:hover,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-track-piece:active {
-    background-color: rgba(103, 129, 90, 0.35);
-    background-clip: padding-box;
-    border: solid transparent;
-    border-width: 0 1px;
+    border: 0;
     border-radius: 0;
-    margin: 0.35rem 0;
+    background: #f1f1f1;
     box-shadow: none;
+    overflow-y: auto;
   }
 
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-thumb,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-thumb:hover,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-thumb:active,
-  .news-filters-mobile .pf-dropdown__panel-inner::-webkit-scrollbar-thumb:window-inactive {
-    background-color: var(--color-secondary, #67815a);
-    background-clip: padding-box;
-    border: solid transparent;
-    border-width: 0;
-    border-radius: 999px;
-  }
-
-  @supports (-moz-appearance: none) {
-    .news-filters-mobile .pf-dropdown__panel-inner {
-      scrollbar-width: thin;
-      scrollbar-color: var(--color-secondary, #67815a) rgba(103, 129, 90, 0.35);
-    }
-  }
-
-  .news-filters-mobile .pf-option {
+  .news-filters-desktop .cselect-option {
     display: flex;
-    align-items: center;
     width: 100%;
     padding: 0.7rem 0.15rem;
     border: 0;
     border-bottom: 1px dotted rgba(40, 43, 49, 0.28);
     border-radius: 0;
     background: transparent;
-    color: var(--color-primary, #282b31);
-    font-family: inherit;
     font-size: var(--text-small);
-    text-align: left;
-    cursor: pointer;
   }
 
-  .news-filters-mobile .pf-option:last-child {
+  .news-filters-desktop .cselect-option:last-child,
+  .news-filters-desktop .cselect-menu li:last-child .cselect-option {
     border-bottom: 0;
   }
 
-  .news-filters-mobile .pf-option.is-active {
+  .news-filters-desktop .cselect-option.is-active,
+  .news-filters-desktop .cselect-option[aria-selected="true"] {
+    background: transparent;
     color: var(--color-secondary, #67815a);
     font-weight: 700;
   }

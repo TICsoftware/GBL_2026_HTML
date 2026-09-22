@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
     placeL3Panel(item, panel);
   };
 
-  const closeMega = () => {
+  const closeMega = (instant) => {
     clearTimeout(openTimer);
     clearTimeout(closeTimer);
     clearTimeout(closeAnimTimer);
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     };
 
-    if (isMobile()) {
+    if (isMobile() || instant) {
       hideMenus();
     } else {
       closeAnimTimer = window.setTimeout(hideMenus, 300);
@@ -337,6 +337,16 @@ document.addEventListener("DOMContentLoaded", function () {
       closeTimer = window.setTimeout(closeMega, 220);
     });
   });
+
+  const mediaItem = header.querySelector(".site-header__media-item");
+  if (mediaItem) {
+    mediaItem.addEventListener("mouseenter", () => {
+      if (!isMobile()) closeMega(true);
+    });
+    mediaItem.addEventListener("focusin", () => {
+      closeMega(true);
+    });
+  }
 
   menus.forEach((menu) => {
     menu.addEventListener("mouseenter", () => {
