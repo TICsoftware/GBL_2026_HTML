@@ -244,9 +244,48 @@ document.addEventListener("DOMContentLoaded", function () {
     if (frameImg) frameImg.removeAttribute("style");
     infographic.style.opacity = "1";
     infographic.style.visibility = "visible";
-    if (veil) veil.style.opacity = "0.42";
+    if (veil) veil.style.opacity = "0";
     section.classList.remove("is-on-media");
+
+    var cardScroller = window.matchMedia("(max-width: 992px)").matches
+      ? window
+      : document.documentElement;
+    var cardTweens = [];
+
+    cards.forEach(function (card) {
+      gsap.set(card, { transformOrigin: "50% 50%" });
+      var tween = gsap.fromTo(
+        card,
+        { scale: 1.18, autoAlpha: 0.35 },
+        {
+          scale: 1,
+          autoAlpha: 1,
+          ease: "none",
+          force3D: true,
+          immediateRender: true,
+          scrollTrigger: {
+            trigger: card,
+            scroller: cardScroller,
+            start: "top 92%",
+            end: "top 62%",
+            scrub: 0.9,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+      cardTweens.push(tween);
+    });
+
+    requestAnimationFrame(function () {
+      ScrollTrigger.refresh();
+    });
+
     return function () {
+      cardTweens.forEach(function (tween) {
+        if (tween.scrollTrigger) tween.scrollTrigger.kill();
+        tween.kill();
+      });
+      gsap.set(cards, { clearProps: "transform,opacity,visibility" });
       infographic.removeAttribute("style");
     };
   });

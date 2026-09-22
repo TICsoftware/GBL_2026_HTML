@@ -784,29 +784,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function isOverHeroCopy(event) {
-      if (event.target.closest(".hero-thumbs-wrap, .hero-slide__content, .hero-slide__caption, .hero-slide__cta, a, button:not(.hero-nav)")) {
-        return true;
-      }
+      if (event.target.closest(".hero-thumbs-wrap")) return true;
 
       var slide = banner.querySelector(".swiper-slide-active");
       if (!slide) return false;
+      var cta = slide.querySelector(".hero-slide__cta");
+      if (!cta) return false;
 
-      var copy = slide.querySelectorAll(".hero-slide__caption, .hero-slide__cta");
-      var pad = 36;
-      var x = event.clientX;
-      var y = event.clientY;
-      for (var i = 0; i < copy.length; i++) {
-        var box = copy[i].getBoundingClientRect();
-        if (
-          x >= box.left - pad &&
-          x <= box.right + pad &&
-          y >= box.top - pad &&
-          y <= box.bottom + pad
-        ) {
-          return true;
-        }
-      }
-      return false;
+      var box = cta.getBoundingClientRect();
+      var pad = 10;
+      return (
+        event.clientX >= box.left - pad &&
+        event.clientX <= box.right + pad &&
+        event.clientY >= box.top - pad &&
+        event.clientY <= box.bottom + pad
+      );
     }
 
     banner.addEventListener("mousemove", function (event) {

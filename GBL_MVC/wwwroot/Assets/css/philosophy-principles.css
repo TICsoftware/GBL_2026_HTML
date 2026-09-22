@@ -203,6 +203,21 @@
     height: auto;
     min-height: 0;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .philosophy-copy {
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: 1.25rem;
+  }
+
+  .ourPhilosophy .section-intro__title,
+  .ourPhilosophy .section-intro__content p,
+  .ourPhilosophy .section-intro__content .intro-fill-word,
+  .ourPhilosophy.is-on-media .section-intro__title,
+  .ourPhilosophy.is-on-media .section-intro__content p {
+    color: var(--color-primary, #282b31);
   }
 
   .philosophy-frame {
@@ -210,24 +225,13 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    height: min(78vh, 42rem) !important;
-    min-height: 480px !important;
-    margin-top: 1.5rem;
+    height: min(42vh, 22rem) !important;
+    min-height: 200px !important;
+    margin-top: 0;
   }
 
   .philosophy-frame__veil {
-    opacity: 0.42;
-  }
-
-  .philosophy-copy {
-    padding-top: clamp(2.5rem, 6vw, 4rem);
-  }
-
-  .ourPhilosophy .section-intro__title,
-  .ourPhilosophy .section-intro__content p,
-  .ourPhilosophy.is-on-media .section-intro__title,
-  .ourPhilosophy.is-on-media .section-intro__content p {
-    color: var(--color-primary, #282b31);
+    display: none;
   }
 
   .philosophy-infographic {
@@ -236,18 +240,19 @@
     top: auto;
     width: 100%;
     height: auto;
-    max-width: 26rem;
-    margin: -5rem auto 0;
-    padding: 0 1.25rem 3rem;
+    max-width: none;
+    margin: 0;
+    padding: 1.5rem 1rem 2.5rem;
     transform: none;
     opacity: 1;
   }
 
   .philosophy-infographic__grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.85rem;
     height: auto;
+    overflow: visible;
   }
 
   .philosophy-card,
@@ -262,15 +267,47 @@
     transform: none;
   }
 
-  .philosophy-card {
-    padding: 1.35rem 1.2rem;
+  .philosophy-hub {
+    display: none;
   }
 
-  .philosophy-hub {
-    width: 8.25rem;
-    height: 8.25rem;
-    margin: 0.15rem auto;
-    order: -1;
+  .philosophy-card {
+    padding: 1.25rem 1.1rem;
+    background: var(--color-gray, #f3f3f3);
+    color: var(--color-primary, #282b31);
+    text-align: left;
+    box-shadow: none;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  .philosophy-card h3 {
+    color: var(--color-primary, #282b31);
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .philosophy-card p {
+    color: var(--color-primary, #282b31);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    opacity: 0.88;
+  }
+}
+
+@media (max-width: 767px) {
+  .philosophy-infographic {
+    padding: 1.25rem 1rem 2.25rem;
+  }
+
+  .philosophy-infographic__grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .philosophy-frame {
+    height: min(38vh, 16.5rem) !important;
+    min-height: 180px !important;
   }
 }
 

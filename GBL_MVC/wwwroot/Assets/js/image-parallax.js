@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Enlarge section owns motion on desktop — skip y-parallax there
     if (wrap.classList.contains('enlarge-wrapper')) return;
     if (wrap.closest('.ourPhilosophy')) return;
+    if (wrap.closest('.storiesofChange')) return;
 
     const img = wrap.querySelector('.parallax-img');
     if (!img) return;

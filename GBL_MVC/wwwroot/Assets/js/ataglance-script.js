@@ -1,10 +1,6 @@
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector(".ataglance");
-  if (!section || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
+  if (!section) return;
 
   const items = Array.from(section.querySelectorAll(".ataglance-item"));
   const wrappers = Array.from(section.querySelectorAll(".ataglance-card-wrapper"));
@@ -12,9 +8,17 @@
   if (!items.length || !wrappers.length || cards.some((card) => !card)) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mm = gsap.matchMedia();
-  const PIN_GAP = 32;
+  const hasGsap = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+
+  const mm = typeof gsap !== "undefined" && gsap.matchMedia ? gsap.matchMedia() : null;
+  const PIN_GAP = 20;
   let activeIndex = 0;
+  let desktopTrack = null;
+  let glanceSwiper = null;
+
+  const getScroller = () =>
+    window.matchMedia("(max-width: 992px)").matches ? window : document.documentElement;
 
   const setItemState = (index) => {
     if (index === activeIndex) return;
@@ -43,53 +47,103 @@
     return headerPx;
   }
 
-  function getPinTopPx() {
+  function getTitleTopPx() {
+    const headerPx = getHeaderPx();
+    const minTop = Math.round(headerPx + PIN_GAP);
+
     const title = section.querySelector(".title-section");
     let titleBlock = 0;
-    if (title) {
+    if (title && window.matchMedia("(min-width: 1081px)").matches) {
       const cs = getComputedStyle(title);
       titleBlock =
         title.getBoundingClientRect().height + (parseFloat(cs.marginBottom) || 0);
     }
-
-    const pinTop = Math.round(getHeaderPx() + PIN_GAP + titleBlock);
-    section.style.setProperty("--ataglance-pin-top", `${pinTop}px`);
     section.style.setProperty("--ataglance-title-h", `${Math.round(titleBlock)}px`);
-    return pinTop;
+
+    const slotH =
+      Math.round(parseFloat(getComputedStyle(section).getPropertyValue("--ataglance-slot-h"))) ||
+      480;
+    const centered = Math.round((window.innerHeight - titleBlock - slotH) / 2);
+    const titleTop = Math.max(minTop, centered);
+
+    section.style.setProperty("--ataglance-title-top", `${titleTop}px`);
+    section.style.setProperty("--ataglance-pin-top", `${Math.round(titleTop + titleBlock)}px`);
+    return titleTop;
   }
 
-  const scrollToCard = (index) => {
-    const target = wrappers[index];
-    if (!target) return;
+  function syncSlotToPanel() {
+    const panel = section.querySelector(".ataglance-panel");
+    if (!panel) return;
+    const h = Math.max(280, Math.round(panel.getBoundingClientRect().height));
+    section.style.setProperty("--ataglance-slot-h", `${h}px`);
+  }
 
-    const pinTop = getPinTopPx();
+  function slotHeight() {
+    return (
+      Math.round(parseFloat(getComputedStyle(section).getPropertyValue("--ataglance-slot-h"))) ||
+      480
+    );
+  }
 
-    if (window.lenis && typeof window.lenis.scrollTo === "function") {
-      window.lenis.scrollTo(target, { offset: -pinTop, duration: 1.05 });
+  const goToSlide = (index) => {
+    const safeIndex = Math.max(0, Math.min(cards.length - 1, Number(index) || 0));
+
+    if (glanceSwiper) {
+      glanceSwiper.slideTo(safeIndex);
       return;
     }
 
-    const top = target.getBoundingClientRect().top + window.pageYOffset - pinTop;
-    window.scrollTo({ top, behavior: "smooth" });
+    const steps = Math.max(cards.length - 1, 1);
+    if (desktopTrack) {
+      const start = desktopTrack.start;
+      const end = desktopTrack.end;
+      const y = start + (safeIndex / steps) * (end - start);
+      if (window.lenis && typeof window.lenis.scrollTo === "function") {
+        window.lenis.scrollTo(y, { duration: 1.05 });
+        return;
+      }
+      window.scrollTo({ top: y, behavior: "smooth" });
+      return;
+    }
+
+    setItemState(safeIndex);
   };
 
   items.forEach((item) => {
     item.addEventListener("click", (event) => {
       event.preventDefault();
-      scrollToCard(Number(item.dataset.glanceIndex));
+      goToSlide(Number(item.dataset.glanceIndex));
     });
   });
 
-  /**
-   * Desktop: one clipped stage. Active slide comes up from the bottom.
-   * The previous slide stays behind it and scales to 60%.
-   */
-  mm.add("(min-width: 1024px)", () => {
+  function initDesktop() {
+    if (!hasGsap) return function () {};
+
     const triggers = [];
     const stack = section.querySelector("[data-glance-stack]");
-    const pinStart = () => `top top+=${getPinTopPx()}px`;
+    const container = section.querySelector(".container");
+    const title = section.querySelector(".title-section");
+    const layout = section.querySelector(".ataglance-layout");
+    const stScroller = getScroller();
 
-    if (!stack) return;
+    if (!stack || !container || !title || !layout) return function () {};
+
+    syncSlotToPanel();
+    getTitleTopPx();
+    section.style.setProperty("--ataglance-slides", String(Math.max(cards.length - 1, 1)));
+
+    const hold = document.createElement("div");
+    hold.className = "ataglance-hold";
+    container.insertBefore(hold, title);
+    hold.appendChild(title);
+    hold.appendChild(layout);
+
+    const track = document.createElement("div");
+    track.className = "ataglance-track";
+    track.setAttribute("aria-hidden", "true");
+    container.appendChild(track);
+
+    section.classList.add("is-pinning-desktop");
 
     const stage = document.createElement("div");
     stage.className = "ataglance-stage";
@@ -97,10 +151,6 @@
     cards.forEach((card) => stage.appendChild(card));
 
     cards.forEach((card, index) => {
-      const wrapper = wrappers[index];
-      const nextWrapper = wrappers[index + 1];
-      const isLast = index === wrappers.length - 1;
-
       gsap.set(card, {
         zIndex: index + 1,
         scale: 1,
@@ -109,97 +159,194 @@
         force3D: true,
         transformOrigin: "50% 50%",
       });
-
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: wrapper,
-          start: pinStart,
-          end: isLast ? "bottom top" : () => `bottom top+=${getPinTopPx()}px`,
-          onEnter: () => setItemState(index),
-          onEnterBack: () => setItemState(index),
-        })
-      );
-
-      if (reduceMotion) {
-        gsap.set(card, { yPercent: 0, scale: 1 });
-        return;
-      }
-
-      if (index > 0) {
-        const enterTl = gsap.timeline({
-          defaults: { ease: "none", force3D: true },
-          scrollTrigger: {
-            trigger: wrapper,
-            start: "top bottom",
-            end: pinStart,
-            scrub: 1.15,
-            invalidateOnRefresh: true,
-          },
-        });
-        enterTl.fromTo(
-          card,
-          { yPercent: 100 },
-          { yPercent: 0, immediateRender: true }
-        );
-        if (enterTl.scrollTrigger) triggers.push(enterTl.scrollTrigger);
-      }
-
-      if (!isLast && nextWrapper) {
-        const exitTl = gsap.timeline({
-          defaults: { ease: "none", force3D: true },
-          scrollTrigger: {
-            trigger: nextWrapper,
-            start: pinStart,
-            end: () =>
-              `top+=${Math.max(nextWrapper.offsetHeight, 1)} top+=${getPinTopPx()}px`,
-            scrub: 1.15,
-            invalidateOnRefresh: true,
-          },
-        });
-        exitTl.fromTo(
-          card,
-          { scale: 1 },
-          { scale: 0.6, immediateRender: false }
-        );
-        if (exitTl.scrollTrigger) triggers.push(exitTl.scrollTrigger);
-      }
     });
 
+    const stStart = () => `top ${getTitleTopPx()}px`;
+    const stEnd = () => "+=" + Math.max(slotHeight(), 1) * Math.max(cards.length - 1, 1);
+
+    desktopTrack = ScrollTrigger.create({
+      trigger: hold,
+      scroller: stScroller,
+      start: stStart,
+      end: stEnd,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        const steps = Math.max(cards.length - 1, 1);
+        const index = Math.min(cards.length - 1, Math.round(self.progress * steps));
+        setItemState(index);
+      },
+    });
+    triggers.push(desktopTrack);
+
+    if (!reduceMotion) {
+      const tl = gsap.timeline({
+        defaults: { ease: "none", force3D: true },
+        scrollTrigger: {
+          trigger: hold,
+          scroller: stScroller,
+          start: stStart,
+          end: stEnd,
+          scrub: 0.55,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      cards.forEach((card, index) => {
+        if (index === 0) return;
+        tl.fromTo(card, { yPercent: 100 }, { yPercent: 0, immediateRender: true }, index - 1);
+        tl.fromTo(
+          cards[index - 1],
+          { scale: 1 },
+          { scale: 0.72, immediateRender: false },
+          index - 1
+        );
+      });
+
+      if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
+    }
+
     const onRefreshInit = () => {
-      getPinTopPx();
+      syncSlotToPanel();
+      getTitleTopPx();
+      section.style.setProperty("--ataglance-slides", String(Math.max(cards.length - 1, 1)));
     };
     ScrollTrigger.addEventListener("refreshInit", onRefreshInit);
     const onRefresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", onRefresh);
-    requestAnimationFrame(onRefresh);
+    window.addEventListener("resize", onRefreshInit);
+    requestAnimationFrame(() => {
+      onRefreshInit();
+      ScrollTrigger.refresh();
+    });
 
     return () => {
       ScrollTrigger.removeEventListener("refreshInit", onRefreshInit);
       window.removeEventListener("load", onRefresh);
+      window.removeEventListener("resize", onRefreshInit);
+      desktopTrack = null;
+      section.classList.remove("is-pinning-desktop");
       section.style.removeProperty("--ataglance-pin-top");
+      section.style.removeProperty("--ataglance-slot-h");
+      section.style.removeProperty("--ataglance-title-top");
+      section.style.removeProperty("--ataglance-slides");
       triggers.forEach((t) => t && t.kill());
       cards.forEach((card, index) => {
         gsap.set(card, { clearProps: "all" });
         wrappers[index].appendChild(card);
       });
       if (stage.parentNode) stage.remove();
+      container.insertBefore(title, hold);
+      container.insertBefore(layout, hold);
+      if (hold.parentNode) hold.remove();
+      if (track.parentNode) track.remove();
     };
-  });
+  }
 
-  mm.add("(max-width: 1023px)", () => {
-    const triggers = wrappers.map((wrapper, index) =>
-      ScrollTrigger.create({
-        trigger: wrapper,
-        start: "top 65%",
-        end: "bottom 40%",
-        onEnter: () => setItemState(index),
-        onEnterBack: () => setItemState(index),
-      })
-    );
+  function initSlider() {
+    const stack = section.querySelector("[data-glance-stack]");
+    const media = section.querySelector(".ataglance-media");
+    if (!stack || !media || typeof Swiper === "undefined") return function () {};
 
-    ScrollTrigger.refresh();
-    return () => triggers.forEach((t) => t.kill());
-  });
+    section.classList.add("is-glance-slider");
+    desktopTrack = null;
+
+    cards.forEach((card, i) => {
+      if (hasGsap) gsap.set(card, { clearProps: "all" });
+      card.classList.toggle("is-active", i === 0);
+    });
+
+    const copies = [];
+    wrappers.forEach((wrapper, i) => {
+      const label = items[i] ? items[i].textContent.replace(/\s+/g, " ").trim() : "";
+      const copy = document.createElement("p");
+      copy.className = "ataglance-slide-copy";
+      copy.textContent = label;
+      wrapper.appendChild(copy);
+      copies.push(copy);
+    });
+
+    const wrap = document.createElement("div");
+    wrap.className = "swiper-wrapper";
+    wrappers.forEach((wrapper) => {
+      wrapper.classList.add("swiper-slide");
+      wrap.appendChild(wrapper);
+    });
+    stack.classList.add("swiper", "ataglance-swiper");
+    stack.appendChild(wrap);
+
+    const controls = document.createElement("div");
+    controls.className = "ataglance-controls";
+    controls.innerHTML =
+      '<button type="button" class="ataglance-nav ataglance-nav--prev" aria-label="Previous slide">' +
+      '<span aria-hidden="true">&larr;</span></button>' +
+      '<div class="swiper-pagination ataglance-pagination"></div>' +
+      '<button type="button" class="ataglance-nav ataglance-nav--next" aria-label="Next slide">' +
+      '<span aria-hidden="true">&rarr;</span></button>';
+    media.appendChild(controls);
+
+    const panel = section.querySelector(".ataglance-panel");
+    const cta = panel ? panel.querySelector(".site-link") : null;
+    if (cta) media.appendChild(cta);
+
+    const prevEl = controls.querySelector(".ataglance-nav--prev");
+    const nextEl = controls.querySelector(".ataglance-nav--next");
+    const pager = controls.querySelector(".ataglance-pagination");
+
+    glanceSwiper = new Swiper(stack, {
+      slidesPerView: 1.08,
+      spaceBetween: 16,
+      speed: reduceMotion ? 0 : 620,
+      watchOverflow: true,
+      navigation: {
+        prevEl: prevEl,
+        nextEl: nextEl,
+      },
+      pagination: {
+        el: pager,
+        clickable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.2, spaceBetween: 18 },
+        768: { slidesPerView: 1.35, spaceBetween: 20 },
+        900: { slidesPerView: 1.5, spaceBetween: 22 },
+      },
+      on: {
+        slideChange: function () {
+          setItemState(this.activeIndex);
+        },
+      },
+    });
+
+    activeIndex = -1;
+    setItemState(glanceSwiper.activeIndex || 0);
+    controls.appendChild(prevEl);
+    controls.appendChild(pager);
+    controls.appendChild(nextEl);
+
+    return () => {
+      if (glanceSwiper && typeof glanceSwiper.destroy === "function") {
+        glanceSwiper.destroy(true, true);
+      }
+      glanceSwiper = null;
+      section.classList.remove("is-glance-slider");
+      copies.forEach((copy) => copy.remove());
+      wrappers.forEach((wrapper) => {
+        wrapper.classList.remove("swiper-slide");
+        stack.appendChild(wrapper);
+      });
+      if (wrap.parentNode) wrap.remove();
+      stack.classList.remove("swiper", "ataglance-swiper");
+      if (controls.parentNode) controls.remove();
+      if (cta && panel) panel.appendChild(cta);
+    };
+  }
+
+  if (mm) {
+    mm.add("(min-width: 1081px)", initDesktop);
+    mm.add("(max-width: 1080px)", initSlider);
+  } else if (window.matchMedia("(max-width: 1080px)").matches) {
+    initSlider();
+  }
 
   setItemState(0);
-})();
+});
