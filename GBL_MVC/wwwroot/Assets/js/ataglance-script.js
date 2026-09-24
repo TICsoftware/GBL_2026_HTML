@@ -206,22 +206,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const onRefreshInit = () => {
-      syncSlotToPanel();
-      getTitleTopPx();
-      section.style.setProperty("--ataglance-slides", String(Math.max(cards.length - 1, 1)));
+      try {
+        if (!section.querySelector("[data-glance-stack]")) return;
+        syncSlotToPanel();
+        getTitleTopPx();
+        section.style.setProperty("--ataglance-slides", String(Math.max(cards.length - 1, 1)));
+      } catch (err) {}
     };
     ScrollTrigger.addEventListener("refreshInit", onRefreshInit);
-    const onRefresh = () => ScrollTrigger.refresh();
-    window.addEventListener("load", onRefresh);
     window.addEventListener("resize", onRefreshInit);
     requestAnimationFrame(() => {
       onRefreshInit();
-      ScrollTrigger.refresh();
     });
 
     return () => {
       ScrollTrigger.removeEventListener("refreshInit", onRefreshInit);
-      window.removeEventListener("load", onRefresh);
       window.removeEventListener("resize", onRefreshInit);
       desktopTrack = null;
       section.classList.remove("is-pinning-desktop");

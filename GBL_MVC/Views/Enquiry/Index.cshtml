@@ -1,0 +1,138 @@
+@{
+    ViewData["Title"] = "Enquiry";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/enquiry-style.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER END-->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/enquirenow-banner.webp">                  
+
+                  <!-- Desktop -->
+                  <img
+                     src="~/Assets/images/banners/enquirenow-banner.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+           
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="max-w-4xl text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                       Enquiry
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li><a href="/" class="text-white/70 hover:text-white transition">Home </a></li>
+                           <li class="text-white/60">/</li>
+                           <li class="text-white"> Enquiry</li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>  
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!-- Enquiry START -->
+   <section class="enquiry-section section-spacing">
+      <div class="container">
+         <form id="enquiryForm" class="enquiry-form" method="post" action="#">
+            <div class="enquiry-form__row">
+               <div class="enquiry-field">
+                  <label class="enquiry-field__label" for="fullName">Full Name</label>
+                  <input type="text" name="fullName" id="fullName" autocomplete="name" placeholder="Full Name">
+               </div>
+               <div class="enquiry-field">
+                  <label class="enquiry-field__label" for="email">Email<span aria-hidden="true">*</span></label>
+                  <input type="email" name="email" id="email" autocomplete="email" placeholder="Email*" required aria-required="true">
+               </div>
+            </div>
+            <div class="enquiry-form__row">
+               <div class="enquiry-field enquiry-country">
+                  <label class="enquiry-field__label" for="country">Country</label>
+                  <input type="hidden" name="country" id="country" value="India">
+                  <button type="button" class="enquiry-country__btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryList" aria-label="Country, India">
+                     <img class="enquiry-country__flag" src="~/Assets/images/flags/in.svg" alt="" width="22" height="16">
+                     <span class="enquiry-country__value">India</span>
+                  </button>
+                  <ul id="countryList" class="enquiry-phone__list enquiry-country__list" role="listbox" aria-label="Country" hidden></ul>
+               </div>
+               <div class="enquiry-field enquiry-phone">
+                  <div class="enquiry-phone__code">
+                     <input type="hidden" name="countryCode" id="countryCode" value="+91">
+                     <button type="button" class="enquiry-phone__code-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryCodeList" aria-label="Country code, India +91">
+                        <img class="enquiry-phone__flag" src="~/Assets/images/flags/in.svg" alt="" width="22" height="16">
+                        <span class="enquiry-phone__code-value">+91</span>
+                     </button>
+                     <ul id="countryCodeList" class="enquiry-phone__list" role="listbox" aria-label="Country code" hidden></ul>
+                  </div>
+                  <label class="enquiry-field__label" for="phone">Phone number</label>
+                  <input type="tel" name="phone" id="phone" autocomplete="tel-national" inputmode="tel" placeholder="Phone number">
+               </div>
+            </div>
+            <div class="enquiry-field enquiry-field--area">
+               <label class="enquiry-field__label" for="description">Description</label>
+               <textarea name="description" id="description" rows="4" placeholder="Description"></textarea>
+            </div>
+            <div class="enquiry-consent">
+               <label class="enquiry-agree" for="acceptTerms">
+                  <input type="checkbox" name="acceptTerms" id="acceptTerms" required aria-required="true">
+                  <span>I agree and accept the <a href="#">Privacy policy</a> and the <a href="#">Terms of use</a> of this website<span aria-hidden="true">*</span></span>
+               </label>
+               <div class="enquiry-recaptcha">
+                  <label class="enquiry-recaptcha__box">
+                     <input type="checkbox" name="notRobot" id="notRobot" required aria-required="true">
+                     <span class="enquiry-recaptcha__label">I'm not a robot</span>
+                     <span class="enquiry-recaptcha__brand">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                           <path fill="#1c3aa9" d="M32 6a26 26 0 0 1 22.2 12.5l-7.2 4.2A17.2 17.2 0 0 0 32 14.8V6z"/>
+                           <path fill="#4285f4" d="M54.2 18.5A26 26 0 0 1 32 58v-8.8a17.2 17.2 0 0 0 14.8-25.2l7.4-5.5z"/>
+                           <path fill="#ababab" d="M32 58A26 26 0 0 1 9.8 18.5l7.4 4.3A17.2 17.2 0 0 0 32 49.2V58z"/>
+                           <path fill="#1a73e8" d="M12.4 16.2 19.6 21A17.2 17.2 0 0 1 32 14.8V6a26 26 0 0 0-19.6 10.2z"/>
+                        </svg>
+                        <span>reCAPTCHA</span>
+                     </span>
+                  </label>
+               </div>
+            </div>
+            <button type="submit" class="site-btn site-btn--fill">
+               <span class="site-btn__label">Submit</span>
+               <span class="site-btn__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </span>
+            </button>
+         </form>
+      </div>
+   </section>
+   <!-- Enquiry END -->
+
+@section Scripts {
+   <script src="~/Assets/js/enquiry-phone.js" asp-append-version="true"></script>
+}
+
+   
+
+
+  
+
+

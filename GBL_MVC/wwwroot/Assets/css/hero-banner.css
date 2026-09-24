@@ -353,6 +353,23 @@
   --hero-media-h: min(62svh, 28rem);
   height: auto;
   min-height: calc(var(--hero-media-h) + 12rem);
+  transform: none !important;
+  }
+
+  .hero-slide__caption,
+  .hero-slide__cta.site-btn--line {
+  width: 100%;
+  max-width: 100%;
+  }
+
+  .hero-slide__line--sans {
+  font-size: clamp(1.55rem, 7.2vw, 2.1rem);
+  overflow-wrap: anywhere;
+  }
+
+  .hero-slide__line--script {
+  font-size: clamp(1.85rem, 8.5vw, 2.6rem);
+  overflow-wrap: anywhere;
   }
   
   .hero-nav {

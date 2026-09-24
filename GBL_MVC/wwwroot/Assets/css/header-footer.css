@@ -91,6 +91,12 @@ font-weight: 400;
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
+/* Inside pages: black icons at the top. Scrolled bar uses the homepage light color. */
+.site-header--inner:not(.is-compact) .site-header__bar{
+  color: #111111;
+  background-color: transparent;
+}
+
 .site-header.is-compact{
   --header-bar-h: 68px;
 }
@@ -480,14 +486,12 @@ font-weight: 400;
 
 .site-header__search-submit{
   flex-shrink: 0;
-  height: 2rem;
+  height:2.35rem;
   padding: 0 0.9rem;
   border: 0;
   background: var(--header-accent);
   color: #fff;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: var(--text-button);
   cursor: pointer;
   transition: background .2s ease, opacity .2s ease;
 }
@@ -504,7 +508,7 @@ font-weight: 400;
   background: transparent;
   padding: 0;
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: var(--text-p);
   color: var(--header-ink);
   outline: none;
 }
@@ -1195,6 +1199,22 @@ html.is-header-locked.is-header-lock-scroll .site-header{
   .site-header__search-btn{
     width: 30px;
     height: 30px;
+  }
+
+  .site-header__search{
+    position: fixed;
+    top: calc(var(--header-bar-h, 64px) + 8px);
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+  }
+
+  .site-header__search-form{
+    padding: 0.7rem 0.75rem;
+  }
+
+  .site-header__search-field{
+    gap: 0.4rem;
   }
 }
 

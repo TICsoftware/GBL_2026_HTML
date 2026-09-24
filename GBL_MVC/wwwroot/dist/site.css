@@ -15,7 +15,10 @@
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
     --font-weight-light: 300;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -25,7 +28,7 @@
     --font-body: 'uni_neueregular', sans-serif;
     --font-uniNeueRegular: 'uni_neueregular', sans-serif;
     --font-uniNeueBold: 'uni_neuebold', sans-serif;
-    --text-h1: clamp(2rem, calc(1.65rem + 2.82vw), 70px);
+    --text-h1: clamp(32px, calc(1.65rem + 2.82vw), 70px);
     --text-h2: clamp(1.5rem, 1.25rem + 1.14vw, 2.75rem);
     --text-h3: clamp(1.25rem, 1rem + 0.65vw, 2.1875rem);
     --text-h4: clamp(1.25rem, 1rem + 0.52vw, 1.5rem);
@@ -786,6 +789,12 @@
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -1017,6 +1026,10 @@
   }
   .align-top {
     vertical-align: top;
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
@@ -1358,6 +1371,7 @@ body {
 @media (max-width: 767px) {
   :root {
     --text-p: 0.875rem;
+    --text-h1: 32px;
   }
 }
 @property --tw-rotate-x {

@@ -13,6 +13,13 @@ PRODUCT FILTER + PORTFOLIO GRID
   top: 7rem;
 }
 
+/* Crossing the 1079px breakpoint live (resize, no reload) switches this
+   sidebar from sticky to position:fixed + hidden — suppress its transition
+   during that switch so it doesn't flash open full-screen. */
+html.is-resizing .product-filter-sidebar {
+  transition: none !important;
+}
+
 .product-filter-sidebar__head {
   display: flex;
   align-items: baseline;
