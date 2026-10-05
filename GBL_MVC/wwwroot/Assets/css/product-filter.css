@@ -351,6 +351,7 @@ background: #f1f1f1;
 .product-card__media {
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  background: var(--color-gray, #f4f4f4);
 }
 
 .product-card__media img {

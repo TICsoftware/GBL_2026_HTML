@@ -91,10 +91,16 @@ font-weight: 400;
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
-/* Inside pages: black icons at the top. Scrolled bar uses the homepage light color. */
+/* Inside pages: transparent bar over the banner. Desktop nav text is white until the bar compacts on scroll. */
 .site-header--inner:not(.is-compact) .site-header__bar{
   color: #111111;
   background-color: transparent;
+}
+
+@media (min-width: 1200px){
+  .site-header--inner:not(.is-compact) .site-header__bar{
+    color: #fff;
+  }
 }
 
 .site-header.is-compact{

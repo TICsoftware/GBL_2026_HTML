@@ -233,6 +233,8 @@ document.addEventListener("DOMContentLoaded", function () {
     menu.hidden = false;
     header.classList.add("is-mega-open");
     activeMenu = menu;
+    const preferred = menu.querySelector("[data-l2][data-panel]");
+    if (preferred) activateL2(preferred);
     if (!isMobile()) lockPage(true);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => positionMega(trigger, !switching));
@@ -360,16 +362,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     menu.querySelectorAll("[data-l2]").forEach((item) => {
-      item.addEventListener("mouseenter", () => {
-        if (!isMobile()) activateL2(item);
-      });
       item.addEventListener("click", (event) => {
         if (item.getAttribute("href") === "#") event.preventDefault();
-        if (!item.hasAttribute("data-panel")) return;
-        event.preventDefault();
-        if (isMobile() && item.classList.contains("is-active")) {
-          closeAllL2(item.closest(".mega-menu"));
-          return;
+        if (item.hasAttribute("data-panel")) {
+          event.preventDefault();
+          if (item.classList.contains("is-active")) {
+            closeAllL2(item.closest(".mega-menu"));
+            return;
+          }
         }
         activateL2(item);
       });

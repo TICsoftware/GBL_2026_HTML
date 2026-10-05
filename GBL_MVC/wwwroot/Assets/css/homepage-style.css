@@ -247,7 +247,9 @@
   position: sticky;
   top: var(--ataglance-pin-top);
   height: var(--ataglance-slot-h);
-  overflow: hidden;
+  overflow: visible;
+  /* Clip the top so the outgoing slide can leave upward. Leave the bottom open so the incoming slide stays whole. */
+  clip-path: inset(0 -3rem -120% -3rem);
   isolation: isolate;
   z-index: 2;
 }
@@ -345,9 +347,10 @@
   color: var(--color-primary);
 }
 
-.ataglance-panel .site-link {
+.ataglance-panel .site-btn {
   margin-top: clamp(1.25rem, 2.5vw, 2rem);
   flex-shrink: 0;
+  max-width: max-content;
 }
 
 
@@ -656,7 +659,7 @@
   line-height: 1.55;
 }
 
-.healthierTomorrow .healthier-panel .site-link {
+.healthierTomorrow .healthier-panel .site-btn {
   font-size: var(--text-button);
 }
 
@@ -802,7 +805,7 @@
   color: var(--ink-soft);
 }
 .latest-news-card p{ font-size: var(--text-22);}
-.latest-news-card .site-link{ position: absolute; bottom: 1rem; }
+.latest-news-card .site-btn{ position: absolute; bottom: 1rem; }
 
 /* LinkedIn official embed card */
 .latest-li-card {
@@ -846,7 +849,7 @@
   overflow: hidden;
   position: relative;
   z-index: 0;
-  aspect-ratio: 1 / 0.9;
+  aspect-ratio: 1 / 0.85;
   height: auto;
   isolation: isolate;
   clip-path: inset(0);
@@ -860,7 +863,7 @@
   top: 0;
   width: 100%;
   max-width: none;
-  height: 140%;
+  height: 118%;
   object-fit: cover;
   object-position: center top;
   will-change: transform;
@@ -1173,7 +1176,7 @@ ALL MEDIA QUERIES
     align-items: stretch;
   }
 
-  .ataglance.is-glance-slider .ataglance-media > .site-link {
+  .ataglance.is-glance-slider .ataglance-media > .site-btn {
     display: inline-flex;
     align-self: center;
     margin: 1.35rem auto 0;
@@ -1584,7 +1587,7 @@ ALL MEDIA QUERIES
     font-size: clamp(1rem, 1.2vw, 1.2rem);
   }
 
-  .ataglance-panel .site-link {
+  .ataglance-panel .site-btn {
     margin-top: 1rem;
   }
 }
@@ -1624,7 +1627,7 @@ ALL MEDIA QUERIES
     font-size: clamp(0.92rem, 1.05vw, 1.05rem);
   }
 
-  .ataglance-panel .site-link {
+  .ataglance-panel .site-btn {
     margin-top: 0.75rem;
   }
 }
