@@ -4,6 +4,7 @@
 
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/careers-style.css" asp-append-version="true" />
 }
 
@@ -40,7 +41,7 @@
                <div class="container">
                   <div class="max-w-4xl text-left">
                      <h1 class="innerbanner-title text-h1 text-white title-animation">
-                        Industries we serve
+                       Build a Career, Create a Beautiful World
                      </h1>
 
                      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
@@ -54,7 +55,7 @@
                            <li class="text-white/60">/</li>
 
                            <li class="text-white">
-                              Industries we serve
+                                 Careers 
                            </li>
                         </ol>
                      </nav>
@@ -79,12 +80,134 @@
 
   
    
-   <!--INDUSTRIES LIST-->
+   <!--Why Join-->
+   <section class="whyJoin section-spacing">
+      <div class="container">
+         <div class="section-intro">
+            <div class="section-intro__title title-section">
+               <h2 class="text-h2">Why Join Godavari Biorefineries?</h2>
+            </div>
+         </div>
 
-    <!--INDUSTRIES LIST END-->
+         <div class="swiper whyJoin-cards-outer">
+            <div class="swiper-wrapper">
+               <article class="swiper-slide whyJoin-card">
+                  <div class="whyJoin-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/careers/learn.webp")" alt="Team collaborating around documents" class="parallax-img">
+                  </div>
+                  <div class="whyJoin-card__body bg-gray">
+                     <h3 class="text-h5">Learn</h3>
+                     <p>Growth never stops within our walls. Through technical training, leadership development, mentorship, and continuous learning opportunities, we empower our people to build skills and advance their careers.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Explore Learning &amp; Development</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+
+               <article class="swiper-slide whyJoin-card">
+                  <div class="whyJoin-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/careers/belong.webp")" alt="Hands stacked together in a team huddle" class="parallax-img">
+                  </div>
+                  <div class="whyJoin-card__body bg-gray">
+                     <h3 class="text-h5">Belong</h3>
+                     <p>We strive to build a workplace where people work together in an environment built on respect, inclusion, and collaboration.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Explore Diversity &amp; Inclusion</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+
+               <article class="swiper-slide whyJoin-card">
+                  <div class="whyJoin-card__media parallax-wrap">
+                     <img src="@Url.Content("~/Assets/images/careers/thrive.webp")" alt="Person reaching toward plants in a greenhouse" class="parallax-img">
+                  </div>
+                  <div class="whyJoin-card__body bg-gray">
+                     <h3 class="text-h5">Thrive</h3>
+                     <p>Our families are our strength and our success. We care deeply about the wellbeing of our people and their families, and our comprehensive support programmes help them stay healthy, balanced, secure, and fulfilled.</p>
+                     <a href="#" class="site-btn site-btn--outline">
+                        <span class="site-btn__label">Explore Wellbeing &amp; Benefits</span>
+                        <span class="site-btn__arrow" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                     </a>
+                  </div>
+               </article>
+            </div>
+         </div>
+
+         <div class="whyJoin-controls">
+            <button type="button" class="whyJoin-nav whyJoin-nav--prev" aria-label="Previous card">
+               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="swiper-pagination whyJoin-pagination"></div>
+            <button type="button" class="whyJoin-nav whyJoin-nav--next" aria-label="Next card">
+               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+         </div>
+      </div>
+   </section>
+   <!--Why Join END-->
+
+   <!--Life at Godavari-->
+   <section class="lifeAtGodavari section-spacing bg-gray">
+      <div class="container">
+         <article class="lifeAtGodavari-row">
+            <div class="lifeAtGodavari-copy">
+               <h2 class="text-h2">Life at Godavari</h2>
+               <p>Our people are united by a shared commitment to innovation, inclusivity, responsibility, and sustainable growth.</p>
+               <p>Our manufacturing footprint spans Maharashtra and Karnataka. We operate India’s largest integrated bio-refinery, and we supply bio-solutions to a global clientele. From manufacturing facilities and research centres to agricultural initiatives and corporate offices, employees collaborate across disciplines to solve complex challenges and create solutions that positively impact industries, communities, and the environment.</p>
+               <p>Working at Godavari Biorefineries means being part of a culture that encourages learning, rewards initiative, and supports long-term career growth.</p>
+            </div>
+            <div class="lifeAtGodavari-media parallax-wrap">
+               <img src="@Url.Content("~/Assets/images/careers/lifegodavari.webp")" alt="Team inspecting plants in a greenhouse" class="parallax-img">
+            </div>
+         </article>
+
+         <article class="lifeAtGodavari-row lifeAtGodavari-row--reverse">
+            <div class="lifeAtGodavari-copy">
+               <h2 class="text-h2">Experience the Culture of Care</h2>
+               <p>We believe great workplaces are built on trust, respect, and opportunity. Our culture promotes open communication, teamwork, continuous improvement, and employee wellbeing. We encourage individuals to contribute ideas, take ownership of their work, and grow alongside the organisation.</p>
+               <p>By combining a people-first approach with a commitment to sustainability and innovation, we create an environment where employees can build rewarding careers while making a meaningful difference.</p>
+            </div>
+            <div class="lifeAtGodavari-media parallax-wrap">
+               <img src="@Url.Content("~/Assets/images/careers/culturecare.webp")" alt="" class="parallax-img">
+            </div>
+         </article>
+      </div>
+   </section>
+   <!--Life at Godavari END-->
+
+   <!--Ready to Shape the Future-->
+   <section class="shapeFuture section-pb bg-gray">
+      <div class="container">
+         <div class="shapeFuture-banner">
+            <div class="parallax-wrap" aria-hidden="true">
+               <img src="@Url.Content("~/Assets/images/careers/shapefuture-bg.webp")" alt="" class="parallax-img">
+            </div>
+            <div class="shapeFuture-inner">
+               <h2 class="text-h2">Ready to Shape the Future?</h2>
+               <p>Join a team that is transforming renewable resources into sustainable solutions to create a beautiful world.</p>
+               <a href="#" class="site-btn site-btn--outline-white">
+                  <span class="site-btn__label">Be a part of our talent pool</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Ready to Shape the Future END-->
 
 
 @section Scripts {
-   <script src="~/Assets/js/industries-script.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/careers-script.js" asp-append-version="true"></script>
 }
 
