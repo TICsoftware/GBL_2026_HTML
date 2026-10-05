@@ -46,6 +46,14 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
   color: #f4f4f4;
 }
 
+/* Social — key principles */
+.middle-container .container {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   .page-intro-inner p,
   .page-intro-inner .page-intro-fill-word{
