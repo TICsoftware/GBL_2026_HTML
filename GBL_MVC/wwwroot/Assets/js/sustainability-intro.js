@@ -113,11 +113,70 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 document.addEventListener("DOMContentLoaded", function () {
-  var el = document.querySelector(".turningCommitment-cards-outer");
+  var el = document.querySelector(".turningCommitment-cards-outer, .carbonCircularity-cards");
   if (!el || typeof Swiper === "undefined") return;
 
   var swiper = null;
+  var riseTl = null;
+  var sliderOn = null;
   var MOBILE_MAX = 767;
+  var CARD_RISE = {
+    y: 140,
+    duration: 1.15,
+    stagger: 0.28,
+    scrub: 1.15,
+    listStart: "top 90%",
+    listEnd: "top 38%"
+  };
+
+  function commitmentCards() {
+    return el.querySelectorAll(".turningCommitment-card, .carbonCircularity-card");
+  }
+
+  function playCardRise() {
+    var cards = commitmentCards();
+    if (!cards.length || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    if (riseTl) {
+      if (riseTl.scrollTrigger) riseTl.scrollTrigger.kill();
+      riseTl.kill();
+      riseTl = null;
+    }
+    gsap.set(cards, { clearProps: "transform,opacity,visibility" });
+
+    var stScroller = window.matchMedia("(max-width: 992px)").matches
+      ? window
+      : document.documentElement;
+
+    riseTl = gsap.timeline({
+      defaults: { force3D: true, ease: "power2.out" },
+      scrollTrigger: {
+        id: "turning-commitment-card-rise",
+        trigger: el,
+        scroller: stScroller,
+        start: CARD_RISE.listStart,
+        end: CARD_RISE.listEnd,
+        scrub: CARD_RISE.scrub,
+        invalidateOnRefresh: true
+      }
+    });
+
+    cards.forEach(function (card, i) {
+      riseTl.fromTo(
+        card,
+        { autoAlpha: 0, y: CARD_RISE.y },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: CARD_RISE.duration,
+          immediateRender: true
+        },
+        i * CARD_RISE.stagger
+      );
+    });
+  }
 
   function isMobileView() {
     return window.innerWidth <= MOBILE_MAX;
@@ -125,17 +184,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function enableSlider() {
     if (swiper) return;
+    var section = el.closest("section") || el.parentElement;
     swiper = new Swiper(el, {
       slidesPerView: 1,
       spaceBetween: 16,
       watchOverflow: true,
       pagination: {
-        el: ".turningCommitment-pagination",
+        el: section.querySelector(".turningCommitment-pagination, .carbonCircularity-pagination"),
         clickable: true,
       },
       navigation: {
-        nextEl: ".turningCommitment-nav--next",
-        prevEl: ".turningCommitment-nav--prev",
+        nextEl: section.querySelector(".turningCommitment-nav--next, .carbonCircularity-nav--next"),
+        prevEl: section.querySelector(".turningCommitment-nav--prev, .carbonCircularity-nav--prev"),
       },
     });
   }
@@ -147,8 +207,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function syncMode() {
-    if (isMobileView()) enableSlider();
+    var mobile = isMobileView();
+    if (mobile === sliderOn) return;
+    sliderOn = mobile;
+    if (mobile) enableSlider();
     else disableSlider();
+    playCardRise();
+    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
   }
 
   syncMode();

@@ -61,7 +61,7 @@
 .page-intro-mantra {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  column-gap: clamp(2rem, 4vw, 4.5rem);
+  column-gap: 0;
   align-items: stretch;
   width: 100%;
   margin: 0;
@@ -71,7 +71,7 @@
 .page-intro-mantra__quote {
   margin: 0;
   padding-right: clamp(1.5rem, 3vw, 3rem);
-  border-right: 1px solid rgba(40, 43, 49, 0.16);
+  border-right: 0;
   text-align: left;
   max-width: none;
   width: auto;
@@ -105,6 +105,8 @@
 .page-intro-mantra__copy {
   margin: 0;
   width: 100%;
+  padding-left: clamp(2rem, 4vw, 4.5rem);
+  border-left: 1px solid rgba(40, 43, 49, 0.16);
   font-size: var(--text-p, 1rem);
   line-height: 1.55;
   color: #4a4e55;
@@ -113,7 +115,7 @@
 .page-intro-mantra__copy p {
   margin: 0 0 1.15rem;
   color: inherit;
-  font-size: inherit;
+  font-size: var(--text-22, 1.375rem);
   line-height: 1.55;
 }
 
@@ -151,13 +153,17 @@
   .page-intro-mantra__quote {
     margin-bottom: 0;
     padding-right: 0;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0;
     border-right: 0;
-    border-bottom: 1px solid rgba(40, 43, 49, 0.16);
+    border-bottom: 0;
   }
 
   .page-intro-mantra__copy {
     margin: 0;
+    padding-left: 0;
+    padding-top: 1.5rem;
+    border-left: 0;
+    border-top: 1px solid rgba(40, 43, 49, 0.16);
     color: #4a4e55;
   }
 
@@ -315,24 +321,37 @@
 }
 
 /* Turning commitment into action */
-.turningCommitment-cards-outer {
-  margin-top: 2.5rem;
+.turningCommitment-cards-outer,
+.carbonCircularity-cards {
+  /* margin-top: 2.5rem; */
   overflow: hidden;
 }
 
-.turningCommitment-cards-outer .swiper-wrapper {
+@media (min-width: 768px) {
+  .turningCommitment-cards-outer.swiper,
+  .carbonCircularity-cards.swiper {
+    overflow: visible;
+  }
+}
+
+.turningCommitment-cards-outer .swiper-wrapper,
+.carbonCircularity-cards .swiper-wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.25rem;
   align-items: stretch;
 }
 
-.turningCommitment-cards-outer .swiper-slide {
+.turningCommitment-cards-outer .swiper-slide,
+.carbonCircularity-cards .swiper-slide {
   height: auto;
   width: auto;
 }
 
-.turningCommitment-card {
+
+
+.turningCommitment-card,
+.carbonCircularity-card {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -341,13 +360,19 @@
   overflow: hidden;
 }
 
-.turningCommitment-card__media {
+.carbonCircularity-card { background: var(--color-gray, #f4f4f4); }
+
+.turningCommitment-card__media,
+.carbonCircularity-card__media {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 3.15;
 }
 
-.turningCommitment-card__media .parallax-img {
+.carbonCircularity-card__media {  aspect-ratio: 4 / 2.5;}
+
+.turningCommitment-card__media .parallax-img,
+.carbonCircularity-card__media .parallax-img {
   position: absolute;
   left: 0;
   top: -15%;
@@ -357,25 +382,34 @@
   object-position: center;
 }
 
-.turningCommitment-card__body {
+.turningCommitment-card__body,
+.carbonCircularity-card__body {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   padding: 1.25rem 1.25rem 5.25rem;
 }
 
-.turningCommitment-card__body h3 {
+.turningCommitment-card__body h3,
+.carbonCircularity-card__body h3 {
   margin: 0 0 0.65rem;
   color: var(--color-primary);
 }
 
-.turningCommitment-card__body p {
+.turningCommitment-card__body p,
+.carbonCircularity-card__body p {
   margin: 0;
   color: var(--color-gray-dark);
   font-size: var(--text-p);
 }
 
-.turningCommitment-card a.site-btn {
+.turningCommitment-card__body p + p,
+.carbonCircularity-card__body p + p {
+  margin-top: 0.85rem;
+}
+
+.turningCommitment-card a.site-btn,
+.carbonCircularity-card a.site-btn {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -390,13 +424,16 @@
 }
 
 .turningCommitment-card:hover a.site-btn,
-.turningCommitment-card:focus-within a.site-btn {
+.turningCommitment-card:focus-within a.site-btn,
+.carbonCircularity-card:hover a.site-btn,
+.carbonCircularity-card:focus-within a.site-btn {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.turningCommitment-controls {
+.turningCommitment-controls,
+.carbonCircularity-controls {
   display: none;
 }
 
@@ -406,18 +443,27 @@
   }
 }
 
+@media (min-width: 768px) {
+  .carbonCircularity-cards .swiper-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 767px) {
-  .turningCommitment-cards-outer .swiper-wrapper {
+  .turningCommitment-cards-outer .swiper-wrapper,
+  .carbonCircularity-cards .swiper-wrapper {
     display: flex;
     gap: 0;
   }
 
-  .turningCommitment-cards-outer .swiper-slide {
+  .turningCommitment-cards-outer .swiper-slide,
+  .carbonCircularity-cards .swiper-slide {
     width: 100%;
     height: auto;
   }
 
-  .turningCommitment-controls {
+  .turningCommitment-controls,
+  .carbonCircularity-controls {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -429,7 +475,10 @@
 
   .turningCommitment-nav,
   .turningCommitment-nav.swiper-button-prev,
-  .turningCommitment-nav.swiper-button-next {
+  .turningCommitment-nav.swiper-button-next,
+  .carbonCircularity-nav,
+  .carbonCircularity-nav.swiper-button-prev,
+  .carbonCircularity-nav.swiper-button-next {
     position: relative;
     top: auto;
     left: auto;
@@ -452,24 +501,29 @@
   }
 
   .turningCommitment-nav::before,
-  .turningCommitment-nav::after {
+  .turningCommitment-nav::after,
+  .carbonCircularity-nav::before,
+  .carbonCircularity-nav::after {
     content: none;
     display: none;
   }
 
-  .turningCommitment-nav svg {
+  .turningCommitment-nav svg,
+  .carbonCircularity-nav svg {
     width: 0.85rem;
     height: 0.85rem;
     display: block;
   }
 
-  .turningCommitment-nav.swiper-button-disabled {
+  .turningCommitment-nav.swiper-button-disabled,
+  .carbonCircularity-nav.swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
     pointer-events: none;
   }
 
-  .turningCommitment-pagination.swiper-pagination {
+  .turningCommitment-pagination.swiper-pagination,
+  .carbonCircularity-pagination.swiper-pagination {
     position: relative !important;
     inset: auto !important;
     top: auto !important;
@@ -485,7 +539,8 @@
     justify-content: center;
   }
 
-  .turningCommitment-pagination .swiper-pagination-bullet {
+  .turningCommitment-pagination .swiper-pagination-bullet,
+  .carbonCircularity-pagination .swiper-pagination-bullet {
     width: 6px;
     height: 6px;
     margin: 0 3px !important;
@@ -496,16 +551,95 @@
     transition: transform 0.25s ease, background 0.25s ease;
   }
 
-  .turningCommitment-pagination .swiper-pagination-bullet-active {
+  .turningCommitment-pagination .swiper-pagination-bullet-active,
+  .carbonCircularity-pagination .swiper-pagination-bullet-active {
     background: var(--color-primary, #282b31);
     transform: scale(1.2);
   }
 
-  .turningCommitment-card a.site-btn {
+  .turningCommitment-card a.site-btn,
+.carbonCircularity-card a.site-btn {
     opacity: 1;
     transform: none;
     pointer-events: auto;
   }
+}
+
+
+
+.social-middle__copy p,
+.social-middle__note {
+  margin: 0 0 1.15rem;
+  color: var(--color-primary, #282b31);
+  font-size: var(--text-p, 1rem);
+  line-height: 1.55;
+}
+
+.social-middle__note {
+  margin-bottom: 0;
+}
+
+.social-middle__media {
+  margin: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+  height: 405px;
+}
+
+.social-middle__media .parallax-img {
+  position: absolute;
+  left: 0;
+  top: -15%;
+  width: 100%;
+  height: 130%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+
+.social-middle__item + .social-middle__item {
+  margin-top: 1.75rem;
+}
+
+.social-middle__item h3 {
+  margin: 0 0 0.35rem;
+  color: var(--color-primary, #282b31);
+  font-weight: 700;
+}
+
+.social-middle__item p {
+  margin: 0;
+  color: var(--color-primary, #282b31);
+}
+
+.social-impact-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.social-impact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0;
+  color: var(--color-gray-dark, #565b65);
+  font-size: var(--text-p, 1rem);
+  line-height: 1.45;
+}
+
+.social-impact-list img {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: 0.15rem;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 /* Awards, Certifications & Reports */
