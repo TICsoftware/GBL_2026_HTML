@@ -107,6 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const bannerTrigger = isInnerBannerTitle(el) ? getInnerBannerTrigger(el) : null;
     const section = bannerTrigger || getParentSection(el);
+    // Headings over images sit far below the section start, so reveal on the heading.
+    const trigger =
+      bannerTrigger ||
+      (el.closest && el.closest("figcaption") ? el : section);
 
     gsap.set(el, TITLE_FROM);
 
@@ -147,21 +151,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       ScrollTrigger.create({
-        trigger: section,
+        trigger: trigger,
         scroller: stScroller,
         start: "top 90%",
         onEnter: playTitle,
         onEnterBack: playTitle,
         onLeaveBack: () => {
           if (ScrollTrigger.isRefreshing) return;
-          if (isInView(section)) return;
+          if (isInView(trigger)) return;
           tween.reverse();
         },
       });
     }
 
-    if (isInView(section)) {
-      inViewTweens.push({ tween, section });
+    if (isInView(trigger)) {
+      inViewTweens.push({ tween, section: trigger });
     }
   });
 
