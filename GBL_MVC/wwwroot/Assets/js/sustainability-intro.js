@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isMobile = window.matchMedia("(max-width: 992px)").matches;
   var stScroller = isMobile ? window : document.documentElement;
-  var FILL_FROM = "#8b8b8b";
-  var FILL_TO = "#ffffff";
+  var FILL_FROM = "#4a4e55";
+  var FILL_TO = "#4a4e55";
 
   function wrapWords(el) {
     if (!el || el.dataset.introFill === "ready") return;
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function enableSlider() {
     if (swiper) return;
     swiper = new Swiper(el, {
-      slidesPerView: 1.08,
+      slidesPerView: 1,
       spaceBetween: 16,
       watchOverflow: true,
       pagination: {

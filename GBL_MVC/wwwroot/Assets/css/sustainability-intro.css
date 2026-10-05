@@ -2,12 +2,7 @@
 .page-intro-outer--mantra {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
-  background: #fff;
+  background: var(--color-gray, #f4f4f4);
 }
 
 .page-intro-mantra__media {
@@ -61,31 +56,25 @@
 .page-intro-outer--mantra > .container {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  height: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
 }
 
 .page-intro-mantra {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  column-gap: clamp(2rem, 4vw, 4.5rem);
   align-items: stretch;
-  justify-content: space-between;
-  height: 100%;
-  flex: 1 1 auto;
-  max-width: min(60vw, 100%);
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  text-align: left;
 }
 
 .page-intro-mantra__quote {
-  margin: 0 auto 0;
+  margin: 0;
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+  border-right: 1px solid rgba(40, 43, 49, 0.16);
   text-align: left;
-  max-width: 660px;
-  width: 100%;
+  max-width: none;
+  width: auto;
 }
 
 .page-intro-mantra__sanskrit {
@@ -93,9 +82,9 @@
   font-family: "Noto Serif Devanagari", "Noto Serif", Georgia, serif;
   font-size: var(--text-h1);
   font-weight: 700;
-  line-height: 1;
-  color: #1c1c1c;  
-  
+  line-height: 1.35;
+  color: #1c1c1c;
+  overflow-wrap: anywhere;
 }
 
 .page-intro-mantra__english {
@@ -114,15 +103,27 @@
 }
 
 .page-intro-mantra__copy {
-  margin: auto 0 0;
+  margin: 0;
   width: 100%;
-  font-size: var(--text-22);
-  color: #8b8b8b;
+  font-size: var(--text-p, 1rem);
+  line-height: 1.55;
+  color: #4a4e55;
+}
+
+.page-intro-mantra__copy p {
+  margin: 0 0 1.15rem;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.55;
+}
+
+.page-intro-mantra__copy p:last-child {
+  margin-bottom: 0;
 }
 
 .page-intro-mantra__copy .page-intro-fill-word {
   display: inline;
-  color: #8b8b8b;
+  color: #4a4e55;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -133,39 +134,35 @@
   }
 
   .page-intro-mantra__copy .page-intro-fill-word {
-    color: #ffffff;
+    color: #4a4e55;
   }
 }
 
-@media (max-width: 767px) {
-  .page-intro-outer--mantra {
-    min-height: 0;
-    height: auto;
-  }
-
-  .page-intro-outer--mantra > .container {
-    height: auto;
-    flex: 0 0 auto;
-  }
-
+@media (max-width: 1179px) {
   .page-intro-mantra {
-    height: auto;
-    max-width: 100%;
-    justify-content: flex-start;
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    row-gap: 1.75rem;
+  }
+
+  .page-intro-mantra__sanskrit {
+    font-size: clamp(1.75rem, 1.1rem + 2.4vw, 2.75rem);
   }
 
   .page-intro-mantra__quote {
     margin-bottom: 0;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(40, 43, 49, 0.16);
   }
 
   .page-intro-mantra__copy {
     margin: 0;
-    color: #ffffff;
+    color: #4a4e55;
   }
 
   .page-intro-mantra__copy .page-intro-fill-word {
-    color: #ffffff;
+    color: #4a4e55;
   }
 
   .page-intro-outer--mantra::after {
@@ -195,7 +192,11 @@
   column-gap: clamp(1.5rem, 3vw, 3.5rem);
   row-gap: 0.85rem 1.25rem;
   align-items: stretch;
+  min-width: 0;
 }
+
+.CreatingTowards-inner .section-intro__title {flex: 0 1 100%;}
+
 
 .CreatingTowards-title {
   grid-area: title;
@@ -221,6 +222,7 @@
 .CreatingTowards-copy {
   grid-area: copy;
   max-width: 100%;
+  min-width: 0;
 }
 
 .CreatingTowards-copy p {
@@ -232,10 +234,11 @@
 .CreatingTowards-media {
   grid-area: media;
   display: grid;
-  grid-template-columns: 1.35fr 0.82fr 0.82fr;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.82fr) minmax(0, 0.82fr);
   gap:2rem;
   align-items: stretch;
   min-height: 100%;
+  min-width: 0;
 }
 
 .CreatingTowards-media__item {
@@ -257,6 +260,28 @@
   object-position: center;
 }
 
+@media (max-width: 1179px) {
+  .CreatingTowards-inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "media"
+      "copy";
+    row-gap: 1.35rem;
+  }
+
+  .CreatingTowards-media {
+    gap: 0.75rem;
+    min-height: 0;
+  }
+
+  .CreatingTowards-media__item {
+    min-width: 0;
+    min-height: 220px;
+    height: min(34vw, 300px);
+  }
+}
+
 @media (max-width: 767px) {
   .CreatingTowards-inner {
     grid-template-columns: 1fr;
@@ -272,7 +297,7 @@
   }
 
   .CreatingTowards-media {
-    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: 0.5rem;
     min-height: 0;
   }
@@ -545,7 +570,7 @@
 
   .AwardsCertifications-tile--media {
     min-height: 240px;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: auto;
   }
 
   .AwardsCertifications-tile--copy {
