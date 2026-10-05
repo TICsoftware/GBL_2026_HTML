@@ -167,9 +167,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    var SCALE_START = 0.1;
-    var SCALE_END = 1;
-    var INFOGRAPHIC_START = SCALE_START + (SCALE_END - SCALE_START) * 0.6;
+    var FRAME_DONE = 0.34;
+    var INFOGRAPHIC_START = 0.4;
+
+    function headerOffset() {
+      var header = document.querySelector(".site-header");
+      return header ? Math.round(header.getBoundingClientRect().height) : 0;
+    }
 
     var tl = gsap.timeline({
       defaults: { ease: "none" },
@@ -183,33 +187,41 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    tl.to(frame, { y: 0, duration: 0.04 }, SCALE_START)
+    tl.to(frame, { y: 0, duration: 0.05 }, 0)
       .to(
         frame,
         {
           left: 0,
-          top: 0,
-          width: "100%",
-          height: "100%",
-          duration: SCALE_END - SCALE_START,
+          top: headerOffset,
+          width: function () {
+            return sticky.offsetWidth;
+          },
+          height: function () {
+            return Math.max(0, sticky.offsetHeight - headerOffset());
+          },
+          duration: FRAME_DONE,
         },
-        SCALE_START
+        0
       )
-      .to(frameImg, { scale: 1.12, duration: SCALE_END - SCALE_START }, SCALE_START)
-      .to(veil, { opacity: 0.5, duration: SCALE_END - SCALE_START }, SCALE_START)
+      .to(frameImg, { scale: 1, duration: FRAME_DONE }, 0)
       .to(
         copy,
         {
           y: function () {
             return -(copy.offsetHeight + 48);
           },
-          duration: INFOGRAPHIC_START - SCALE_START,
+          duration: FRAME_DONE,
         },
-        SCALE_START
+        0
+      )
+      .to(
+        veil,
+        { opacity: 0.45, duration: 1 - INFOGRAPHIC_START, ease: "power1.in" },
+        INFOGRAPHIC_START
       )
       .to(
         infographic,
-        { y: 0, duration: SCALE_END - INFOGRAPHIC_START },
+        { y: 0, duration: 1 - INFOGRAPHIC_START, ease: "power1.out" },
         INFOGRAPHIC_START
       );
 

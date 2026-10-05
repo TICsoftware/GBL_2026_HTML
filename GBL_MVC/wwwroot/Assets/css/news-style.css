@@ -128,7 +128,7 @@ NEWS — tabs, filters, press + media cards
   pointer-events: auto;
 }
 
-.media-coverage-card {
+.news-inside-outer .media-coverage-card {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -145,8 +145,14 @@ NEWS — tabs, filters, press + media cards
   line-height: 1.3;
 }
 
-.media-coverage-card .text-h5 {
+.news-inside-outer .media-coverage-card .text-h5 {
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+  /* height: calc(1.25em * 6); */
 }
 
 .media-coverage-card .site-btn {

@@ -180,4 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
     requestAnimationFrame(playInViewTitles);
   });
+
+  window.addEventListener("gbl:after-resize", () => {
+    requestAnimationFrame(playInViewTitles);
+  });
 });

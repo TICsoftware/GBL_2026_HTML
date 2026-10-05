@@ -3,14 +3,13 @@
 }
 
 @section Styles {
-   <link rel="stylesheet" href="~/Assets/css/newsinsidepage-style.css" asp-append-version="true" />
-       <link rel="preload" href="~/Assets/css/swiper-bundle.min.css" as="style">
-    <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
-
+      <link rel="stylesheet" href="~/Assets/css/newsinsidepage-style.css" asp-append-version="true" />
+      <link rel="preload" href="~/Assets/css/swiper-bundle.min.css" as="style">
+      <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
 }
 
     <!-- HERO BANNER END-->
-   <section class="relative inside-banner-outer">
+   <section class="relative inside-banner-outer news-inside-banner-outer">
          <div class="inside-banner-inner banner-animation relative">
             <!-- Banner -->
             <div class="overflow-hidden h-[75vh] sm:h-131.25 relative innerbanner-image-wrapper">
@@ -18,12 +17,12 @@
                <picture>
                   <!-- Desktop -->
                   <source media="(min-width:1024px)"
-                     srcset="~/Assets/images/banners/AdhesivesLubricants-desktop.webp">
+                     srcset="~/Assets/images/banners/news-press-release-banner.webp">
                   
 
                   <!-- Mobile -->
                   <img
-                     src="~/Assets/images/banners/AdhesivesLubricants-desktop.webp"
+                     src="~/Assets/images/banners/news-press-release-banner.webp"
                      alt=""
                      class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
                      loading="eager"
@@ -37,9 +36,9 @@
            <!--Breadcrumb-->
             <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
                <div class="container">
-                  <div class="max-w-4xl text-left">
+                  <div class="max-w-4xl text-left news-inside-banner-caption">
                      <h1 class="innerbanner-title text-h1 text-white">
-                       Adhesives & Lubricants
+                       Godavari Biorefineries Limited partners with Synthomer to develop bio-based alternatives to fossil-based monomers
                      </h1>
 
                      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
@@ -85,13 +84,30 @@
             <div class="press-release-card__content">
                 <p><strong>Godavari Biorefineries Limited (GBL) (BSE: Script Code 544279 | NSE: GODAVARIB)</strong> today announces a new partnership with Synthomer to develop bio-based alternatives to existing fossil-based monomers. With growing customer demand for more sustainable alternatives, this partnership strengthens GBL's commitment to innovation and reinforces our focus on delivering customer-centric, lower-carbon solutions.</p>
 
-                <p>Through this partnership, Synthomer is commercialising bio-based butyl acrylate using biobased butanol produced by GBL, helping to accelerate the industry's transition to more sustainable raw materials.</p>
+               
+
+                <figure class="press-release-figure press-release-figure--left">
+                    <img src="@Url.Content("~/Assets/images/industry-page/Biofuels.webp")" alt="Bio-based feedstocks at GBL's integrated biorefinery">
+                    <figcaption>Bio-based feedstocks at GBL's integrated biorefinery</figcaption>
+                </figure>
+
+                 <p>Through this partnership, Synthomer is commercialising bio-based butyl acrylate using biobased butanol produced by GBL, helping to accelerate the industry's transition to more sustainable raw materials.</p>
 
                 <p>Samir Somaiya, Chairman and Managing Director of Godavari Biorefineries Limited, comments, "At Godavari Biorefineries, sustainability is integral to our business strategy and innovation agenda. This collaboration with Synthomer reflects our commitment to advancing bio-based alternatives that enable meaningful reductions in carbon footprint across the value chain.</p>
 
-                <p>"By leveraging renewable feedstocks and our integrated biorefinery capabilities, we aim to work and support our partners and customers in transitioning away from fossil-based materials toward more sustainable solutions. Partnerships such as this are critical to accelerating the adoption of green chemistry and to our vision of creating a beautiful world."</p>
 
+                
                 <p>Chris Brown, Vice President of ESG, Synthomer, comments, "Partnering with GBL enables us to offer customers a lower-carbon alternative to fossil-based monomers, helping them to meet their emissions targets while supporting the growing demand for more sustainable solutions.</p>
+
+                <blockquote class="press-release-pullquote">
+                    <p>By leveraging renewable feedstocks and our integrated biorefinery capabilities, we aim to work and support our partners and customers in transitioning away from fossil-based materials toward more sustainable solutions. Partnerships such as this are critical to accelerating the adoption of green chemistry and to our vision of creating a beautiful world.</p>
+                </blockquote>
+
+                <figure class="press-release-figure press-release-figure--right">
+                    <img src="@Url.Content("~/Assets/images/industry-page/AdhesivesLubricants.webp")" alt="Lower-carbon monomer solutions for industrial applications">
+                    <figcaption>Lower-carbon monomer solutions for industrial applications</figcaption>
+                </figure>
+
 
                 <p>"It also reflects our commitment to customer-centricity, by expanding access to bio-based solutions, we're strengthening the resilience of our monomers portfolio and ensuring we can continue meeting our customers' evolving needs."</p>
 
@@ -107,8 +123,7 @@
 
             <div class="press-release-card__footer">
                 <span class="press-release-card__footer-label">Link:</span>
-                <a href="#" target="_blank" rel="noopener" class="fill-site-link">
-                    
+                <a href="#" target="_blank" rel="noopener" class="press-release-card__footer-link">
                     Press release
                 </a>
             </div>
