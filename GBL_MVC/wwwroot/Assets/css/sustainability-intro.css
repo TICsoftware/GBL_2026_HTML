@@ -41,7 +41,7 @@
   );
 }
 
-.page-intro-outer--mantra::after {
+/* .page-intro-outer--mantra::after {
   content: "";
   position: absolute;
   left: 0;
@@ -56,7 +56,7 @@
     rgba(11, 26, 34, 0.55) 48%,
     #0b1a22 100%
   );
-}
+} */
 
 .page-intro-outer--mantra > .container {
   position: relative;

@@ -11,17 +11,31 @@ ENQUIRY — underline form
   flex-direction: column;
   gap: 25px;
   width: 100%;
-  max-width: 800px;
+  max-width: 60vw;
   margin-inline: auto;
   padding: clamp(2rem, 4vw, 3rem);
   background: var(--enquiry-bg);
 }
 
-.enquiry-form__row {
+.enquiry-form__row,
+.enquiry-form__columns {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: 1.25rem;
   row-gap: 1.25rem;
+}
+
+.enquiry-form__col {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  min-width: 0;
+}
+
+.enquiry-field--area {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .enquiry-field {
@@ -349,6 +363,8 @@ ENQUIRY — underline form
 }
 
 .enquiry-field--area textarea {
+  flex: 1 1 auto;
+  height: 100%;
   min-height: 8.75rem;
   padding: 1rem 1.25rem;
   border-radius: 1.25rem;
@@ -448,7 +464,8 @@ ENQUIRY — underline form
 }
 
 @media (max-width: 767px) {
-  .enquiry-form__row {
+  .enquiry-form__row,
+  .enquiry-form__columns {
     grid-template-columns: 1fr;
   }
 

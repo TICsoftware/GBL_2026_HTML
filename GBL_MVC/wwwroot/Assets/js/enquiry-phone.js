@@ -54,7 +54,6 @@
   var countryRoot = document.querySelector(".enquiry-country");
   var countryInput = document.getElementById("country");
   var countryBtn = countryRoot && countryRoot.querySelector(".enquiry-country__btn");
-  var countryFlag = countryRoot && countryRoot.querySelector(".enquiry-country__flag");
   var countryValue = countryRoot && countryRoot.querySelector(".enquiry-country__value");
   var countryList = document.getElementById("countryList");
   var input = root.querySelector("#countryCode");
@@ -72,17 +71,20 @@
     item.setAttribute("aria-selected", index === 0 ? "true" : "false");
     item.dataset.index = String(index);
 
-    var img = document.createElement("img");
-    img.src = "/Assets/images/flags/" + country.iso + ".svg";
-    img.alt = "";
-    img.width = 22;
-    img.height = 16;
-
     var name = document.createElement("span");
     name.className = "enquiry-phone__option-name";
     name.textContent = country.name;
 
-    item.append(img, name);
+    if (withDial) {
+      var img = document.createElement("img");
+      img.src = "/Assets/images/flags/" + country.iso + ".svg";
+      img.alt = "";
+      img.width = 22;
+      img.height = 16;
+      item.append(img);
+    }
+
+    item.append(name);
     if (withDial) {
       var dial = document.createElement("span");
       dial.className = "enquiry-phone__option-dial";
@@ -143,7 +145,6 @@
     button.setAttribute("aria-label", "Country code, " + country.name + " " + country.dial);
     if (countryInput) countryInput.value = country.name;
     if (countryValue) countryValue.textContent = country.name;
-    if (countryFlag) countryFlag.src = "/Assets/images/flags/" + country.iso + ".svg";
     if (countryBtn) countryBtn.setAttribute("aria-label", "Country, " + country.name);
     closeAll();
   }

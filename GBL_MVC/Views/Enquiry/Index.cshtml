@@ -57,42 +57,71 @@
    <section class="enquiry-section section-spacing">
       <div class="container">
          <form id="enquiryForm" class="enquiry-form" method="post" action="#">
-            <div class="enquiry-form__row">
-               <div class="enquiry-field">
-                  <label class="enquiry-field__label" for="fullName">Full Name</label>
-                  <input type="text" name="fullName" id="fullName" autocomplete="name" placeholder="Full Name">
-               </div>
-               <div class="enquiry-field">
-                  <label class="enquiry-field__label" for="email">Email<span aria-hidden="true">*</span></label>
-                  <input type="email" name="email" id="email" autocomplete="email" placeholder="Email*" required aria-required="true">
-               </div>
-            </div>
-            <div class="enquiry-form__row">
-               <div class="enquiry-field enquiry-country">
-                  <label class="enquiry-field__label" for="country">Country</label>
-                  <input type="hidden" name="country" id="country" value="India">
-                  <button type="button" class="enquiry-country__btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryList" aria-label="Country, India">
-                     <img class="enquiry-country__flag" src="~/Assets/images/flags/in.svg" alt="" width="22" height="16">
-                     <span class="enquiry-country__value">India</span>
-                  </button>
-                  <ul id="countryList" class="enquiry-phone__list enquiry-country__list" role="listbox" aria-label="Country" hidden></ul>
-               </div>
-               <div class="enquiry-field enquiry-phone">
-                  <div class="enquiry-phone__code">
-                     <input type="hidden" name="countryCode" id="countryCode" value="+91">
-                     <button type="button" class="enquiry-phone__code-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryCodeList" aria-label="Country code, India +91">
-                        <img class="enquiry-phone__flag" src="~/Assets/images/flags/in.svg" alt="" width="22" height="16">
-                        <span class="enquiry-phone__code-value">+91</span>
-                     </button>
-                     <ul id="countryCodeList" class="enquiry-phone__list" role="listbox" aria-label="Country code" hidden></ul>
+            <div class="enquiry-form__columns">
+               <div class="enquiry-form__col">
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="name">Name</label>
+                     <input type="text" name="name" id="name" autocomplete="name" placeholder="Name*" required aria-required="true">
                   </div>
-                  <label class="enquiry-field__label" for="phone">Phone number</label>
-                  <input type="tel" name="phone" id="phone" autocomplete="tel-national" inputmode="tel" placeholder="Phone number">
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="streetAddress">Street Address 1</label>
+                     <input type="text" name="streetAddress" id="streetAddress" autocomplete="address-line1" placeholder="Street Address 1*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="city">City</label>
+                     <input type="text" name="city" id="city" autocomplete="address-level2" placeholder="City*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field enquiry-country">
+                     <label class="enquiry-field__label" for="country">Country</label>
+                     <input type="hidden" name="country" id="country" value="India">
+                     <button type="button" class="enquiry-country__btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryList" aria-label="Country, India">
+                        <span class="enquiry-country__value">India</span>
+                     </button>
+                     <ul id="countryList" class="enquiry-phone__list enquiry-country__list" role="listbox" aria-label="Country" hidden></ul>
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="fax">Fax</label>
+                     <input type="tel" name="fax" id="fax" autocomplete="fax" inputmode="tel" placeholder="Fax*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="email">Email</label>
+                     <input type="email" name="email" id="email" autocomplete="email" placeholder="Email*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="businessType">Business Type</label>
+                     <input type="text" name="businessType" id="businessType" placeholder="Business Type*" required aria-required="true">
+                  </div>
                </div>
-            </div>
-            <div class="enquiry-field enquiry-field--area">
-               <label class="enquiry-field__label" for="description">Description</label>
-               <textarea name="description" id="description" rows="4" placeholder="Description"></textarea>
+               <div class="enquiry-form__col">
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="companyName">Company Name</label>
+                     <input type="text" name="companyName" id="companyName" autocomplete="organization" placeholder="Company Name*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="state">State</label>
+                     <input type="text" name="state" id="state" autocomplete="address-level1" placeholder="State*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="phone">Phone</label>
+                     <input type="tel" name="phone" id="phone" autocomplete="tel" inputmode="tel" placeholder="Phone">
+                  </div>
+                  <div class="enquiry-field enquiry-phone">
+                     <div class="enquiry-phone__code">
+                        <input type="hidden" name="countryCode" id="countryCode" value="+91">
+                        <button type="button" class="enquiry-phone__code-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="countryCodeList" aria-label="Country code, India +91">
+                           <img class="enquiry-phone__flag" src="~/Assets/images/flags/in.svg" alt="" width="22" height="16">
+                           <span class="enquiry-phone__code-value">+91</span>
+                        </button>
+                        <ul id="countryCodeList" class="enquiry-phone__list" role="listbox" aria-label="Country code" hidden></ul>
+                     </div>
+                     <label class="enquiry-field__label" for="mobile">Mobile</label>
+                     <input type="tel" name="mobile" id="mobile" autocomplete="tel-national" inputmode="tel" placeholder="Mobile*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field enquiry-field--area">
+                     <label class="enquiry-field__label" for="enquiryDetails">Enquiry Details</label>
+                     <textarea name="enquiryDetails" id="enquiryDetails" rows="4" placeholder="Enquiry Details*" required aria-required="true"></textarea>
+                  </div>
+               </div>
             </div>
             <div class="enquiry-consent">
                <label class="enquiry-agree" for="acceptTerms">
@@ -129,10 +158,5 @@
 @section Scripts {
    <script src="~/Assets/js/enquiry-phone.js" asp-append-version="true"></script>
 }
-
-   
-
-
-  
 
 
