@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Headings over images sit far below the section start, so reveal on the heading.
     const trigger =
       bannerTrigger ||
-      (el.closest && el.closest("figcaption") ? el : section);
+      (el.closest && (el.closest("figcaption") || el.closest(".learningBand-caption") || el.closest(".common-media-caption")) ? el : section);
 
     gsap.set(el, TITLE_FROM);
 

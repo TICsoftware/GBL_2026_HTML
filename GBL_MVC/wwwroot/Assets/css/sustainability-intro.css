@@ -61,7 +61,7 @@
 .page-intro-mantra {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  column-gap: clamp(2rem, 4vw, 4.5rem);
+  column-gap: 0;
   align-items: stretch;
   width: 100%;
   margin: 0;
@@ -71,7 +71,7 @@
 .page-intro-mantra__quote {
   margin: 0;
   padding-right: clamp(1.5rem, 3vw, 3rem);
-  border-right: 1px solid rgba(40, 43, 49, 0.16);
+  border-right: 0;
   text-align: left;
   max-width: none;
   width: auto;
@@ -105,6 +105,8 @@
 .page-intro-mantra__copy {
   margin: 0;
   width: 100%;
+  padding-left: clamp(2rem, 4vw, 4.5rem);
+  border-left: 1px solid rgba(40, 43, 49, 0.16);
   font-size: var(--text-p, 1rem);
   line-height: 1.55;
   color: #4a4e55;
@@ -151,13 +153,17 @@
   .page-intro-mantra__quote {
     margin-bottom: 0;
     padding-right: 0;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0;
     border-right: 0;
-    border-bottom: 1px solid rgba(40, 43, 49, 0.16);
+    border-bottom: 0;
   }
 
   .page-intro-mantra__copy {
     margin: 0;
+    padding-left: 0;
+    padding-top: 1.5rem;
+    border-left: 0;
+    border-top: 1px solid rgba(40, 43, 49, 0.16);
     color: #4a4e55;
   }
 
@@ -591,25 +597,8 @@
   object-position: center;
 }
 
-.social-middle__media--caption {
-  margin-bottom: 1.25rem;
-}
 
-.social-middle__media--caption figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  padding: 2.5rem 1.25rem 1.25rem;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.72) 100%);
-}
 
-.social-middle__media--caption h2 {
-  margin: 0;
-  color: #fff;
-  font-weight: 600;
-}
 
 .social-middle__item + .social-middle__item {
   margin-top: 1.75rem;
