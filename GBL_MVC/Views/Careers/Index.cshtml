@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "Careers";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/careers-style.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER END-->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/industries-we-serve-desktop.webp">
+
+                  <!-- Tablet -->
+                  <source media="(min-width:992px)"
+                     srcset="~/Assets/images/banners/industries-we-serve-mob.webp">
+
+                  <!-- Mobile -->
+                  <img
+                     src="~/Assets/images/banners/industries-we-serve-desktop.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+           
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="max-w-4xl text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Industries we serve
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">
+                                 Home
+                              </a>
+                           </li>
+
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                              Industries we serve
+                           </li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>  
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--PAGE INTRO OUTER-->
+   <section class="relative overflow-hidden section-spacing page-intro-outer bg-gray">
+       <div class="container">
+         <div class="page-intro-inner intro-lg text-center">
+            <p>Godavari Biorefineries is a unique organisation where science, agriculture, industry and communities come together to create sustainable solutions for a better tomorrow. As part of the Somaiya Group, we are proud to build on a legacy of over eight decades, of innovation, integrity and creating value for society. Many of our people across generations have built long and fulfilling careers with us, reflecting a culture where trust, opportunity and shared purpose inspire lasting commitment. </p>
+            <p>Guided by our philosophy of Creating a Beautiful World, we believe that lasting progress begins with people –  their ideas, their commitment and their passion to make a difference.  At Godavari, you will have the opportunity to learn continuously, collaborate across disciplines and work on solutions that make industries more sustainable and communities more resilient. Every challenge you encounter is an opportunity to grow and every contribution you make has the potential to create a lasting impact.  </p>
+            <p>Behind every breakthrough is a team of enthusiastic people who bring expertise, curiosity, and purpose to everything they do. Whether you are a scientist, engineer, operator, researcher, business professional or just beginning your career, you will find an environment that encourages learning, rewards initiative and inspires innovation.</p>
+         </div>      
+      </div>
+   </section>
+   <!--PAGE INTRO OUTER END-->
+
+  
+   
+   <!--INDUSTRIES LIST-->
+
+    <!--INDUSTRIES LIST END-->
+
+
+@section Scripts {
+   <script src="~/Assets/js/industries-script.js" asp-append-version="true"></script>
+}
+
