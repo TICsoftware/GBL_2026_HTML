@@ -5,6 +5,7 @@
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/careers-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/learning-infographic.css" asp-append-version="true" />
 }
 
     <!-- HERO BANNER END-->
@@ -177,6 +178,51 @@
                </span>
             </a>
          </div>
+
+
+         @* INFOGRAPHIC SECTION *@
+         <div class="ld-flow" aria-label="Environmental performance">
+            <article class="ld-step ld-step--energy">
+               <div class="ld-step__frame">
+                  <img src="@Url.Content("~/Assets/images/g1.png")" alt="">
+                  <ul class="ld-step__copy">
+                     <li><span>84%</span> renewable energy consumption across operations</li>
+                     <li><span>3,40,908.86 GJ</span> output electricity exported to the grid</li>
+                     <li><span>10%</span> reduction in Scope 1 emissions and <span>5%</span> reduction in Scope 2 emissions in FY2025 over previous year</li>
+                  </ul>
+               </div>
+               <h3>Energy and emissions</h3>
+            </article>
+            <article class="ld-step ld-step--water">
+               <h3>Water management</h3>
+               <div class="ld-step__frame">
+                  <img src="@Url.Content("~/Assets/images/g2.png")" alt="">
+                  <ul class="ld-step__copy">
+                     <li>Zero Liquid Discharge at all operational sites</li>
+                     <li><span>78%</span> increase in rainwater harvesting in FY2025 over previous year</li>
+                     <li><span>~60%</span> of water recovered from sugarcane</li>
+                  </ul>
+               </div>
+            </article>
+            <article class="ld-step ld-step--waste">
+               <div class="ld-step__frame">
+                  <img src="@Url.Content("~/Assets/images/g3.png")" alt="">
+                  <ul class="ld-step__copy">
+                     <li><span>99%</span> waste redirected from disposal</li>
+                     <li><span>~100%</span> of diverted waste repurposed as fuel or the value-added products</li>
+                  </ul>
+               </div>
+               <h3>Waste management</h3>
+            </article>
+         </div>
+         @* INFOGRAPHIC SECTION END *@
+
+
+
       </div>
    </section>
+
+@section Scripts {
+   <script src="~/Assets/js/learning-infographic.js" asp-append-version="true"></script>
+}
 
