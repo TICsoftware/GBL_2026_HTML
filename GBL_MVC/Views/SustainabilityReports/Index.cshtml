@@ -1,14 +1,10 @@
 @{
-    ViewData["Title"] = "Carbon Light Circularity";
+    ViewData["Title"] = "Sustainability Reports";
 }
 
 @section Styles {
-   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />   
    <link rel="stylesheet" href="~/Assets/css/sustainability-intro.css" asp-append-version="true" />
-   <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
 }
 
     <!-- HERO BANNER END-->
@@ -20,11 +16,11 @@
                <picture>
                   <!-- Desktop -->
                   <source media="(min-width:1024px)"
-                     srcset="~/Assets/images/banners/carbon-light-circularity-banner.webp">                  
+                     srcset="~/Assets/images/banners/sustainability-reports-banner.webp">                  
 
                   <!-- Desktop -->
                   <img
-                     src="~/Assets/images/banners/carbon-light-circularity-banner.webp"
+                     src="~/Assets/images/banners/sustainability-reports-banner.webp"
                      alt=""
                      class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
                      loading="eager"
@@ -40,7 +36,7 @@
                <div class="container">
                   <div class="max-w-4xl text-left">
                      <h1 class="innerbanner-title text-h1 text-white title-animation">
-                        Carbon-light circularity
+                           Sustainability Reports
                      </h1>
 
                      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
@@ -62,7 +58,7 @@
                            <li class="text-white/60">/</li>
 
                            <li class="text-white">
-                              Carbon-light circularity
+                              Sustainability Reports
                            </li>
                         </ol>
                      </nav>
@@ -73,92 +69,66 @@
    </section>
     <!-- HERO BANNER END -->
 
-   <!--PAGE INTRO OUTER-->
-   <section class="relative overflow-hidden section-spacing page-intro-outer bg-gray">
-       <div class="container">
-         <div class="page-intro-inner intro-lg text-center">
-            <p>Creating a beautiful world based on a circular bio-based economy starts at home for us. Circularity is embedded in all our operations in line with the fundamental principles of regenerating natural systems, minimising waste, keeping materials in use through reuse and recovery, and responsible disposal of residual waste. We capture and transform effluents and by-products into valuable resource streams at every stage of the value chain from processing molasses into ethanol to using press mud from sugar manufacturing for organic fertilisers</p>
-         </div>      
-      </div>
-   </section>
-   <!--PAGE INTRO OUTER END-->
+  
 
-
-   <!--Carbon-light circularity list-->
-   <section class="carbonCircularity section-spacing">
+   <!--Sustainability Reports list-->
+   <section class="sustainabilityReportsList section-spacing bg-gray">
       <div class="container">
-         <div class="swiper carbonCircularity-cards">
-            <div class="swiper-wrapper">
-               <article class="swiper-slide carbonCircularity-card">
-                  <div class="carbonCircularity-card__media parallax-wrap">
-                     <img src="@Url.Content("~/Assets/images/banners/resource-circularity-banner.webp")" alt="Resource circularity" class="parallax-img">
-                  </div>
-                  <div class="carbonCircularity-card__body">
-                     <h3 class="text-h5">Resource Circularity</h3>
-                     <p>We believe it is our responsibility to protect the planet by conserving and recycling current and valuable resources. We rely on renewable energy from sugarcane residue to decarbonise our operations, reduce emissions, increase energy efficiency and lower our carbon footprint. We re-use 95% of our waste to generate resources.</p>
-                     <a href="#" class="site-btn site-btn--outline">
-                        <span class="site-btn__label">Learn more</span>
-                        <span class="site-btn__arrow" aria-hidden="true">
-                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </span>
-                     </a>
-                  </div>
-               </article>
-
-               <article class="swiper-slide carbonCircularity-card">
-                  <div class="carbonCircularity-card__media parallax-wrap">
-                     <img src="@Url.Content("~/Assets/images/banners/sustainability-banner.webp")" alt="Regenerative processes" class="parallax-img">
-                  </div>
-                  <div class="carbonCircularity-card__body">
-                     <h3 class="text-h5">Regenerative processes</h3>
-                     <p>At the same time, we work closely with small farmers to achieve a harmony of soil health, an increase in farmer incomes, and improve farm productivity to promote sustainable livelihoods for farmers.</p>
-                     <p>We recognise the importance of farmers as carbon sinks that absorb atmospheric carbon and the need to preserve biodiversity for climate stability, food security and the livelihood of millions. Hence, we seek to restore land and ecosystems through regeneration. These efforts are aligned with our one-stop belief in the strength of the sun, the soil and the small farmer to create a sustainable world.</p>
-                     <a href="#" class="site-btn site-btn--outline">
-                        <span class="site-btn__label">Learn more</span>
-                        <span class="site-btn__arrow" aria-hidden="true">
-                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </span>
-                     </a>
-                  </div>
-               </article>
-
-               <article class="swiper-slide carbonCircularity-card">
-                  <div class="carbonCircularity-card__media parallax-wrap">
-                     <img src="@Url.Content("~/Assets/images/banners/carbon-light-circularity-banner.webp")" alt="Circular products" class="parallax-img">
-                  </div>
-                  <div class="carbonCircularity-card__body">
-                     <h3 class="text-h5">Circular products</h3>
-                     <p>Our circular economy model is designed to close resource loops and minimise environmental impact. But our story doesn’t end there; we use science-based innovation to produce products that stay valuable when they are no longer waste.</p>
-                     <p>By embedding circularity — including low-carbon operations and the value chain — we seek to be at the forefront of promoting decarbonisation. We see this as the future of sustainable growth, protecting the long-term health of our planet and the welfare of our communities.</p>
-                     <a href="#" class="site-btn site-btn--outline">
-                        <span class="site-btn__label">Learn more</span>
-                        <span class="site-btn__arrow" aria-hidden="true">
-                           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </span>
-                     </a>
-                  </div>
-               </article>
-            </div>
-         </div>
-
-         <div class="carbonCircularity-controls">
-            <button type="button" class="carbonCircularity-nav carbonCircularity-nav--prev" aria-label="Previous card">
-               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="swiper-pagination carbonCircularity-pagination"></div>
-            <button type="button" class="carbonCircularity-nav carbonCircularity-nav--next" aria-label="Next card">
-               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-         </div>
+         <ul class="sustainabilityReportsList__grid card-list-items">
+            <li class="sustainabilityReportsList__card card-rise">
+               <div class="sustainabilityReportsList__media parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/sustainability-report-img1.webp")" alt="Creating a Beautiful World, Sustainability Report FY2024-25 cover" class="parallax-img">
+               </div>
+               <div class="sustainabilityReportsList__meta">
+                  <p class="sustainabilityReportsList__title">Sustainability Report 2024-25</p>
+                  <a href="#" class="sustainabilityReportsList__download" aria-label="Download Sustainability Report 2024-25">
+                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11M7.5 11.5 12 16l4.5-4.5M6 20h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+               </div>
+            </li>
+            <li class="sustainabilityReportsList__card card-rise">
+               <div class="sustainabilityReportsList__media parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/sustainability-report-img1.webp")" alt="Creating a Beautiful World, Sustainability Report FY2024-25 cover" class="parallax-img">
+               </div>
+               <div class="sustainabilityReportsList__meta">
+                  <p class="sustainabilityReportsList__title">Sustainability Report 2024-25</p>
+                  <a href="#" class="sustainabilityReportsList__download" aria-label="Download Sustainability Report 2024-25">
+                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11M7.5 11.5 12 16l4.5-4.5M6 20h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+               </div>
+            </li>
+            <li class="sustainabilityReportsList__card card-rise">
+               <div class="sustainabilityReportsList__media parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/sustainability-report-img1.webp")" alt="Creating a Beautiful World, Sustainability Report FY2024-25 cover" class="parallax-img">
+               </div>
+               <div class="sustainabilityReportsList__meta">
+                  <p class="sustainabilityReportsList__title">Sustainability Report 2024-25</p>
+                  <a href="#" class="sustainabilityReportsList__download" aria-label="Download Sustainability Report 2024-25">
+                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11M7.5 11.5 12 16l4.5-4.5M6 20h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+               </div>
+            </li>
+            <li class="sustainabilityReportsList__card card-rise">
+               <div class="sustainabilityReportsList__media parallax-wrap">
+                  <img src="@Url.Content("~/Assets/images/sustanability/sustainability-report-img1.webp")" alt="Creating a Beautiful World, Sustainability Report FY2024-25 cover" class="parallax-img">
+               </div>
+               <div class="sustainabilityReportsList__meta">
+                  <p class="sustainabilityReportsList__title">Sustainability Report 2024-25</p>
+                  <a href="#" class="sustainabilityReportsList__download" aria-label="Download Sustainability Report 2024-25">
+                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11M7.5 11.5 12 16l4.5-4.5M6 20h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+               </div>
+            </li>
+         </ul>
       </div>
    </section>
-   <!--Carbon-light circularity End-->
+   <!--Sustainability Reports End-->
 
 
   
 
 @section Scripts {
-   <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/card-animation.js" asp-append-version="true"></script>
    <script src="~/Assets/js/sustainability-intro.js" asp-append-version="true"></script>
 }
 
