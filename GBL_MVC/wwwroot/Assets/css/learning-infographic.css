@@ -103,7 +103,7 @@
 
 .ld-step {
   opacity: 0;
-  transform: translateY(1.25rem);
+  transform: translateX(-1.25rem);
 }
 
 .ld-step.is-inview {
