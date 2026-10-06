@@ -1,0 +1,165 @@
+@{
+    ViewData["Title"] = "Work with us";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/enquiry-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/careers-style.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER END-->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/Workwithus-desktop.webp">
+
+                  <!-- Tablet -->
+                  <source media="(min-width:992px)"
+                     srcset="~/Assets/images/banners/Workwithus-mob.webp">
+
+                  <!-- Mobile -->
+                  <img
+                     src="~/Assets/images/banners/Workwithus-desktop.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+           
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="max-w-4xl text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Work with us
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">
+                                 Home
+                              </a>
+                           </li>
+
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                               <a href="/" class="text-white/70 hover:text-white transition">  Careers </a>
+                           </li>
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                                 Work with us
+                           </li>
+
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>  
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--PAGE INTRO OUTER-->
+   <section class="relative overflow-hidden section-spacing page-intro-outer bg-gray">
+       <div class="container">
+         <div class="page-intro-inner intro-lg text-center">
+            <p>Even if there isn’t a role for you today, we’d love to hear from you. Share your resume and be considered for future opportunities that align with your experience, expertise and career aspirations.</p>
+         </div>      
+      </div>
+   </section>
+   <!--PAGE INTRO OUTER END-->
+
+   <section class="enquiry-section section-spacing">
+      <div class="container">
+         <form id="workWithUsForm" class="enquiry-form career-form" method="post" action="#" enctype="multipart/form-data">
+            <div class="enquiry-form__columns">
+               <div class="enquiry-form__col">
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="fullName">Full Name</label>
+                     <input type="text" name="fullName" id="fullName" autocomplete="name" placeholder="Full Name*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="email">Email</label>
+                     <input type="email" name="email" id="email" autocomplete="email" placeholder="Email*" required aria-required="true">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="expertise">Function / Area of expertise</label>
+                     <input type="text" name="expertise" id="expertise" autocomplete="organization-title" placeholder="Function / Area of expertise">
+                  </div>
+               </div>
+               <div class="enquiry-form__col">
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="address">Address</label>
+                     <input type="text" name="address" id="address" autocomplete="street-address" placeholder="Address">
+                  </div>
+                  <div class="enquiry-field">
+                     <label class="enquiry-field__label" for="designation">Designation</label>
+                     <input type="text" name="designation" id="designation" autocomplete="organization-title" placeholder="Designation">
+                  </div>
+                  <div class="enquiry-field career-field--file">
+                     <span class="enquiry-field__label" id="resumeLabel">Upload resume</span>
+                     <label class="career-file" for="resume">
+                        <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-labelledby="resumeLabel">
+                        <span class="career-file__icon" aria-hidden="true">
+                           <svg viewBox="0 0 24 24" fill="none"><path d="M8.5 12.5 14 7a3 3 0 0 1 4.2 4.2l-7.1 7.1a4.2 4.2 0 0 1-6-6l6.4-6.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span class="career-file__name" data-file-name>Upload resume</span>
+                     </label>
+                  </div>
+               </div>
+            </div>
+            <div class="enquiry-field enquiry-field--area">
+               <label class="enquiry-field__label" for="message">Message</label>
+               <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+            </div>
+            <div class="enquiry-recaptcha">
+               <label class="enquiry-recaptcha__box">
+                  <input type="checkbox" name="notRobot" id="notRobot" required aria-required="true">
+                  <span class="enquiry-recaptcha__label">I'm not a robot</span>
+                  <span class="enquiry-recaptcha__brand">
+                     <svg viewBox="0 0 64 64" aria-hidden="true">
+                        <path fill="#1c3aa9" d="M32 6a26 26 0 0 1 22.2 12.5l-7.2 4.2A17.2 17.2 0 0 0 32 14.8V6z"/>
+                        <path fill="#4285f4" d="M54.2 18.5A26 26 0 0 1 32 58v-8.8a17.2 17.2 0 0 0 14.8-25.2l7.4-5.5z"/>
+                        <path fill="#ababab" d="M32 58A26 26 0 0 1 9.8 18.5l7.4 4.3A17.2 17.2 0 0 0 32 49.2V58z"/>
+                        <path fill="#1a73e8" d="M12.4 16.2 19.6 21A17.2 17.2 0 0 1 32 14.8V6a26 26 0 0 0-19.6 10.2z"/>
+                     </svg>
+                     <span>reCAPTCHA</span>
+                  </span>
+               </label>
+            </div>
+            <button type="submit" class="site-btn site-btn--fill">
+               <span class="site-btn__label">Submit</span>
+               <span class="site-btn__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </span>
+            </button>
+         </form>
+      </div>
+   </section>
+
+@section Scripts {
+   <script>
+      (function () {
+         var input = document.getElementById("resume");
+         var name = document.querySelector("[data-file-name]");
+         if (!input || !name) return;
+         input.addEventListener("change", function () {
+            name.textContent = (input.files && input.files[0]) ? input.files[0].name : "Upload resume";
+         });
+      })();
+   </script>
+}
+

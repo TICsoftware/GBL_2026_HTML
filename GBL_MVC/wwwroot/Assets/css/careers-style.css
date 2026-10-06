@@ -374,3 +374,54 @@
   height: 1.25rem;
   object-fit: contain;
 }
+
+/* Work with us — resume pill inside the enquiry form */
+.career-field--file {
+  position: relative;
+}
+
+.career-file {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 2.85rem;
+  margin: 0;
+  padding: 0.55rem 1.25rem;
+  border: 1px solid rgba(40, 43, 49, 0.18);
+  border-radius: 999px;
+  background: var(--color-white, #fff);
+  cursor: pointer;
+}
+
+.career-file input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.career-file__icon {
+  display: inline-flex;
+  color: var(--color-secondary, #67815a);
+}
+
+.career-file__icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.career-file__name {
+  color: var(--ink-soft, #6b6664);
+  font-size: var(--text-p, 1rem);
+  line-height: 1.2;
+}
+
+.career-file:focus-within {
+  outline: 2px solid var(--color-secondary, #67815a);
+  outline-offset: 2px;
+}
