@@ -78,6 +78,15 @@ Title left | copy + CTA right
   color: #ccc;
 }
 
+
+.breadcrumb-nav,
+.breadcrumb-nav ol,
+.breadcrumb-nav li,
+.breadcrumb-nav a {
+  font-size: 14px;
+}
+
+
 @media (min-width: 1081px) {
   .section-intro {
     flex-wrap: nowrap;

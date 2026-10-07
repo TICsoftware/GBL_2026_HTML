@@ -62,7 +62,7 @@ Mobile: below 1180px
 
 .industry-product-grid {
   display: grid;
-  gap: clamp(1.25rem, 2vw, 1.75rem);
+  gap: clamp(1.25rem, 2vw, 1.25rem);
 }
 
 .industry-product-card {
