@@ -387,12 +387,19 @@
 
 .rc-energy__split {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.82fr) minmax(0, 1.45fr);
-  gap: 1.5rem 2.25rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2.5rem;
+  align-items: stretch;
+}
+
+.rc-energy__split > .rc-energy__points {
+  margin: 0;
 }
 
 .rc-energy__aside {
+  display: flex;
+  align-items: center;
+  height: 100%;
   margin: 0;
   padding: 1.65rem 1.45rem;
   background: var(--color-primary, #282b31);
