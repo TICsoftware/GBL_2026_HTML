@@ -78,6 +78,15 @@ Title left | copy + CTA right
   color: #ccc;
 }
 
+
+.breadcrumb-nav,
+.breadcrumb-nav ol,
+.breadcrumb-nav li,
+.breadcrumb-nav a {
+  font-size: 14px;
+}
+
+
 @media (min-width: 1081px) {
   .section-intro {
     flex-wrap: nowrap;
@@ -727,6 +736,32 @@ IMAGE card COMMON CSS
 .image-card  figcaption{ font-size: var(--text-20);}
 
 
+
+@media all and (max-width: 1179px) {
+  
+  .breadcrumb-nav ol {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 0.2rem;
+    max-width: 100%;
+  }
+
+  .breadcrumb-nav li {
+    white-space: nowrap;
+  }
+
+  .breadcrumb-nav li:not(:has(a)):not(:last-child) {
+    display: none;
+  }
+
+  .breadcrumb-nav li:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.35rem;
+  }
+
+  
+
+}
 
 
 /* Image on the right, content on the left â€” no HTML reorder */
