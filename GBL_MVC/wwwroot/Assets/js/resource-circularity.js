@@ -7,70 +7,6 @@
   var LINK_GREEN = "#5f8a3c";
   var STACKED_MQ = "(max-width: 1100px)";
 
-  var COLORS = {
-    other: "#1a3d7c",
-    wind: "#7eb6e6",
-    gas: "#e7dcc0",
-    biofuels: "#e8772a",
-    hydro: "#c6c84a",
-    solar: "#5fa03a",
-    nuclear: "#2d6a3e",
-    oil: "#1a6b62",
-    coal: "#1a2e24",
-    hsd: "#1a3d7c",
-    lpg: "#14685c",
-    da: "#7a3e9a",
-    solarG: "#8fbf55",
-    bagasse: "#ddd6a8",
-    petrol: "#3d7a32",
-    coalG: "#163d2c",
-    grid: "#d5e0a8"
-  };
-
-  var CHARTS = {
-    world: {
-      start: 56,
-      slices: [
-        { key: "gas", value: 24, label: "24%" },
-        { key: "coal", value: 32 },
-        { key: "oil", value: 11 },
-        { key: "nuclear", value: 8 },
-        { key: "other", value: 3 },
-        { key: "wind", value: 4 },
-        { key: "biofuels", value: 4 },
-        { key: "hydro", value: 6 },
-        { key: "solar", value: 8 }
-      ]
-    },
-    india: {
-      start: -18,
-      slices: [
-        { key: "gas", value: 57, label: "57%" },
-        { key: "coal", value: 15 },
-        { key: "oil", value: 6 },
-        { key: "nuclear", value: 2.5 },
-        { key: "other", value: 2 },
-        { key: "wind", value: 3.5 },
-        { key: "biofuels", value: 3 },
-        { key: "hydro", value: 4 },
-        { key: "solar", value: 7 }
-      ]
-    },
-    gbl: {
-      start: 292,
-      slices: [
-        { key: "bagasse", value: 83.6, label: "83.6%" },
-        { key: "coalG", value: 13.4 },
-        { key: "petrol", value: 0.7 },
-        { key: "hsd", value: 0.5 },
-        { key: "lpg", value: 0.4 },
-        { key: "da", value: 0.4 },
-        { key: "solarG", value: 0.5 },
-        { key: "grid", value: 0.5 }
-      ]
-    }
-  };
-
   function init() {
     drawLinks();
     paintCharts();
@@ -171,9 +107,10 @@
   function paintCharts() {
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll("[data-rc-chart]").forEach(function (figure) {
-      var spec = CHARTS[figure.getAttribute("data-rc-chart")];
-      if (!spec) return;
-      paintLegend(figure);
+      var spec = readChart(figure);
+      if (!spec.slices.length) return;
+      paintLegend(figure, spec);
+      bindHover(figure);
       if (reduce) {
         renderDonut(figure, spec, 1);
         return;
@@ -195,11 +132,101 @@
     });
   }
 
-  function paintLegend(figure) {
-    figure.querySelectorAll(".rc-chart__legend [data-key]").forEach(function (item) {
-      var color = COLORS[item.getAttribute("data-key")];
-      if (color) item.style.setProperty("--swatch", color);
+  function readChart(figure) {
+    var items = Array.prototype.slice.call(
+      figure.querySelectorAll(".rc-chart__legend [data-key][data-value]")
+    );
+    items.sort(function (a, b) {
+      return (Number(a.getAttribute("data-draw")) || 0) - (Number(b.getAttribute("data-draw")) || 0);
     });
+    return {
+      start: Number(figure.getAttribute("data-start")) || 0,
+      slices: items.map(function (item) {
+        return {
+          key: item.getAttribute("data-key"),
+          value: Number(item.getAttribute("data-value")),
+          color: item.getAttribute("data-color") || "#ccc"
+        };
+      })
+    };
+  }
+
+  function paintLegend(figure, spec) {
+    var shares = {};
+    var colors = {};
+    spec.slices.forEach(function (slice) {
+      shares[slice.key] = formatShare(slice.value);
+      colors[slice.key] = slice.color;
+    });
+    figure.querySelectorAll(".rc-chart__legend [data-key]").forEach(function (item) {
+      var key = item.getAttribute("data-key");
+      if (colors[key]) item.style.setProperty("--swatch", colors[key]);
+      var name = item.querySelector("span");
+      if (name && shares[key]) {
+        item.setAttribute("aria-label", name.textContent + ", " + shares[key]);
+      }
+    });
+  }
+
+  function formatShare(value) {
+    var rounded = Math.round(value * 10) / 10;
+    var text = String(rounded);
+    if (text.indexOf(".") !== -1) text = text.replace(/\.0$/, "");
+    return text + "%";
+  }
+
+  function bindHover(figure) {
+    if (figure.getAttribute("data-hover") === "1") return;
+    figure.setAttribute("data-hover", "1");
+
+    function keyFrom(target) {
+      var node = target && target.closest ? target.closest("[data-key]") : null;
+      return node ? node.getAttribute("data-key") : "";
+    }
+
+    function show(event) {
+      var key = keyFrom(event.target);
+      if (!key || figure.getAttribute("data-active") === key) return;
+      figure.setAttribute("data-active", key);
+      placeHoverLabel(figure);
+    }
+
+    function hide(event) {
+      var key = keyFrom(event.target);
+      if (!key) return;
+      var next = event.relatedTarget && event.relatedTarget.closest
+        ? event.relatedTarget.closest("[data-key]")
+        : null;
+      if (next && figure.contains(next)) return;
+      if (figure.getAttribute("data-active") !== key) return;
+      figure.removeAttribute("data-active");
+      placeHoverLabel(figure);
+    }
+
+    [".rc-chart__slices", ".rc-chart__legend"].forEach(function (selector) {
+      var root = figure.querySelector(selector);
+      if (!root) return;
+      root.addEventListener("mouseover", show);
+      root.addEventListener("mouseout", hide);
+    });
+  }
+
+  function placeHoverLabel(figure) {
+    var label = figure.querySelector(".rc-chart__value");
+    if (!label) return;
+    var key = figure.getAttribute("data-active");
+    var path = key ? figure.querySelector('.rc-chart__slices path[data-key="' + key + '"]') : null;
+    if (!path) {
+      label.textContent = "";
+      figure.classList.remove("is-hover");
+      return;
+    }
+    var point = polar(100, 100, 78, parseFloat(path.getAttribute("data-mid")));
+    label.setAttribute("x", point.x.toFixed(2));
+    label.setAttribute("y", point.y.toFixed(2));
+    label.setAttribute("dominant-baseline", "central");
+    label.textContent = path.getAttribute("data-label") || "";
+    figure.classList.add("is-hover");
   }
 
   function animateDonut(figure, spec) {
@@ -224,7 +251,6 @@
 
     var budget = Math.max(0, Math.min(1, progress)) * 360;
     var angle = spec.start;
-    var highlight = null;
 
     spec.slices.forEach(function (slice) {
       var full = (slice.value / 100) * 360;
@@ -233,29 +259,17 @@
       if (sweep > 0.15) {
         var path = document.createElementNS(SVG_NS, "path");
         path.setAttribute("d", ringSlice(100, 100, 52, 96, angle, angle + sweep));
-        path.setAttribute("fill", COLORS[slice.key] || "#ccc");
+        path.setAttribute("fill", slice.color || "#ccc");
+        path.setAttribute("data-key", slice.key);
+        path.setAttribute("data-mid", String(angle + sweep / 2));
+        path.setAttribute("data-label", formatShare(slice.value));
         group.appendChild(path);
-      }
-      if (slice.label && progress > 0.98) {
-        highlight = { mid: angle + full / 2, text: slice.label };
       }
       angle += sweep > 0 ? sweep : 0;
       if (budget <= 0) return;
     });
 
-    if (label) {
-      if (highlight) {
-        var point = polar(100, 100, 78, highlight.mid);
-        label.setAttribute("x", point.x.toFixed(2));
-        label.setAttribute("y", point.y.toFixed(2));
-        label.setAttribute("dominant-baseline", "central");
-        label.textContent = highlight.text;
-        figure.classList.add("is-drawn");
-      } else {
-        label.textContent = "";
-        figure.classList.remove("is-drawn");
-      }
-    }
+    if (label) placeHoverLabel(figure);
   }
 
   function polar(cx, cy, r, deg) {
@@ -287,3 +301,32 @@
     init();
   }
 })();
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.querySelector(".ld-flow");
+  if (!root) return;
+
+  var steps = root.querySelectorAll(".ld-step");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function showAll() {
+    steps.forEach(function (step) { step.classList.add("is-inview"); });
+  }
+
+  if (reduce || !("IntersectionObserver" in window)) {
+    showAll();
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) entry.target.classList.add("is-inview");
+      else entry.target.classList.remove("is-inview");
+    });
+  }, { threshold: 0 });
+
+  steps.forEach(function (step) { observer.observe(step); });
+});

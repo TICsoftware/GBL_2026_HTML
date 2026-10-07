@@ -23,7 +23,7 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
   }
 }
 
-.page-intro-inner{ max-width:min(100vw, 1100px); margin: 0 auto; width: 100%; text-align:left;}
+.page-intro-inner{ max-width:min(75vw, 1100px); margin: 0 auto; width: 100%; text-align:left;}
 .page-intro-inner p{
   font-size: var(--text-intro);
   color: #B2B2B2;
@@ -43,7 +43,7 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
 /* Social — key principles */
 .middle-container .container {
   width: 100%;
-  max-width: min(100vw, 1100px);
+  max-width: min(75vw, 1100px);
   margin-inline: auto;
 }
 
@@ -138,4 +138,6 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
 
 
   .page-intro-inner{  width: 100%;}
+
+  .page-intro-inner, .middle-container .container{ max-width:min(100vw, 1100px);}
 }
