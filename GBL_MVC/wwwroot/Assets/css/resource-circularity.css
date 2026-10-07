@@ -477,9 +477,9 @@
   flex: 0 0 auto;
 }
 
-.ld-step--energy { width: 34%; }
-.ld-step--water { width: 33%; margin-top: 0.15rem; }
-.ld-step--waste { width: 28%; }
+.ld-step--energy { width: 35%; }
+.ld-step--water { width: 34%; margin-top: 0.15rem; }
+.ld-step--waste { width: 26.5%; }
 
 .ld-step__frame {
   position: relative;
@@ -492,9 +492,9 @@
 }
 
 .ld-step h3 {
-  margin: 0.65rem 0 0;
+  margin: 0rem 0 0;
   color: var(--color-primary, #282b31);
-  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-size: clamp(1.25rem, 1.35vw, 1.25rem);
   font-weight: 700;
   line-height: 1.3;
 }
@@ -532,7 +532,7 @@
   position: relative;
   margin: 0 0 0.4rem;
   padding-left: 0.75rem;
-  font-size: clamp(0.90rem, 0.72vw, 1rem);
+  font-size: clamp(1rem, 0.72vw, 1rem);
   line-height: 1.35;
 }
 
@@ -548,8 +548,8 @@
 }
 
 .ld-step--energy .ld-step__copy {
-  left: 8%;
-  right: 32%;
+  left: 6%;
+  right: 27%;
   top: 40%;
 }
 
@@ -564,7 +564,7 @@
   right: 12%;
   top: 40%;
 }
-.ld-step__copy li span{font-weight: 700;}
+.ld-step__copy li span{font-weight: 700; font-size:var(--text-20);}
 
 .ld-step {
   opacity: 0;
@@ -585,6 +585,47 @@
   }
 }
 
+/* 150% zoom — 1920×1080 → ~1280×720 */
+@media screen and (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 1.5),
+  screen and (min-width: 1025px) and (min-resolution: 144dpi) {
+  .ld-step h3 {
+    font-size: 1rem;
+  }
+
+  .ld-step__copy li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.65rem;
+    font-size: 0.75rem;
+    line-height: 1.28;
+  }
+
+  .ld-step--energy .ld-step__copy {
+    top: 37%;
+    right: 30%;
+  }
+
+  .ld-step--water .ld-step__copy {
+    top: 8%;
+    right: 30%;
+  }
+
+  .ld-step--waste .ld-step__copy {
+    top: 38%;
+    right: 14%;
+  }
+
+  .ld-step--energy h3,
+  .ld-step--water h3 {
+    left: calc(50% - 108px);
+  }
+
+  .ld-step--waste h3 {
+    left: calc(50% - 72px);
+  }
+
+    .ld-step__copy li span{ font-size:0.825rem;}
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ld-step {
     opacity: 1;
@@ -599,9 +640,10 @@
 @media (max-width: 767px) {
   .ld-flow {
     flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    overflow: hidden;
+    align-items: stretch;
+    gap: 2.75rem;
+    overflow: visible;
+    padding: 0.5rem 0rem 0.5rem 0;
   }
 
   .ld-step--water.is-inview,
@@ -612,6 +654,75 @@
   .ld-step--energy,
   .ld-step--water,
   .ld-step--waste {
-    width: min(100%, 26rem);
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
+
+  .ld-step--energy { --ld-line: #66815a; }
+  .ld-step--water { --ld-line: #cde458; }
+  .ld-step--waste { --ld-line: #687e62; }
+
+  .ld-step__frame {
+    position: relative;
+    order: 1;
+    margin-top: 4.25rem;
+    border: 2px solid var(--ld-line);
+    border-radius: 26px;
+    padding: 4rem 1.05rem 1.05rem;
+  }
+
+  .ld-step h3,
+  .ld-step--energy h3,
+  .ld-step--water h3,
+  .ld-step--waste h3 {
+    position: static;
+    left: auto;
+    order: -1;
+    margin: 0 0 0.35rem;
+    text-align: left;
+  }
+
+  .ld-step__copy {
+    position: static;
+  }
+
+  .ld-step__copy li {
+    font-size: 1rem;
+    margin-bottom:1rem;
+  }
+
+  .ld-step img {
+    position: absolute;
+    left: 50%;
+    z-index: 2;
+    width: 112px;
+    height: 112px;
+    max-width: none;
+    border-radius: 50%;
+    object-fit: none;
+    background: #fff;
+    box-shadow: 7px 10px 16px rgba(40, 43, 49, 0.16);
+    border: 6px solid var(--ld-line);
+  }
+
+  .ld-step--energy img,
+  .ld-step--water img,
+  .ld-step--waste img {
+    top: 0;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .ld-step--energy img { object-position: -110px -25px; }
+  .ld-step--water img { object-position: -100px -272px; }
+  .ld-step--waste img { object-position: -100px -25px; }
+
+  
+  .ld-step--water {
+    overflow: visible;
+  }
+
+
 }
