@@ -76,6 +76,7 @@ Mobile: below 1180px
   overflow: hidden;
   position: relative;
   aspect-ratio: 16 / 10;
+  background: var(--color-gray, #f4f4f4);
 }
 
 .industry-product-card__media img {
