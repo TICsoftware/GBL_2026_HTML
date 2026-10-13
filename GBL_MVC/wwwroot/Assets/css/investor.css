@@ -406,9 +406,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 420px;
+  aspect-ratio: 1922 / 674;
+  min-height: 0;
   overflow: hidden;
   color: #fff;
+  box-sizing: border-box;
+}
+
+.corporateGovernance.section-spacing {
+  padding-block: clamp(1.25rem, 2.4vw, 3rem);
 }
 
 .cg-bg {
@@ -421,7 +427,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right center;
+  object-position: center center;
 }
 
 .corporateGovernance .container {
@@ -430,7 +436,7 @@
 }
 
 .cg-panel {
-  width: min(100%, 34rem);
+  width: min(32rem, 38%);
 }
 
 .corporateGovernance .text-h2 {
@@ -457,8 +463,7 @@
   background: rgba(48, 51, 56, 0.82);
   color: #fff;
   font-size: var(--text-20, 1.25rem);
-  font-weight: 600;
-  line-height: 1.3;
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -471,9 +476,25 @@
   color: #fff;
 }
 
+@media (max-width: 1100px) {
+  .cg-panel {
+    width: min(26rem, 46%);
+  }
+
+  .cg-list a {
+    min-height: 3.4rem;
+    padding: 0.7rem 0.9rem;
+  }
+}
+
 @media (max-width: 800px) {
   .corporateGovernance {
+    aspect-ratio: auto;
     min-height: 0;
+  }
+
+  .cg-bg img {
+    object-position: 72% center;
   }
 
   .cg-bg::after {
