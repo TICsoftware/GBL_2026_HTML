@@ -421,7 +421,7 @@ with certificates stacked under it, so the panel does not stretch.
 }
 
 .technical-safety-grid .tech-overview-table tr:first-child th,
-.technical-safety-grid .tech-overview-table tr:first-child td {
+.technical-safety-grid .tech-overview-table tr th{
   background: var(--color-gray, #f4f4f4);
 }
 
@@ -602,9 +602,9 @@ a.product-cert-item:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 1.35rem;
-  width: 1.35rem;
-  height: 1.35rem;
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
   color: var(--color-secondary, #67815a);
 }
 

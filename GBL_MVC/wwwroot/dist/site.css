@@ -282,11 +282,17 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
   .top-50 {
     top: calc(var(--spacing) * 50);
   }
   .top-100 {
     top: calc(var(--spacing) * 100);
+  }
+  .right-2 {
+    right: calc(var(--spacing) * 2);
   }
   .right-5 {
     right: calc(var(--spacing) * 5);
@@ -383,6 +389,9 @@
   }
   .col-auto {
     grid-column: auto;
+  }
+  .row-0 {
+    grid-row: 0;
   }
   .float-end {
     float: inline-end;
