@@ -390,9 +390,6 @@
   .col-auto {
     grid-column: auto;
   }
-  .row-0 {
-    grid-row: 0;
-  }
   .float-end {
     float: inline-end;
   }
