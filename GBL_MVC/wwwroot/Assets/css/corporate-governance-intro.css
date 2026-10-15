@@ -64,6 +64,46 @@
   margin: 0 0 1.6rem;
 }
 
+.fh-year-filter {
+  padding-block: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.fh-year-filter .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+}
+
+.fh-year-filter__label {
+  margin: 0;
+  color: #2b2b2b;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.fh-year-filter .cselect-trigger,
+.fh-year-filter .cselect-native {
+  min-width: 12.5rem;
+}
+
+.fh-year-filter__empty {
+  margin: 0 0 1.5rem;
+  color: #565b65;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.fh-year-filter__empty[hidden] {
+  display: none;
+}
+
+.cg-docs__grid > [hidden] {
+  display: none;
+}
+
 .cg-docs__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -206,6 +246,11 @@
 }
 
 @media (max-width: 640px) {
+  .fh-year-filter .container {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
   .cg-jump__track {
     display: flex;
     align-items: center;
