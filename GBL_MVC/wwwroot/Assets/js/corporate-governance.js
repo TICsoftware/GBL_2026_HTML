@@ -3,7 +3,31 @@
  * currently under the bar marked active while scrolling.
  */
 (function () {
+  function initYearFilter() {
+    var select = document.getElementById("fh-year");
+    var grid = document.querySelector(".cg-docs__grid");
+    if (!select || !grid) return;
+
+    var items = grid.querySelectorAll("[data-year]");
+    var empty = document.querySelector(".fh-year-filter__empty");
+
+    function apply() {
+      var year = select.value;
+      var visible = 0;
+      items.forEach(function (item) {
+        var show = item.getAttribute("data-year") === year;
+        item.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (empty) empty.hidden = visible > 0;
+    }
+
+    select.addEventListener("change", apply);
+    apply();
+  }
+
   function init() {
+    initYearFilter();
     var bar = document.querySelector(".cg-jump");
     var sentinel = document.querySelector(".cg-jump-sentinel");
     var sections = Array.prototype.map.call(document.querySelectorAll(".cg-jump__btn"), function (link) {

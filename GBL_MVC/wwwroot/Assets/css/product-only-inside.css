@@ -1,4 +1,15 @@
 /**=====================================
+PRODUCT INSIDE — header
+The hero is light gray, so the shared inner-page white nav
+(meant for dark banners) is unreadable until the bar compacts.
+=====================================**/
+@media (min-width: 1200px) {
+  .site-header--inner:not(.is-compact) .site-header__bar {
+    color: var(--header-ink, #333333);
+  }
+}
+
+/**=====================================
 PRODUCT INSIDE — split banner
 .product-inside-banner-outer
 =====================================**/
