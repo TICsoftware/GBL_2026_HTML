@@ -313,6 +313,7 @@
   .cg-committees,
   .cg-committee__cols {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .cg-committee--wide {

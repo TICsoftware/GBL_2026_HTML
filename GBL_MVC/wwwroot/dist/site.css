@@ -26,6 +26,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-body: 'uni_neueregular', sans-serif;
+    --font-uniNeue: 'uni_neueregular', sans-serif;
     --font-uniNeueRegular: 'uni_neueregular', sans-serif;
     --font-uniNeueBold: 'uni_neuebold', sans-serif;
     --text-h1: clamp(32px, calc(1.65rem + 2.82vw), 70px);
