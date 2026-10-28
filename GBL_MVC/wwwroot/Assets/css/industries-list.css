@@ -10,6 +10,20 @@ Mobile: below 1180px
   align-items: start;
 }
 
+.industries-list > .industry-card[hidden] {
+  display: none !important;
+}
+
+.industries-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.industries-load-more[hidden] {
+  display: none !important;
+}
+
 .industry-card {
   position: relative;
   display: flex;
@@ -199,8 +213,8 @@ Mobile: below 1180px
   }
 
   .industry-card__details-inner p {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: inherit;
+    line-clamp: inherit;
   }
 }
 
