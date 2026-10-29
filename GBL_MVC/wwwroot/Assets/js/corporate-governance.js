@@ -3,31 +3,84 @@
  * currently under the bar marked active while scrolling.
  */
 (function () {
-  function initYearFilter() {
-    var select = document.getElementById("fh-year");
-    var grid = document.querySelector(".cg-docs__grid");
-    if (!select || !grid) return;
+  function initCardFill() {
+    function bind(selector) {
+      document.querySelectorAll(selector).forEach(function (card) {
+        function placeFill(e) {
+          var rect = card.getBoundingClientRect();
+          var x = e ? e.clientX - rect.left : rect.width / 2;
+          var y = e ? e.clientY - rect.top : rect.height / 2;
+          x = Math.min(Math.max(x, 0), rect.width);
+          y = Math.min(Math.max(y, 0), rect.height);
+          var radius = Math.ceil(Math.hypot(Math.max(x, rect.width - x), Math.max(y, rect.height - y))) + 16;
+          card.style.setProperty("--hx", x + "px");
+          card.style.setProperty("--hy", y + "px");
+          card.style.setProperty("--hr", radius + "px");
+        }
 
+        placeFill(null);
+        card.addEventListener("mouseenter", function (e) {
+          placeFill(e);
+          card.classList.add("is-filled");
+        });
+        card.addEventListener("mouseleave", function () {
+          card.classList.remove("is-filled");
+        });
+      });
+    }
+
+    bind(".cg-doc");
+  }
+
+  function bindYearFilter(select, grid, empty) {
+    if (!select || !grid) return;
     var items = grid.querySelectorAll("[data-year]");
-    var empty = document.querySelector(".fh-year-filter__empty");
 
     function apply() {
       var year = select.value;
       var visible = 0;
       items.forEach(function (item) {
-        var show = item.getAttribute("data-year") === year;
+        var years = (item.getAttribute("data-year") || "").split(/\s*,\s*/);
+        var show = years.indexOf(year) !== -1;
         item.hidden = !show;
-        if (show) visible += 1;
+        if (show) {
+          visible += 1;
+          if (typeof gsap !== "undefined") {
+            gsap.set(item, { clearProps: "transform,opacity,visibility" });
+          }
+        }
       });
       if (empty) empty.hidden = visible > 0;
+      if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
     }
 
     select.addEventListener("change", apply);
     apply();
   }
 
+  function initYearFilter() {
+    var sections = document.querySelectorAll("[data-year-section]");
+    if (sections.length) {
+      sections.forEach(function (section) {
+        bindYearFilter(
+          section.querySelector("[data-year-filter]"),
+          section.querySelector(".cg-docs__grid, .cg-committees"),
+          section.querySelector(".fh-year-filter__empty")
+        );
+      });
+      return;
+    }
+
+    bindYearFilter(
+      document.getElementById("fh-year"),
+      document.querySelector(".cg-docs__grid"),
+      document.querySelector(".fh-year-filter__empty")
+    );
+  }
+
   function init() {
     initYearFilter();
+    initCardFill();
     var bar = document.querySelector(".cg-jump");
     var sentinel = document.querySelector(".cg-jump-sentinel");
     var sections = Array.prototype.map.call(document.querySelectorAll(".cg-jump__btn"), function (link) {

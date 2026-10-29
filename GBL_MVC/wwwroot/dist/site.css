@@ -787,12 +787,6 @@
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
-  .rounded-md {
-    border-radius: var(--radius-md);
-  }
-  .rounded-sm {
-    border-radius: var(--radius-sm);
-  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -1040,9 +1034,6 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-20 {
-    font-size: var(--text-20);
-  }
   .text-h1 {
     font-size: var(--text-h1);
   }
@@ -1284,8 +1275,7 @@ body {
 }
 @layer base {
   h1, h2, h3, h4, h5 {
-    font-weight: 700;
-    font-family: var(--font-body);
+    font-family: var(--font-uniNeueBold);
     color: var(--color-primary);
     line-height: 1.25;
     margin-bottom: 1rem;

@@ -65,6 +65,15 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
   margin-bottom: clamp(1.25rem, 3vw, 1.25rem);
 }
 
+/* Opening band: drop the extra top gap. Later bands keep the margin above. */
+.middle-container:has(> .middle-container-inner > .common-media-section:first-child) {
+  padding-top: 80px;
+}
+
+.middle-container .middle-container-inner > .common-media-section:first-child {
+  margin-top: 0;
+}
+
 
 .common-media-section > .parallax-wrap {
   position: absolute;
@@ -146,6 +155,31 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
   margin-top: 0.15rem;
   flex: 0 0 auto;
   object-fit: contain;
+}
+
+
+
+.technical-Safety-outer .tech-overview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.technical-Safety-outer .tech-overview table th,
+.technical-Safety-outer .tech-overview table td {
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  font-size: var(--text-p);
+  vertical-align: top;
+}
+
+.technical-Safety-outer .tech-overview table thead th,
+.technical-Safety-outer .tech-overview table tr:first-child th {
+  background: var(--color-gray, #f4f4f4);
+  font-weight: 700;
+}
+
+.technical-Safety-outer .tech-overview table tbody td {
+  border-bottom: 1px solid rgba(40, 43, 49, 0.12);
 }
 
 
