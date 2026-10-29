@@ -176,11 +176,11 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: clamp(80px, 16%, 280px);
+  width: clamp(80px, 10%, 280px);
   background: linear-gradient(
     to right,
     rgba(var(--ms-fade), 0) 0%,
-    rgba(var(--ms-fade), 0.55) 55%,
+    rgba(var(--ms-fade), 0.55) 65%,
     rgba(var(--ms-fade), 0.92) 100%
   );
   pointer-events: none;
@@ -363,7 +363,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 4px;
+  bottom: 3px;
   height: 1px;
   background-color: var(--title-grey);
   opacity: 0.6;
@@ -373,13 +373,14 @@
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 2px;
+  bottom: 1px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: var(--title-grey);
   transform: translateX(-50%);
   transition: background-color 0.3s ease, transform 0.3s var(--ease);
+  z-index: 123;
 }
 .milestones-year:hover {
   color: var(--color-gray-dark);
@@ -389,10 +390,257 @@
   color: var(--color-secondary);
 }
 .milestones-year.is-active::after {
-  background-color: var(--color-secondary);
+  background-color: #ffff66;;
   transform: translateX(-50%) scale(1.4);
 }
 
+
+/* =========================================================
+   MILESTONES – ACTIVE YEAR, CONNECTOR, KNOBS + PROGRESS
+   Replace the earlier milestones-active-year CSS in
+   ~/Assets/css/our-legacy.css with this.
+   Your existing horizontal line and dots are not touched:
+   the knobs sit on top of them, and the gradient progress
+   line runs over the grey line.
+
+   --ms-lift        how far the active year moves up
+   --ms-line-gap    gap between year text and the horizontal line
+   --ms-accent      active year text + connector colour
+   --ms-start       start knob / gradient start colour
+   --ms-mid         gradient middle colour
+   --ms-end         active knob / gradient end colour
+   --ms-knob        knob diameter
+========================================================= */
+.milestones-timeline {
+  --ms-lift: 8px;
+  --ms-line-gap: 14px;
+  --ms-accent: #0f4d24;   /* deep forest green (footer)          */
+  --ms-start: #b5cf3a;    /* leaf lime-yellow (Godavari logo)    */
+  --ms-mid: #2f8f2f;      /* bright green (footer highlight)     */
+  --ms-end: #0f4d24;      /* deep forest green                   */
+  --ms-knob: 26px;
+}
+
+.milestones-years {
+  position: relative;
+  padding-top: 10px;                                 /* room for the lift */
+  padding-bottom: calc(var(--ms-knob) / 2 + 10px);   /* room for knob + shadow */
+}
+
+/* ---------- Year label ---------- */
+.milestones-year {
+  text-align: center;
+}
+
+.milestones-year__label {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  transition: transform .3s ease, color .3s ease;
+}
+
+.milestones-year.is-active .milestones-year__label {
+  transform: translateY(calc(var(--ms-lift) * -1));
+  color: var(--ms-accent);
+  font-weight: 600;
+}
+
+/* ---------- Vertical connector ---------- */
+.milestones-year__label::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 100%;
+  width: 2px;
+  height: calc(var(--ms-line-gap) + var(--ms-lift));
+  background: var(--ms-accent);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform .3s ease;
+  pointer-events: none;
+}
+
+.milestones-year.is-active .milestones-year__label::after {
+  transform: scaleY(1);
+}
+
+/* ---------- Raised knob (active + start) ---------- */
+.milestones-year__label::before {
+  --knob-color: var(--ms-end);
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(100% + var(--ms-line-gap));
+  width: var(--ms-knob);
+  height: var(--ms-knob);
+  margin: calc(var(--ms-knob) / -2) 0 0 calc(var(--ms-knob) / -2);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      var(--knob-color) 0 calc(var(--ms-knob) * .3),
+      transparent calc(var(--ms-knob) * .3 + .5px)),
+    linear-gradient(160deg, #ffffff 0%, #ecebe6 100%);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, .12),
+    6px 8px 14px rgba(0, 0, 0, .16),
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    inset 0 -2px 3px rgba(0, 0, 0, .06);
+  transform: scale(0);
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+  pointer-events: none;
+}
+
+/* Active knob: label is lifted, so push the knob back down onto the line */
+.milestones-year.is-active .milestones-year__label::before {
+  top: calc(100% + var(--ms-line-gap) + var(--ms-lift));
+  transform: scale(1);
+}
+
+/* Start knob on the first year */
+.milestones-year.is-start .milestones-year__label::before {
+  --knob-color: var(--ms-start);
+  transform: scale(1);
+}
+
+/* When the first year itself is active, use the active colour */
+.milestones.is-at-start .milestones-year.is-start .milestones-year__label::before {
+  --knob-color: var(--ms-end);
+}
+
+/* ---------- Small timeline dots ----------
+   Sit exactly on top of your existing grey dots.
+   Upcoming years: soft sage. Passed years: white on the gradient. */
+.milestones-year__dot {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(100% + var(--ms-line-gap));
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #b7c9b0;
+  box-shadow: 0 0 0 2px #f3f3f3;   /* match the section background */
+  transition: background .3s ease, box-shadow .3s ease, opacity .2s ease;
+  pointer-events: none;
+}
+
+.milestones-year.is-past .milestones-year__dot {
+  background: #ffffff;
+  box-shadow: 0 0 0 1.5px var(--ms-mid), 0 1px 3px rgba(0, 0, 0, .15);
+}
+
+/* The knobs replace the dot on the active and start years */
+.milestones-year.is-active .milestones-year__dot,
+.milestones-year.is-start .milestones-year__dot {
+  opacity: 0;
+}
+
+/* ---------- Gradient progress line ---------- */
+.milestones-progress {
+  position: absolute;
+  z-index: 1;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--ms-start) 0%, var(--ms-mid) 55%, var(--ms-end) 100%);
+  list-style: none;
+  pointer-events: none;
+  transition: width .45s ease, top .3s ease;
+}
+
+/* =========================================================
+   SLIDE MOTION + CONTENT REVEAL
+   Only changes timing/easing of your existing track movement
+   (the property it animates is left as you defined it).
+========================================================= */
+.milestones {
+  --ms-ease-slide: cubic-bezier(.65, 0, .35, 1);     /* smooth in-out glide */
+  --ms-ease-reveal: cubic-bezier(.22, 1, .36, 1);    /* soft settle         */
+  --ms-slide-time: .9s;
+}
+
+.milestones-track {
+  transition-duration: var(--ms-slide-time) !important;
+  transition-timing-function: var(--ms-ease-slide) !important;
+  will-change: transform;
+}
+
+/* Slides fade/scale slightly as they move in and out of focus */
+.milestone-slide {
+  transition: opacity .6s ease, filter .6s ease;
+}
+.milestone-slide:not(.is-active) {
+  opacity: .55;
+  filter: saturate(.7);
+}
+.milestone-slide.is-active {
+  opacity: 1;
+  filter: none;
+}
+
+/* Image: gentle zoom-out as the slide becomes active */
+.milestone-slide__media {
+  overflow: hidden;
+}
+.milestone-slide__media img {
+  transform: scale(1.08);
+  transition: transform 1.4s var(--ms-ease-reveal);
+}
+.milestone-slide.is-active .milestone-slide__media img {
+  transform: scale(1);
+}
+
+/* Text: hide quickly on exit, reveal staggered on entry */
+.milestone-slide__year,
+.milestone-slide__title,
+.milestone-slide__text {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+  transition: opacity .25s ease, transform .25s ease, filter .25s ease;
+}
+
+.milestone-slide.is-active .milestone-slide__year,
+.milestone-slide.is-active .milestone-slide__title,
+.milestone-slide.is-active .milestone-slide__text {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity .7s ease var(--ms-delay, 0s),
+    transform .8s var(--ms-ease-reveal) var(--ms-delay, 0s),
+    filter .7s ease var(--ms-delay, 0s);
+}
+
+.milestone-slide.is-active .milestone-slide__year  { --ms-delay: .35s; }
+.milestone-slide.is-active .milestone-slide__title { --ms-delay: .5s; }
+.milestone-slide.is-active .milestone-slide__text  { --ms-delay: .65s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .milestones-track,
+  .milestone-slide,
+  .milestone-slide__media img,
+  .milestone-slide__year,
+  .milestone-slide__title,
+  .milestone-slide__text {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .milestone-slide__year,
+  .milestone-slide__title,
+  .milestone-slide__text { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .milestones-year__label,
+  .milestones-year__label::after,
+  .milestones-year__label::before,
+  .milestones-progress { transition: none; }
+}
 /* =========================================================
    TABLET (≤991px) — container is full width, arrows sit on the image
 ========================================================= */
@@ -472,3 +720,4 @@
     transition: none !important;
   }
 }
+
