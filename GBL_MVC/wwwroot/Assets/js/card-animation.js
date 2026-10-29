@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function listCards(list) {
     return Array.from(list.querySelectorAll('.card-rise')).filter(function (el) {
       if (isStoryCard(el)) return false;
+      if (el.hidden || el.closest('[hidden]')) return false;
       return el.closest('.card-list-items') === list;
     });
   }
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
   Array.from(document.querySelectorAll('.card-rise')).forEach(function (card, i) {
     if (isStoryCard(card)) return;
     if (card.closest('.card-list-items')) return;
+    if (card.hidden || card.closest('[hidden]')) return;
 
     gsap.fromTo(
       card,

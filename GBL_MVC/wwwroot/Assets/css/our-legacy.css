@@ -1,0 +1,474 @@
+/* =========================================================
+   FOUNDING FAMILY PAGE
+   Uses theme tokens from the main Tailwind @theme:
+   --color-primary, --color-secondary, --color-gray,
+   --color-gray-dark, --text-*, --font-uniNeue*, --ease
+========================================================= */
+
+/* ---------- Intro ---------- */
+.family-intro {
+  max-width: 52rem;
+  text-align: left;
+}
+.family-intro p {
+  font-size: var(--text-intro);
+  line-height: 1.5;
+}
+
+/* ---------- Section title ---------- */
+.family-outer .section-intro {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.family-outer .section-intro h2 {
+  font-family: var(--font-uniNeueBold);
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+/* ---------- List ---------- */
+.family-list {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* ---------- Card ---------- */
+.family-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: flex-start; /* keeps the image column short so sticky can work */
+  background-color: var(--color-gray);
+  padding: clamp(1.25rem, 3.5vw, 3.5rem);
+}
+
+@media (min-width: 992px) {
+  .family-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 4.5vw, 5rem);
+  }
+  .family-card--reverse .family-card__media {
+    order: 2;
+  }
+}
+
+/* ---------- Media ---------- */
+.family-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 6 / 5;
+}
+/* .family-card--reverse .family-card__media {
+  aspect-ratio: 5 / 6;
+} */
+@media (min-width: 992px) {
+  /* Sticky image: stays in view while the text column scrolls,
+     and releases when the card's content ends.
+     Placed after the base .family-card__media rule so it overrides position: relative. */
+  .family-card__media {
+    position: sticky;
+    top: var(--family-sticky-top, 120px); /* your fixed header height + gap */
+  }
+
+  /* keep the portrait image from overpowering the text column */
+  /* .family-card--reverse .family-card__media {
+    width: 85%;
+    justify-self: end;
+  } */
+}
+.family-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+.family-card:hover .family-card__media img {
+  transform: scale(1.04);
+}
+
+/* ---------- Content ---------- */
+.family-card__eyebrow {
+  display: block;
+  font-family: var(--font-uniNeueBold);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.family-card__name {
+  font-family: var(--font-uniNeueBold);
+  font-weight: normal;
+  font-size: var(--text-h3);
+  line-height: 1.2;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.family-card__years {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--color-gray-dark);
+}
+
+.family-card__body {
+  margin-top: clamp(1.25rem, 2vw, 1.75rem);
+}
+.family-card__body p {
+  font-size: var(--text-p);
+  line-height: 1.6;
+  color: var(--color-gray-dark);
+  margin-bottom: 1rem;
+}
+.family-card__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 991px) {
+  .family-card__media,
+  .family-card--reverse .family-card__media {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+
+
+/* =========================================================
+   MILESTONES SLIDER
+   Uses theme tokens: --color-primary, --color-secondary,
+   --color-gray, --color-gray-dark, --color-white,
+   --title-grey, --line, --ease, --font-uniNeueBold
+========================================================= */
+
+.milestones-outer {
+  background-color: var(--color-gray);
+  overflow-x: clip; /* stops sideways scroll without breaking sticky elsewhere */
+}
+.milestones-outer .section-intro h2 {
+  font-family: var(--font-uniNeueBold);
+  font-weight: normal;
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* ---------- Sizes (desktop) ---------- */
+.milestones {
+  --ms-img-w: clamp(300px, 34vw, 640px);     /* image width (every slide) */
+  --ms-content-w: clamp(240px, 21vw, 380px); /* white text panel (active slide) */
+  --ms-img-h: clamp(320px, 31vw, 580px);     /* slide height */
+  --ms-gap: clamp(16px, 1.8vw, 30px);
+  --ms-speed: 0.7s;
+  --ms-fade: 255, 255, 255;                  /* right-side overlay colour (white) */
+
+  position: relative;
+}
+
+/* ---------- Viewport + right white overlay ---------- */
+.milestones-viewport {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.milestones-viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(80px, 16%, 280px);
+  background: linear-gradient(
+    to right,
+    rgba(var(--ms-fade), 0) 0%,
+    rgba(var(--ms-fade), 0.55) 55%,
+    rgba(var(--ms-fade), 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Track ---------- */
+.milestones-track {
+  display: flex;
+  gap: var(--ms-gap);
+  transform: translateX(calc((var(--ms-img-w) + var(--ms-gap)) * var(--ms-index, 0) * -1));
+  transition: transform var(--ms-speed) var(--ease);
+  will-change: transform;
+}
+
+/* ---------- Slide ---------- */
+.milestone-slide {
+  flex: 0 0 auto;
+  display: flex;
+  height: var(--ms-img-h);
+  cursor: pointer;
+}
+.milestone-slide.is-active {
+  cursor: default;
+}
+
+.milestone-slide__media {
+  flex: 0 0 var(--ms-img-w);
+  width: var(--ms-img-w);
+  height: 100%;
+  overflow: hidden;
+}
+.milestone-slide__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.milestone-slide:not(.is-active):hover .milestone-slide__media img {
+  transform: scale(1.04);
+}
+
+/* White panel opens only on the active slide */
+.milestone-slide__content {
+  width: 0;
+  overflow: hidden;
+  background-color: var(--color-white);
+  transition: width var(--ms-speed) var(--ease);
+}
+.milestone-slide.is-active .milestone-slide__content {
+  width: var(--ms-content-w);
+}
+
+.milestone-slide__content-inner {
+  width: var(--ms-content-w); /* fixed so text doesn't reflow while opening */
+  height: 100%;
+  padding: clamp(1.25rem, 2.4vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.6s var(--ease);
+}
+.milestone-slide.is-active .milestone-slide__content-inner {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s;
+}
+
+.milestone-slide__year {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-uniNeueBold);
+  font-size: clamp(2.25rem, 1.4rem + 2.2vw, 3.5rem);
+  line-height: 1;
+  color: var(--color-primary);
+  padding-bottom: 0.9rem;
+}
+.milestone-slide__year::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 64px;
+  height: 3px;
+  background-color: var(--color-secondary);
+}
+
+.milestone-slide__title {
+  font-family: var(--font-uniNeueBold);
+  font-weight: normal;
+  font-size: clamp(0.9375rem, 0.85rem + 0.25vw, 1.125rem);
+  line-height: 1.35;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+.milestone-slide__text {
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--color-gray-dark);
+  margin: 0;
+}
+
+/* ---------- Arrows (desktop: outside the container) ---------- */
+.milestones-arrow {
+  position: absolute;
+  top: calc(var(--ms-img-h) / 2);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+.milestones-arrow svg {
+  width: 28px;
+  height: auto;
+}
+.milestones-arrow--prev { left: calc(-2.5vw - 22px); }
+.milestones-arrow--next { right: calc(-2.5vw - 22px); }
+
+.milestones-arrow--prev:hover:not(:disabled) { transform: translate(-4px, -50%); }
+.milestones-arrow--next:hover:not(:disabled) { transform: translate(4px, -50%); }
+
+.milestones-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.milestones-arrow:focus-visible,
+.milestones-year:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+/* ---------- Year timeline ---------- */
+.milestones-timeline {
+  position: relative; /* offset parent for centring the active year */
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
+}
+.milestones-timeline::-webkit-scrollbar {
+  display: none;
+}
+
+.milestones-years {
+  display: flex;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.milestones-year {
+  position: relative;
+  min-width: clamp(56px, 4.2vw, 74px);
+  padding: 0 0.5rem 18px;
+  border: 0;
+  background: none;
+  font-size: var(--text-small);
+  line-height: 1;
+  color: var(--title-grey);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+/* line */
+.milestones-year::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 1px;
+  background-color: var(--title-grey);
+  opacity: 0.6;
+}
+/* dot */
+.milestones-year::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--title-grey);
+  transform: translateX(-50%);
+  transition: background-color 0.3s ease, transform 0.3s var(--ease);
+}
+.milestones-year:hover {
+  color: var(--color-gray-dark);
+}
+.milestones-year.is-active {
+  font-family: var(--font-uniNeueBold);
+  color: var(--color-secondary);
+}
+.milestones-year.is-active::after {
+  background-color: var(--color-secondary);
+  transform: translateX(-50%) scale(1.4);
+}
+
+/* =========================================================
+   TABLET (≤991px) — container is full width, arrows sit on the image
+========================================================= */
+@media (max-width: 991px) {
+  .milestones {
+    --ms-img-w: 46vw;
+    --ms-content-w: 36vw;
+    --ms-img-h: 52vw;
+  }
+
+  .milestones-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 14px rgba(40, 43, 49, 0.12);
+  }
+  .milestones-arrow svg { width: 20px; }
+  .milestones-arrow--prev { left: 10px; }
+  .milestones-arrow--next { right: 10px; }
+  .milestones-arrow:disabled { opacity: 0; pointer-events: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767px) — image on top, text below, next slide peeks in
+========================================================= */
+@media (max-width: 767px) {
+  .milestones {
+    --ms-img-w: 76vw;
+    --ms-content-w: 76vw;
+    --ms-img-h: 58vw;
+    --ms-gap: 12px;
+  }
+
+  .milestones-track {
+    align-items: flex-start;
+  }
+
+  .milestone-slide {
+    flex-direction: column;
+    width: var(--ms-img-w);
+    height: auto;
+  }
+  .milestone-slide__media {
+    flex: 0 0 auto;
+    height: var(--ms-img-h);
+  }
+
+  .milestone-slide__content,
+  .milestone-slide.is-active .milestone-slide__content {
+    width: 100%;
+  }
+  .milestone-slide__content-inner {
+    width: 100%;
+    height: auto;
+    padding: 1.25rem;
+    gap: 1.25rem;
+    opacity: 0.45;
+    transform: none;
+  }
+
+  .milestone-slide__year {
+    font-size: 2.25rem;
+  }
+
+  .milestones-viewport::after {
+    width: 18%;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .milestones-track,
+  .milestone-slide__content,
+  .milestone-slide__content-inner,
+  .milestone-slide__media img {
+    transition: none !important;
+  }
+}

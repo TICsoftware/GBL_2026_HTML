@@ -156,7 +156,7 @@
       </div>    
       
       <div class="container">      
-         <div class="industries-list">
+         <div class="industries-list" data-page-size="8">
             <a href="/IndustriesInside" class="industry-card" data-industry="adhesives-lubricants">
                <div class="industry-card__media">
                   <img src="@Url.Content("~/Assets/images/industry-page/AdhesivesLubricants.webp")" alt="Adhesives and lubricants">
@@ -479,6 +479,14 @@
                   </div>
                </div>
             </a>
+         </div>
+         <div class="industries-load-more" data-industries-load-more-wrap>
+            <button type="button" class="site-btn site-btn--fill" data-industries-load-more>
+               <span class="site-btn__label">Load More</span>
+               <span class="site-btn__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </span>
+            </button>
          </div>
       </div>
    </section>
