@@ -4,6 +4,37 @@
  * row reaches the viewport, staggered left to right.
  */
 document.addEventListener("DOMContentLoaded", function () {
+  var grid = document.querySelector(".ar-reports__grid");
+  if (
+    grid &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    var maxTilt = 15;
+    grid.querySelectorAll(".ar-reports__card").forEach(function (card) {
+      var media = card.querySelector(".ar-reports__media");
+      if (!media) return;
+
+      card.addEventListener("mousemove", function (e) {
+        if (grid.classList.contains("is-scrolling")) return;
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        var rx = ((0.8 - y) * maxTilt).toFixed(2);
+        var ry = ((x - 0.8) * maxTilt).toFixed(2);
+        card.classList.add("is-tilting");
+        media.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+      });
+
+      card.addEventListener("mouseleave", function () {
+        card.classList.remove("is-tilting");
+        media.style.transform = "";
+      });
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   var CARD_RISE = {
     y: 140,
     duration: 1.15,

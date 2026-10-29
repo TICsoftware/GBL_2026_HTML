@@ -300,4 +300,57 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   bindMediaParallax(activeProductPanel());
+
+  function placeFill(card, e) {
+    var media = card.querySelector(".industry-product-card__media");
+    var cardRect = card.getBoundingClientRect();
+    var mediaRect = media ? media.getBoundingClientRect() : null;
+    var top = mediaRect ? Math.max(0, mediaRect.bottom - cardRect.top) : cardRect.height * 0.46;
+    var fillW = cardRect.width;
+    var fillH = Math.max(0, cardRect.height - top);
+    var x = e ? e.clientX - cardRect.left : fillW / 2;
+    var y = e ? e.clientY - cardRect.top - top : fillH / 2;
+    x = Math.min(Math.max(x, 0), fillW);
+    y = Math.min(Math.max(y, 0), fillH);
+    var radius = Math.ceil(Math.hypot(Math.max(x, fillW - x), Math.max(y, fillH - y))) + 16;
+    card.style.setProperty("--fill-top", top + "px");
+    card.style.setProperty("--hx", x + "px");
+    card.style.setProperty("--hy", y + "px");
+    card.style.setProperty("--hr", radius + "px");
+  }
+
+  function bindCardFill() {
+    document.querySelectorAll(".industry-product-card").forEach(function (card) {
+      if (card.dataset.fillBound) return;
+      card.dataset.fillBound = "1";
+      placeFill(card, null);
+      card.addEventListener("mouseenter", function (e) {
+        placeFill(card, e);
+        card.classList.add("is-filled");
+      });
+      card.addEventListener("mouseleave", function () {
+        card.classList.remove("is-filled");
+      });
+    });
+  }
+
+  function refreshCardFill(panel) {
+    var root = panel || document;
+    root.querySelectorAll(".industry-product-card").forEach(function (card) {
+      placeFill(card, null);
+    });
+  }
+
+  bindCardFill();
+  window.addEventListener("resize", function () {
+    refreshCardFill();
+  });
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      requestAnimationFrame(function () {
+        refreshCardFill(activeProductPanel());
+      });
+    });
+  });
 });
