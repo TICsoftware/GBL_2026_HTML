@@ -89,7 +89,7 @@
 .family-card__eyebrow {
   display: block;
   font-family: var(--font-uniNeueBold);
-  font-size: 0.8125rem;
+  font-size: var(--text-20);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-secondary);
@@ -99,7 +99,7 @@
 .family-card__name {
   font-family: var(--font-uniNeueBold);
   font-weight: normal;
-  font-size: var(--text-h3);
+  font-size: var(--text-h2);
   line-height: 1.2;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
@@ -572,10 +572,10 @@
 .milestone-slide {
   transition: opacity .6s ease, filter .6s ease;
 }
-.milestone-slide:not(.is-active) {
+/* .milestone-slide:not(.is-active) {
   opacity: .55;
   filter: saturate(.7);
-}
+} */
 .milestone-slide.is-active {
   opacity: 1;
   filter: none;
