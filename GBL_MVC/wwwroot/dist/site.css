@@ -15,6 +15,7 @@
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
     --font-weight-light: 300;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1020,6 +1021,13 @@
   .align-top {
     vertical-align: top;
   }
+  .font-uniNeueBold {
+    font-family: var(--font-uniNeueBold);
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -1032,6 +1040,9 @@
   }
   .text-h5 {
     font-size: var(--text-h5);
+  }
+  .text-p {
+    font-size: var(--text-p);
   }
   .text-small {
     font-size: var(--text-small);
@@ -1262,8 +1273,7 @@ body {
 }
 @layer base {
   h1, h2, h3, h4, h5 {
-    font-weight: 700;
-    font-family: var(--font-body);
+    font-family: var(--font-uniNeueBold);
     color: var(--color-primary);
     line-height: 1.25;
     margin-bottom: 1rem;

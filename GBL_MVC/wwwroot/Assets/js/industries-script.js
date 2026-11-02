@@ -27,6 +27,37 @@ document.addEventListener("DOMContentLoaded", function () {
   var allCards = Array.from(list.querySelectorAll(".industry-card"));
   if (!allCards.length) return;
 
+  function placeFill(card, e) {
+    var caption = card.querySelector(".industry-card__caption");
+    if (!caption) return;
+    var rect = caption.getBoundingClientRect();
+    var cardRect = card.getBoundingClientRect();
+    var x = e ? e.clientX - rect.left : rect.width / 2;
+    var y = e ? e.clientY - rect.top : 0;
+    x = Math.min(Math.max(x, 0), Math.max(rect.width, 0));
+    y = Math.min(Math.max(y, 0), Math.max(rect.height, 0));
+    var radius = Math.ceil(Math.hypot(cardRect.width, cardRect.height)) + 16;
+    caption.style.setProperty("--hx", x + "px");
+    caption.style.setProperty("--hy", y + "px");
+    caption.style.setProperty("--hr", radius + "px");
+  }
+
+  allCards.forEach(function (card) {
+    card.addEventListener("mouseenter", function (e) {
+      placeFill(card, e);
+      card.classList.add("is-filled");
+    });
+    card.addEventListener("mouseleave", function () {
+      card.classList.remove("is-filled");
+    });
+  });
+
+  window.addEventListener("resize", function () {
+    allCards.forEach(function (card) {
+      if (card.classList.contains("is-filled")) placeFill(card, null);
+    });
+  });
+
   var pageSize = parseInt(list.getAttribute("data-page-size") || "8", 10);
   if (!pageSize || pageSize < 1) pageSize = allCards.length;
 
