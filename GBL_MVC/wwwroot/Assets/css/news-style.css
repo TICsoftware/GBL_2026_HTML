@@ -193,6 +193,8 @@ NEWS — tabs, filters, press + media cards
   line-clamp: 6;
   overflow: hidden;
   transition: color 0.45s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+  font-family: var(--font-uniNeueBold);
+  font-weight: inherit;
 }
 
 .media-coverage-card .site-btn {
