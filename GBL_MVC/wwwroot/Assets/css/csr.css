@@ -181,6 +181,7 @@ CSR PAGE
   font-weight: 400;
   line-height: 1.15;
   color: var(--color-white);
+  margin-bottom: 0.5rem;
 }
 .csr-stat .counter-odometer {
   display: inline-flex;
@@ -290,7 +291,7 @@ CSR PAGE
 }
 .csr-focus-card__body p {
   margin: 0;
-  font-size: var(--text-22);
+  font-size: var(--text-p);
   line-height: 1.45;
   color: var(--color-gray-dark);
 }
@@ -377,7 +378,7 @@ CSR PAGE
 }
 .csr-progress__copy p {
   margin: 0;
-  font-size: var(--text-22);
+  font-size: var(--text-p);
   line-height: 1.45;
   color: var(--color-primary);
 }
