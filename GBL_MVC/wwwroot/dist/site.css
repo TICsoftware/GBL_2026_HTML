@@ -1242,8 +1242,8 @@
       width: calc(var(--spacing) * 10);
     }
   }
-  .lg\:block {
-    @media (width >= 64rem) {
+  @media (width >= 64rem) {
+    .lg\:block {
       display: block;
     }
   }
