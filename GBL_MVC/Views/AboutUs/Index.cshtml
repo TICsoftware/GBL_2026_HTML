@@ -1,0 +1,334 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="~/Assets/css/aboutus.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER -->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <picture>
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/about-us-banner.webp">
+                  <img
+                     src="~/Assets/images/banners/about-us-banner.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <div class="innerbanner-overlay"></div>
+            </div>
+
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="about-banner-text text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Godavari Biorefineries<br>A Pioneer in Integrated Biorefining
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">Home</a>
+                           </li>
+                           <li class="text-white/60">/</li>
+                           <li class="text-white">About Us</li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--PAGE INTRO OUTER-->
+   <section class="about-intro" aria-label="Introduction">
+      <div class="container">
+         <div class="about-intro__copy page-intro-inner">
+            <p class="about-intro__lead">As one of India’s largest integrated biorefineries and a part of the family-run Somaiya Group, we are pioneers in leading the transition from an extractive fossil-based economy to a circular bio-based one. At Godavari, we believe in the strength of the abundant sun, the fertile soil and the small farmer of India, and these become the core of the path we take. We transform agricultural feedstock into food, biofuels and bio-based chemicals in our endeavour to creating a beautiful world with innovation at the core, unified in growth, sustainability and inclusivity.</p>
+            <p>Our work intersects regenerative agriculture and circularity for biomass generation, scientific innovation, process engineering and importantly, the needs of our customers for sustainable products and solutions.</p>
+            <p>Our founder, Shri Karamshibhai Jethabhai Somaiya, a Padma Bhushan awardee, launched Godavari Sugar Mills in 1939 with a sugar factory in Sakarwadi, Maharashtra, soon expanding the business and earning the title of ‘Sugar King of India’. Over eight decades later, we continue to be the preferred supplier of premium-quality sugar to our institutional buyers.</p>
+            <p>Since the 1960s, when the company diversified into alcohol production from agricultural feedstock, we have been a major producer of ethanol. We are an active participant in the Government of India’s Ethanol Blending Programme to boost the country’s energy security today.</p>
+            <p>Our diversification into bio-based chemicals in the 1990s makes us a leading green chemistry company that is decarbonising the industrial chemicals value chain. Our wide range of bio-based chemicals are supplied to customers in nearly 50 countries around the world today. In addition, our Jivana brand of chemical-free and ethically sourced essential cooking ingredients (such as spices and jaggery), which we launched in 2014, is setting new standards in purity and quality of food.</p>
+         </div>
+      </div>
+   </section>
+   <!--PAGE INTRO OUTER END-->
+
+   <!--Setting new benchmarks-->
+   <section class="about-benchmarks" aria-labelledby="about-benchmarks-title">
+      <div class="container">
+         <div class="about-head">
+            <h2 id="about-benchmarks-title" class="text-h2 title-animation about-title">Setting new benchmarks</h2>
+            <p class="about-lead">Our bio-based chemicals business, which supplies a wide range of products to diverse sectors such as personal care and cosmetics, pharmaceuticals and polymers and adhesives, has set several benchmarks:</p>
+         </div>
+         <ul class="about-benchmarks__grid card-list-items">
+            <li class="about-benchmark card-rise">
+               <div class="about-benchmark__media">
+                  <img src="~/Assets/images/about-us/benchmark-mpo.webp" alt="Bio-based chemical manufacturing plant" width="1016" height="695" loading="lazy">
+               </div>
+               <p class="about-benchmark__text">Only manufacturer of 3-Methyl-3-Penten-2-One (MPO) in the world</p>
+            </li>
+            <li class="about-benchmark card-rise">
+               <div class="about-benchmark__media">
+                  <img src="~/Assets/images/about-us/benchmark-butylene-glycol.webp" alt="Bio-based ingredients for cosmetic and personal care products" width="1016" height="694" loading="lazy">
+               </div>
+               <p class="about-benchmark__text">One of the only two manufacturers globally to produce 1,3 Butylene Glycol from a natural feedstock, a molecule that is used by the world’s most respected cosmetic and personal care brands</p>
+            </li>
+            <li class="about-benchmark card-rise">
+               <div class="about-benchmark__media">
+                  <img src="~/Assets/images/about-us/benchmark-ethyl-acetate.webp" alt="Laboratory flasks in front of a chemical plant" width="1016" height="694" loading="lazy">
+               </div>
+               <p class="about-benchmark__text">Only manufacturer in India of Bio Ethyl Acetate and Ethyl Vinyl Ether</p>
+            </li>
+         </ul>
+      </div>
+   </section>
+   <!--Setting new benchmarks END-->
+
+   <!--Our Story-->
+   <section class="about-story">
+      <div class="container">
+         <!--Strong research backbone-->
+         <article class="about-split">
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Strong research backbone</h2>
+               <p >Our strengths in research and innovation have enabled us to manufacture high-performance bio-based chemicals in co-creation with our customers such as our proprietary NaturoEA®, NaturoSORBAL® and Naturo Butyl Acetate® molecules. We have expanded our R&amp;D thrust beyond biorefining to drug discovery. Today, we are a biorefinery that’s working on cancer research. Our novel anti-cancer molecule for triple-negative breast cancer is currently undergoing clinical trials through our US subsidiary, Sathgen Therapeutics LLC. Our second novel molecule, MSP22, has won a patent from Japan for antiviral applications through the inhibition of Vacuolar ATPase (V- ATPase) activity in cells, a mechanism involved in viral infection pathways.</p>
+               <a href="#" class="site-btn site-btn--outline about-btn about-btn--wide">
+                  <span class="site-btn__label">Know more</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/research.webp" alt="Scientists at work in a research laboratory" loading="lazy">
+            </div>
+         </article>
+
+         <!--Sustainability above all-->
+         <article class="about-feature">
+            <div class="about-feature__media about-parallax" aria-hidden="true">
+               <img src="~/Assets/images/about-us/sustainability.webp" alt="" loading="lazy">
+            </div>
+            <div class="about-feature__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Sustainability above all</h2>
+               <p>Our manufacturing operations at Sakarwadi in Maharashtra and Sameerwadi in Karnataka embed strong sustainability and circular economy principles with a focus on decarbonising our operations, maximising resource circularity and minimising waste. We source 84% of our energy from renewable resources and 99% of our waste is repurposed within our operations, transforming residues into value-added products or energy.</p>
+               <p>We are a Responsible Care® certified organisation, reflecting our adherence to high standards in environmental, health, safety, and security performance. Among other certifications, our Sameerwadi plant is certified under the global BONSUCRO standard for environmentally and socially responsible production and processing across the entire sugarcane value chain. And our bio-based chemical products have been certified by the United States Department of Agriculture (USDA) to carry the ‘USDA Certified Biobased Product’ label.</p>
+               <a href="/Sustainability" class="site-btn site-btn--outline-white about-btn about-btn--wide">
+                  <span class="site-btn__label">Know more</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+         </article>
+
+         <!--Creating A Beautiful World-->
+         <article class="about-split about-split--center">
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Creating A Beautiful World</h2>
+               <blockquote class="about-verse">
+                  <p class="about-verse__sanskrit" lang="sa">माता भूमिः पुत्रोहं पृथिव्याः</p>
+                  <p class="about-verse__roman">(Mata bhumih, putro aham prithivyah)</p>
+                  <p class="about-verse__meaning">The Earth is my mother, and we are her children</p>
+               </blockquote>
+               <p class="about-body">This Bhumi Sukta in the Atharva Veda remains our guiding principle to date.</p>
+               <p class="about-body">Our Vision, Creating a Beautiful World, originates from our reverence for the planet and life on it as enshrined in this verse.</p>
+            </div>
+            <div class="about-split__media about-split__media--earth about-parallax">
+               <img src="~/Assets/images/about-us/earth.webp" alt="A river valley at sunrise with a biorefinery in the distance" loading="lazy">
+            </div>
+         </article>
+
+         <!--A prayer to Mother Earth-->
+         <article class="about-prayer">
+            <div class="about-prayer__images">
+               <div class="about-prayer__image about-prayer__image--tall about-parallax">
+                  <img src="~/Assets/images/about-us/prayer-1.webp" alt="A farmer standing in a sugarcane field" loading="lazy">
+               </div>
+               <div class="about-prayer__image about-parallax">
+                  <img src="~/Assets/images/about-us/prayer-2.webp" alt="Hands holding a seedling in soil, with the Earth behind it" loading="lazy">
+               </div>
+            </div>
+            <div class="about-prayer__copy card-rise">
+               <p class="about-body">It also emanates from our commitment to lighten our footprint on our planet, as inspired by another Atharva Veda prayer in salutation of the Devi who is Mother Earth, where we ask her forgiveness for placing our feet on her and burdening her:</p>
+               <blockquote class="about-verse about-verse--card">
+                  <p class="about-verse__sanskrit" lang="sa">समुद्रवसने देवि पर्वतस्तनमण्डले ।<br>विष्णुपत्नि नमस्तुभ्यं पादस्पर्शं क्षमस्वमे ॥</p>
+                  <p class="about-verse__roman">(Samudravasane devi parvatastanamandale<br>vishnupatni namastubhyam pādasparsam ksamavame)</p>
+               </blockquote>
+            </div>
+         </article>
+
+         <!--Vision to Mission-->
+         <article class="about-vision">
+            <div class="about-vision__card card-rise">
+               <p class="about-body">Our Vision steers us to balance business growth with environmental and social responsibility to build a sustainable and inclusive future. Our Mission defines that pathway to our Vision by encapsulating how we function as a leading integrated biorefinery and producer of foods, biofuels, biochemicals and bio-materials from renewable resources, how we innovate and co-create, how we grow and add value, how we partner with farmers and customers, how we steward natural resources and how we work on the triple social, environmental and financial bottomline.</p>
+               <a href="/OurVision" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Learn More About our Vision &amp; Mission</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+            <div class="about-vision__media about-parallax">
+               <img src="~/Assets/images/about-us/vision-mission.webp" alt="Green crop fields beside a manufacturing plant" loading="lazy">
+            </div>
+         </article>
+      </div>
+   </section>
+   <!--Our Story END-->
+
+   <!--Our Guiding Principles-->
+   <section class="about-principles" aria-labelledby="about-principles-title">
+      <div class="container">
+         <div class="about-principles__head">
+            <h2 id="about-principles-title" class="text-h2 title-animation about-title">Our Guiding Principles</h2>
+            <div>
+               <p class="about-lead">Our Vision of Creating a Beautiful World is more than an aspiration. It is actualised through our four guiding principles. These principles empower us and enable us to create lasting value by shaping how we operate and grow.</p>
+               <a href="/OurVision" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Know more</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+         </div>
+         <ul class="about-principles__grid card-list-items">
+            <li class="about-principle card-rise">
+               <div>
+                  <h3 class="about-principle__title">Innovation at the Core</h3>
+                  <p>Where high-performance solutions and planetary health thrive together.</p>
+               </div>
+               <span class="about-principle__icon"><img src="~/Assets/images/about-us/icon-innovation.svg" alt="" width="107" height="107"></span>
+            </li>
+            <li class="about-principle card-rise">
+               <div>
+                  <h3 class="about-principle__title">Sustainability by Design</h3>
+                  <p>Circular systems that create resources in motion and respect nature.</p>
+               </div>
+               <span class="about-principle__icon"><img src="~/Assets/images/about-us/icon-sustainability.svg" alt="" width="107" height="107"></span>
+            </li>
+            <li class="about-principle card-rise">
+               <div>
+                  <h3 class="about-principle__title">Shared Future Growth</h3>
+                  <p>Co-creation with farmers and customers to fuel shared prosperity and soil vitality.</p>
+               </div>
+               <span class="about-principle__icon"><img src="~/Assets/images/about-us/icon-growth.svg" alt="" width="89" height="92"></span>
+            </li>
+            <li class="about-principle card-rise">
+               <div>
+                  <h3 class="about-principle__title">Creating Value for All</h3>
+                  <p>The investors, customers, farmers and the community thrive together.</p>
+               </div>
+               <span class="about-principle__icon"><img src="~/Assets/images/about-us/icon-value.svg" alt="" width="107" height="107"></span>
+            </li>
+         </ul>
+      </div>
+   </section>
+   <!--Our Guiding Principles END-->
+
+   <!--Who we are-->
+   <section class="about-rows">
+      <div class="container">
+         <article class="about-split">
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Eight Decades of Responsible Impact</h2>
+               <p class="about-lead">Since 1939, Godavari has continually evolved—responding to changing markets, advancing science and reimagining how renewable resources can create greater value.</p>
+               <p class="about-lead">From our beginnings in sugar and distillation, we have grown into a leading integrated biorefinery with diversified businesses across bio-based chemicals, ethanol and sugar. Each chapter of our journey has been defined by one constant: transforming the Earth’s bounty into solutions for a changing world.</p>
+               <a href="/OurLegacy" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Learn More About Our Legacy</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/legacy.webp" alt="Sugarcane growing beside a biorefinery and finished products" loading="lazy">
+            </div>
+         </article>
+
+         <article class="about-split about-split--reverse">
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/leadership.webp" alt="Silhouettes of people on a hilltop at sunrise" loading="lazy">
+            </div>
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Guided by Purpose, Driven by Possibility</h2>
+               <p class="about-lead">Our founder, Shri Karamshi Jethabhai Somaiya, a Padma Bhushan awardee, laid the seeds of responsible business based on inclusive and sustainable growth when he rose from humble beginnings to establish The Godavari Sugar Mills in 1939. Successive generations of the Somaiya family have since built on his legacy. His son, Dr Shantilal K Somaiya, envisioned Godavari’s growth as an innovation-led company, diversifying into the manufacture of ethanol and biofuels. As the third generation of the Somaiya family, Chairman and Managing Director Samir S Somaiya, has been steering Godavari’s rise as a globally competitive integrated biorefinery and a leading force in the responsible manufacture of bio-based chemicals, biofuels and chemical-free food products. Helping him realise this vision is an experienced and committed team of industry leaders and experts.</p>
+               <a href="/Leadership" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Meet Our Leadership Team</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+         </article>
+
+         <article class="about-split">
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Integrated, Circular, Future-Ready</h2>
+               <p class="about-lead">Our integrated manufacturing ecosystem enables us to maximise the use of renewable resources through circular processes that minimise waste and create multiple streams of value.</p>
+               <p class="about-lead">We operate two strategically integrated manufacturing facilities in Sakarwadi, Maharashtra, and Sameerwadi, Karnataka, that power our sugarcane processing, biorefining, power generation and bio-based chemicals operations.</p>
+               <a href="#" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Discover Our Operations</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/operations.webp" alt="A gear surrounded by green leaves and digital icons" loading="lazy">
+            </div>
+         </article>
+
+         <article class="about-split about-split--reverse">
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/quality.webp" alt="Two workers in safety gear reviewing a tablet at a plant" loading="lazy">
+            </div>
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Excellence You Can Trust</h2>
+               <p class="about-lead">Quality and safety are fundamental to the way we operate. From responsibly sourcing renewable feedstocks to manufacturing advanced bio-based solutions, every process is guided by rigorous quality standards, robust governance and safety standards, and a culture of continuous improvement.</p>
+               <p class="about-lead">Across our manufacturing facilities, we maintain disciplined systems that ensure operational reliability, workplace safety, environmental responsibility and product excellence.</p>
+               <p class="about-lead">As we innovate for the future, quality and safety remain the foundation on which trust is built.</p>
+               <a href="#" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Explore Our Quality Systems</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+         </article>
+
+         <article class="about-split">
+            <div class="about-split__copy card-rise">
+               <h2 class="text-h2 title-animation about-title">Recognised for Operational and Environmental Excellence</h2>
+               <p class="about-lead">Our achievements are measured not only by the products we create, but by the standards we uphold. National and international certifications, along with industry recognition, reflect our commitment to quality, sustainability, innovation and responsible manufacturing.</p>
+               <p class="about-lead">From globally recognised quality and environmental management systems to certifications that validate our bio-based and sustainable operations, these milestones reinforce our commitment to doing business with integrity and excellence.</p>
+               <a href="/AwardsCertifications" class="site-btn site-btn--outline about-btn">
+                  <span class="site-btn__label">Discover Our Awards &amp; Certifications</span>
+                  <span class="site-btn__arrow" aria-hidden="true">
+                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+               </a>
+            </div>
+            <div class="about-split__media about-parallax">
+               <img src="~/Assets/images/about-us/recognition.webp" alt="A trophy on display in a warmly lit hall" loading="lazy">
+            </div>
+         </article>
+      </div>
+   </section>
+   <!--Who we are END-->
+
+@section Scripts {
+   <script src="~/Assets/js/card-animation.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/aboutus.js" asp-append-version="true"></script>
+}

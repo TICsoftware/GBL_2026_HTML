@@ -1,0 +1,249 @@
+@{
+    ViewData["Title"] = "CSR";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="~/Assets/css/sustainability-intro.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/csr.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER -->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/csr-banner.webp">                  
+
+                  <!-- Desktop -->
+                  <img
+                     src="~/Assets/images/banners/csr-banner.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="csr-hero-caption text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Corporate Social Responsibility Shared Progress, Brighter Futures
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">
+                                 Home
+                              </a>
+                           </li>
+
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                              CSR
+                           </li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--Our CSR Philosophy-->
+   <section class="page-intro-outer page-intro-outer--mantra csr-philosophy section-spacing">
+      <div class="container">
+         <div class="title-section">
+            <h2 class="text-h2">Our CSR Philosophy</h2>
+         </div>
+         <div class="page-intro-mantra">
+            <blockquote class="page-intro-mantra__quote">
+               <p class="page-intro-mantra__sanskrit" lang="sa">शतहस्त समाहर सहस्रहस्त संकिर</p>
+               <p class="page-intro-mantra__english">Earn with a hundred hands,<br>Give with a thousand.</p>
+               <cite class="page-intro-mantra__cite">-Atharva Veda</cite>
+            </blockquote>
+            <div class="page-intro-mantra__copy">
+               <p class="csr-philosophy__lead">Our founder, Shri K J Somaiya, recipient of the Padma Bhushan, believed that wealth, earned diligently through righteous means, must be generously shared with the deserving. For true prosperity lies not merely in the accumulation of wealth but in its judicious distribution.</p>
+               <p class="csr-philosophy__body">Godavari breathes and lives that belief. Our growth is shared. We see communities not as beneficiaries, but as partners in progress. Our manufacturing locations are deeply connected to rural ecosystems, agricultural livelihoods, and local communities. This creates both a responsibility and an opportunity—to build systems that improve quality of life while strengthening long-term social resilience.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Our CSR Philosophy END-->
+
+   <!--Our Approach-->
+   <section class="csr-approach section-spacing">
+      <div class="container">
+         <div class="title-section">
+            <h2 class="text-h2">Our Approach to CSR is Rooted in Three Beliefs</h2>
+         </div>
+         <div class="csr-grid">
+            <article class="csr-approach-card">
+               <div>
+                  <h3 class="csr-title">Education and Empowerment</h3>
+                  <p>We believe access to quality education, skills and economic opportunities, especially for women, can transform individual lives and create generational change across entire communities.</p>
+               </div>
+               <img src="~/Assets/images/csr/approach-students.svg" alt="" class="csr-approach-card__icon">
+            </article>
+
+            <article class="csr-approach-card">
+               <div>
+                  <h3 class="csr-title">Social Equity</h3>
+                  <p>We work to ensure that essential development initiatives, healthcare access and preventive awareness reach economically weaker and underserved sections of society.</p>
+               </div>
+               <img src="~/Assets/images/csr/approach-user-group.svg" alt="" class="csr-approach-card__icon">
+            </article>
+
+            <article class="csr-approach-card">
+               <div>
+                  <h3 class="csr-title">Sustainable Impact</h3>
+                  <p>From women’s livelihoods to rural infrastructure and environmental stewardship, we support programs designed to create lasting change, self-reliance and shared prosperity.</p>
+               </div>
+               <div class="csr-approach-card__icon csr-impact-icon" aria-hidden="true">
+                  <img src="~/Assets/images/csr/approach-impact-1.svg" alt="" class="csr-impact-icon__hands">
+                  <img src="~/Assets/images/csr/approach-impact-2.svg" alt="" class="csr-impact-icon__plant">
+               </div>
+            </article>
+         </div>
+      </div>
+   </section>
+   <!--Our Approach END-->
+
+   <!--Impact in Action-->
+   <section class="csr-impact">
+      <img src="~/Assets/images/csr/impact-bg.jpg" alt="" class="csr-impact__bg" loading="lazy">
+      <div class="container csr-impact__inner">
+         <div class="title-section">
+            <h2 class="text-h2 text-white">Impact in Action</h2>
+         </div>
+         <ul class="csr-stats">
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-mortarboard.svg" alt="" class="csr-stat__icon">
+               <strong class="counter" data-target="11554" data-suffix="+" data-locale="en-IN">11,554+</strong>
+               <span>educational sponsorships supported through Help A Child</span>
+            </li>
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-coins.svg" alt="" class="csr-stat__icon">
+               <strong>₹<span class="counter" data-target="8.92" data-suffix=" Crore">8.92 Crore</span></strong>
+               <span>in scholarships facilitated</span>
+            </li>
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-user-group.svg" alt="" class="csr-stat__icon">
+               <strong class="counter" data-target="6400" data-suffix="+" data-locale="en-IN">6,400+</strong>
+               <span>students and families positively impacted</span>
+            </li>
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-school.svg" alt="" class="csr-stat__icon">
+               <strong class="counter" data-target="5000" data-suffix="+" data-locale="en-IN">5,000+</strong>
+               <span>students supported through rural schools</span>
+            </li>
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-female.svg" alt="" class="csr-stat__icon">
+               <strong class="counter" data-target="4000" data-suffix="+">4000+</strong>
+               <span>women benefited through vocational training initiatives in the last 10 years</span>
+            </li>
+            <li class="csr-stat">
+               <img src="~/Assets/images/csr/stat-heart-pulse.svg" alt="" class="csr-stat__icon">
+               <strong class="counter" data-target="4500">4500</strong>
+               <span>patients reached through rural medical camps and preventive healthcare programmes</span>
+            </li>
+         </ul>
+      </div>
+   </section>
+   <!--Impact in Action END-->
+
+   <!--Our Focus Areas-->
+   <section class="csr-focus section-spacing">
+      <div class="container">
+         <div class="title-section">
+            <h2 class="text-h2">Our Focus Areas</h2>
+         </div>
+         <div class="csr-grid csr-focus-grid">
+            <article class="csr-focus-card">
+               <div class="csr-focus-card__media">
+                  <img src="~/Assets/images/csr/focus-education.jpg" alt="Students receiving scholarship support at a Godavari event" loading="lazy">
+               </div>
+               <div class="csr-focus-card__body">
+                  <h3 class="csr-title">Education: Creating Pathways to Opportunity</h3>
+                  <p>Education remains one of Godavari’s strongest and longest-standing commitments. Through scholarships, school support and infrastructure development, we work to ensure that financial hardship does not limit potential.</p>
+                  <a href="#" class="csr-readmore" aria-label="Read more about Education">
+                     <img src="~/Assets/images/csr/arrow-forward.svg" alt="">
+                     <span>Read more</span>
+                  </a>
+               </div>
+            </article>
+
+            <article class="csr-focus-card">
+               <div class="csr-focus-card__media csr-focus-card__media--healthcare">
+                  <img src="~/Assets/images/csr/focus-healthcare.jpg" alt="A health worker attending to community members" loading="lazy">
+               </div>
+               <div class="csr-focus-card__body">
+                  <h3 class="csr-title">Healthcare &amp; Well-Being: Making Communities Resilient</h3>
+                  <p>Improving access to affordable healthcare is a significant opportunity to improve lives in many rural regions. Through medical outreach, preventive healthcare programmes, school health initiatives, and institutional partnerships, Godavari Biorefineries works to improve community health outcomes across its areas of operation.</p>
+                  <a href="#" class="csr-readmore" aria-label="Read more about Healthcare and Well-Being">
+                     <img src="~/Assets/images/csr/arrow-forward.svg" alt="">
+                     <span>Read more</span>
+                  </a>
+               </div>
+            </article>
+
+            <article class="csr-focus-card">
+               <div class="csr-focus-card__media">
+                  <img src="~/Assets/images/csr/focus-women.jpg" alt="Women taking part in a rural livelihood programme" loading="lazy">
+               </div>
+               <div class="csr-focus-card__body">
+                  <h3 class="csr-title">Women’s Economic Empowerment &amp; Rural Development: Enabling People, Strengthening the Ecosystem</h3>
+                  <p>Strong communities begin with empowered individuals and resilient ecosystems. We create opportunities for women to build skills, livelihoods and economic independence while supporting the wider rural ecosystem through infrastructure, sanitation, environmental stewardship and community participation.</p>
+                  <a href="#" class="csr-readmore" aria-label="Read more about Women’s Economic Empowerment and Rural Development">
+                     <img src="~/Assets/images/csr/arrow-forward.svg" alt="">
+                     <span>Read more</span>
+                  </a>
+               </div>
+            </article>
+         </div>
+      </div>
+   </section>
+   <!--Our Focus Areas END-->
+
+   <!--Advancing Shared Progress-->
+   <section class="csr-progress section-spacing">
+      <div class="container">
+         <div class="csr-progress__panel">
+            <img src="~/Assets/images/csr/advancing-progress.jpg" alt="Schoolchildren walking along a country road between green fields" class="csr-progress__bg" loading="lazy">
+            <div class="csr-progress__content">
+               <div class="csr-progress__copy">
+                  <h3 class="csr-title">Advancing Shared Progress</h3>
+                  <p>Godavari’s CSR initiatives contribute toward multiple United Nations Sustainable Development Goals (SDGs 1, 5 &amp; 10) by improving access to education, healthcare, livelihoods, sanitation and community development. Through long-term partnerships and grassroots engagement, we aim to create beautiful, inclusive and resilient communities around our areas of operation.</p>
+               </div>
+               <div class="csr-sdgs">
+                  <div class="csr-sdg"><img src="~/Assets/images/csr/1.webp" alt="SDG 1: No Poverty" loading="lazy"></div>
+                  <div class="csr-sdg"><img src="~/Assets/images/csr/2.webp" alt="SDG 5: Gender Equality" loading="lazy"></div>
+                  <div class="csr-sdg"><img src="~/Assets/images/csr/3.webp" alt="SDG 10: Reduced Inequalities" loading="lazy"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Advancing Shared Progress END-->
+
+@section Scripts {
+   <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/odometer-counter-script.js" asp-append-version="true"></script>
+   <script src="~/Assets/js/csr-script.js" asp-append-version="true"></script>
+}
