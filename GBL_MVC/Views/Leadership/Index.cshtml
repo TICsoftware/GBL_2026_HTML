@@ -1,0 +1,317 @@
+@{
+    ViewData["Title"] = "Leadership";
+}
+
+@section Styles {
+   <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />   
+   <link rel="stylesheet" href="~/Assets/css/leadership.css" asp-append-version="true" />
+}
+
+    <!-- HERO BANNER END-->
+   <section class="relative inside-banner-outer">
+         <div class="inside-banner-inner banner-animation relative">
+            <!-- Banner -->
+            <div class="overflow-hidden h-[75vh] sm:h-[700px] relative innerbanner-image-wrapper">
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="~/Assets/images/banners/leadership-banner.webp">                  
+
+                  <!-- Desktop -->
+                  <img
+                     src="~/Assets/images/banners/leadership-banner.webp"
+                     alt=""
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+               <!-- Keep Existing Overlay -->
+               <div class="innerbanner-overlay"></div>
+            </div>
+            <!-- Content -->
+           
+           <!--Breadcrumb-->
+            <div class="innerbanner-caption absolute inset-0 z-30 flex items-center">
+               <div class="container">
+                  <div class="max-w-4xl text-left">
+                     <h1 class="innerbanner-title text-h1 text-white title-animation">
+                        Guided by Purpose.<br>Driven by Possibility.
+                     </h1>
+
+                     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm">
+                           <li>
+                              <a href="/" class="text-white/70 hover:text-white transition">
+                                 Home
+                              </a>
+                           </li>
+
+                           <li class="text-white/60">/</li>
+
+                           <li class="text-white">
+                                Leadership
+                           </li>
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>  
+         </div>
+   </section>
+    <!-- HERO BANNER END -->
+
+   <!--PAGE INTRO OUTER-->
+   <section class="leadership-intro" aria-label="Introduction">
+      <div class="container">
+         <div class="leadership-intro__copy">
+            <p class="leadership-intro__lead">Our distinguished Board of Directors brings together diverse business experience, deep expertise, high corporate governance standards and a shared vision for sustainable growth. Guided by Chairman and Managing Director Samir S Somaiya, the leadership is building an organisation with innovation at the core, unified in growth, sustainability and inclusivity so that we can realise our Vision of Creating a beautiful world and become a beacon of responsible growth.</p>
+            <p>The Board’s strategic direction and oversight ensures that our company continues to harmonise science, sustainability and social progress so that our success is shared with our farmers, employees, shareholders and our communities to create lasting impact.</p>
+         </div>
+      </div>
+   </section>
+   <!--PAGE INTRO OUTER END-->
+
+   <!--Our Board of Directors-->
+   <section class="board" aria-labelledby="board-title">
+      <div class="container">
+         <h2 id="board-title" class="text-h2 title-animation board__title">Our Board of Directors</h2>
+      </div>
+
+      <div class="board-chair" data-leader>
+         <img src="~/Assets/images/leadership/diagonal-tint.svg" alt="" class="board-chair__diagonal" aria-hidden="true">
+         <img src="~/Assets/images/leadership/diagonal-white.svg" alt="" class="board-chair__diagonal" aria-hidden="true">
+         <div class="board-chair__media parallax-wrap">
+            <img src="~/Assets/images/leadership/samir-somaiya.webp" alt="Samir S Somaiya" class="parallax-img" data-leader-photo loading="lazy">
+         </div>
+         <div class="board-chair__content">
+            <h3 class="board-chair__name" data-leader-name>Samir S Somaiya</h3>
+            <p class="board-chair__role" data-leader-role>Chairman &amp; Managing Director</p>
+            <span class="board-chair__rule" aria-hidden="true"></span>
+            <p class="board-chair__lead">As the third-generation head of the Somaiya family, Samir Shantilal Somaiya is as inspired by ancient Indian philosophy and the humanism enshrined in the Vedas as he is driven by his vision of balancing scientific and economic progress with the environmental sustainability of the planet.</p>
+            <p>The Somaiya Group is built on the family’s belief that if you take care of the land and the people who till it, the business will follow. This belief has found new expressions under Mr Somaiya’s leadership as Godavari Biorefineries Ltd has expanded its business beyond sugar and biofuels. Guided by him, the company is creating new pathways in green chemistry by supplying a wide range of bio-based chemicals to various industrial sectors. At the same time, it is engaged in the discovery of novel molecules to fight cancer and address unmet medical needs. The company’s research work is also focused on strengthening agricultural resilience through regenerative farming. In addition, it is bringing the goodness of chemical-free pure food ingredients to the table for healthy living. Through it all, Mr Somaiya has created a business that straddles commodities, science and value by building trust with customers, farmers, employees, shareholders and the larger community.</p>
+            <button type="button" class="site-btn site-btn--outline board-chair__btn" data-leader-open aria-haspopup="dialog">
+               <span class="site-btn__label">View Profile</span>
+               <span class="site-btn__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </span>
+            </button>
+            <div class="leader-bio" data-leader-bio hidden>
+               <p>As the third-generation head of the Somaiya family, Samir Shantilal Somaiya is as inspired by ancient Indian philosophy and the humanism enshrined in the Vedas as he is driven by his vision of balancing scientific and economic progress with the environmental sustainability of the planet.</p>
+               <p>The Somaiya Group is built on the family’s belief that if you take care of the land and the people who till it, the business will follow. This belief has found new expressions under Mr Somaiya’s leadership as Godavari Biorefineries Ltd has expanded its business beyond sugar and biofuels. Guided by him, the company is creating new pathways in green chemistry by supplying a wide range of bio-based chemicals to various industrial sectors. At the same time, it is engaged in the discovery of novel molecules to fight cancer and address unmet medical needs. The company’s research work is also focused on strengthening agricultural resilience through regenerative farming. In addition, it is bringing the goodness of chemical-free pure food ingredients to the table for healthy living. Through it all, Mr Somaiya has created a business that straddles commodities, science and value by building trust with customers, farmers, employees, shareholders and the larger community.</p>
+               <p>Mr Somaiya’s business leadership is underpinned by his scientific training. He holds a bachelor’s degree in science, a master’s degree in chemical engineering and an MBA from Cornell University, as well as a master’s degree in public administration from Harvard University. At the same time, his deep-rooted commitment to empower communities through education, healthcare and social welfare finds expression in his role as a Trustee of the Somaiya Trusts.</p>
+               <p>Mr Somaiya’s contributions to sustainable manufacturing, advancement of scientific research and process innovation, and philanthropy have won global recognition. He became the first Indian to receive the Plinio Nastari Sugar Excellence Award for global leadership in sustainable sugar and bio-energy from the International Sugar Organisation in 2025. Other notable awards include the Knight of the Order of the Star of Italy honouring his efforts in fostering international collaborations, the Lala Shriram National Award for Leadership in the Chemical Industry from the Indian Institute of Chemical Engineers, the Industry Excellence Award from The Sugar Technologists’ Association of India, and the Sakhar Udyog Gaurav Puraskar from the Deccan Sugar Technologists’ Association (India), acknowledging his remarkable leadership and accomplishments in the sector.</p>
+               <p>He has also received the American Institute of Chemical Engineer’s Award for Scholastic Achievement and the Student Award Certificate from the American Institute of Chemists Foundation, highlighting his exceptional academic performance and contributions to the field of chemical engineering, while the Qimpro Gold Standard Award for Education by the Qimpro Foundation and the Sugar &amp; Ethanol International Award underscore his role as a philanthropist in the sugar industry.</p>
+               <p>These awards are a testament to Mr Somaiya's relentless pursuit of excellence and his significant impact across various domains.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="container">
+         <ul class="board-grid">
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/sangeeta-srivastava.webp" alt="Dr Sangeeta Srivastava" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Dr Sangeeta Srivastava</button></h3>
+                  <p class="leader-card__role" data-leader-role>Executive Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Dr Sangeeta Arunkumar Srivastava is committed to overseeing the transition from ‘oil to soil’ in her role as head of research and development and drug discovery at Godavari Biorefineries Ltd. With over three decades of experience in advanced scientific research and innovation and collaborations with industry, she plays a key role in expanding the company’s product portfolio and facilitating the transition to green chemistry.</p>
+                  <p>Dr Srivastava holds a bachelor’s degree in science and a master’s degree in Chemistry from the Doctor Harisingh Gour Vishwavidyalaya, and an MPhil in Chemistry from the Rani Durgavati Vishwavidyalaya, Jabalpur. She also has a doctorate of philosophy in science from the University of Mumbai.</p>
+                  <p>Prior to joining the organisation, Dr Srivastava managed chemistry pipelines as General Manager (Corporate R&amp;D) at Somaiya Organo-Chemicals Limited.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/bhalachandra-bakshi.webp" alt="Bhalachandra R Bakshi" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Bhalachandra R Bakshi</button></h3>
+                  <p class="leader-card__role" data-leader-role>Executive Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Bhalachandra R Bakshi drives agricultural supply integration, sustainable feedstock sourcing, regenerative agriculture initiatives and rural community networks at Godavari Biorefineries Ltd.</p>
+                  <p>He holds a bachelor’s degree in Agriculture from the University of Agricultural Sciences, Bengaluru.</p>
+                  <p>Associated with the organisation since January 1, 2011, Mr Bakshi has served in multiple operational leadership roles, contributing specialised agronomic knowledge and experience, crop development insights, and deep farmer relationships for sustainable operations.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/suhas-godage.webp" alt="Suhas Uttam Godage" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Suhas Uttam Godage</button></h3>
+                  <p class="leader-card__role" data-leader-role>Executive Director, Works, Sakarwadi</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Suhas Uttam Godage is Executive Director, Works, of the Sakarwadi Manufacturing Facility, where he lends his over three decades of industrial chemistry experience to oversee manufacturing operations for bio-based chemicals.</p>
+                  <p>He holds a bachelor’s degree in science from the University of Pune, an MBA in Marketing Management from Yashwantrao Chavan Maharashtra Open University, Nashik, and a Post Graduate Diploma in Industrial Fermentation &amp; Alcohol Technology from the Vasantdada Sugar Institute.</p>
+                  <p>Mr Godage has been associated with Godavari Biorefineries Ltd in various manufacturing capacities since 2009, and began his career as a distillery chemist at Somaiya Organo-Chemicals Limited.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/dinesh-sharma.webp" alt="Dinesh Sharma" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Dinesh Sharma</button></h3>
+                  <p class="leader-card__role" data-leader-role>Executive Director, Works, Sameerwadi</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Dinesh Sharma is Executive Director, Works, of the Sameerwadi Manufacturing Facility, where he brings over 29 years of experience in sugar manufacturing.</p>
+                  <p>Mr Sharma has extensive expertise in manufacturing operations, process optimisation and technical management, and has played a key role in enhancing operational efficiencies, product quality and sustainable manufacturing practices at the Sameerwadi plant. In addition, his experience includes managing feedstock in alignment with ethanol-blended petrol requirements, steam-saving initiatives and process improvements across diversified manufacturing operations.</p>
+                  <p>Mr Sharma holds a master’s degree in sugar technology from the University of Mysore. He has contributed to academic and industry platforms, including serving as an External Examiner for the postgraduate programme in Sugar Technology at the University of Mysore.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/raman-ramachandran.webp" alt="Dr. Raman Ramachandran" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Dr. Raman Ramachandran</button></h3>
+                  <p class="leader-card__role" data-leader-role>Non-Executive Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Dr Raman Ramachandran has vast experience of the chemicals sector, having served as former Chairman and Managing Director of BASF India and Executive Director of PI Industries. His expertise has enriched the Board since November 2023.</p>
+                  <p>He holds a bachelor’s degree in Agriculture from the Tamil Nadu Agricultural University, Coimbatore, a master’s degree in Entomology from the Indian Agricultural Research Institute, New Delhi, and is a doctor of philosophy from the University of Adelaide.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/lakshmi-kantam.webp" alt="Prof Lakshmi Kantam Mannepalli" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Prof Lakshmi Kantam Mannepalli</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Prof Lakshmi Kantam Mannepalli provides strategic leadership in advanced green chemistry, sustainable process engineering and research innovation and governance.</p>
+                  <p>She holds a bachelor’s degree in science from Andhra University, a master’s degree in Chemistry and is a doctor of philosophy in Chemistry from Kurukshetra University.</p>
+                  <p>Associated with the Board since November 28, 2017, Prof Mannepalli brings decades of world-class expertise in chemical sciences and advanced process methodologies to the company. Prior to joining Godavari Biorefineries, she was a member of the Board of Governors at the Indian Institute of Technology, Hyderabad, and Director at the CSIR-Indian Institute of Technology, Hyderabad.  She currently holds the position of Adjunct Professor at Tezpur University and serves as the Dr B P Godrej Distinguished Professor of Green Chemistry and Sustainability Engineering at the Institute of Chemical Technology, Mumbai.</p>
+                  <p>An elected fellow of the Indian National Science Academy and the National Academy of Sciences, India, Prof Mannepalli was admitted as a fellow of the Royal Society of Chemistry in 2013. She has authored several chapters in academic books and published various patent applications.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/hemant-luthra.webp" alt="Hemant Luthra" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Hemant Luthra</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Hemant Luthra offers insights on leadership, macroeconomic strategy and commercial-scale manufacturing to the executive team at Godavari Biorefineries Ltd, having earlier held C-suite positions such as Chairman and CEO of Mahindra CIE Automotive Ltd and Chairman of Mahindra Forgings Limited and Mahindra Composites Limited.</p>
+                  <p>He holds a B. Tech in Mechanical Engineering from the Indian Institute of Technology, Delhi.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/kumar-desai.webp" alt="Kumar L Desai" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Kumar L Desai</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Kumar L Desai directs risk mitigation, legal compliance, governance and intellectual property oversight for the Board.</p>
+                  <p>He has been associated as an advocate with the Bar Council of Maharashtra &amp; Goa since September 30, 1977.</p>
+                  <p>Mr Desai has extensive litigation and legal counsel experience across the Bombay High Court, multiple regional High Courts and the Supreme Court of India. Beyond his courtroom practice, he handles corporate cases across judicial tribunals, including the National Company Law Tribunal (formerly the Company Law Board), the Trademark and Copyrights Boards and the Securities Appellate Tribunal (SAT). His legal practice covers writs, Company Law matters, intellectual property, commercial law and securities law, having appeared both on behalf of the Securities and Exchange Board of India (SEBI) and in matters against SEBI.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/nitin-mehta.webp" alt="Nitin Mehta" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Nitin Mehta</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Nitin Mehta brings his vast experience across global consumer business profit centres to the Board. He possesses extensive expertise across the international consumer goods landscape, having previously served as Managing Director, L’Oreal Bangladesh Limited, and Vice-President (Profit Centre Head, Pasta) at Olam International Limited, Nigeria.</p>
+                  <p>He holds a B. Tech in Chemical Engineering from Banaras Hindu University and a Post Graduate Diploma in Management from the Management Development Institute, Gurgaon.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/nandan-mehta.webp" alt="Nandan Mehta" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Nandan Mehta</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Nandan Mehta’s contribution to the Board covers diverse areas such as cross-border marketing, finance and stakeholder engagement, and technology.</p>
+                  <p>He is currently head of Corporate Affairs for Europe, Middle East and Africa at Tata Consultancy Services, where he looks at policy and stakeholder engagement for the region. Prior to this, he was part of the team that launched TCS’ cloud computing division, iON, where he was head of finance with oversight over commercial, legal and invoicing.</p>
+                  <p>After graduating with a bachelor’s degree in Chemistry from the University of Mumbai, Mr Mehta earned an MBA degree from Nyenrode University in the Netherlands. Based in the Netherlands for 13 years, he worked with multinational organisations such as General Electric, AT&amp;T-Unisource, KPN-Qwest and Elsevier, travelling extensively as part of his global remit.</p>
+               </div>
+            </li>
+            <li class="leader-card" data-leader>
+               <div class="leader-card__media">
+                  <div class="leader-card__photo">
+                     <img src="~/Assets/images/leadership/sean-reagan.webp" alt="Sean E Reagan" data-leader-photo width="776" height="746" loading="lazy">
+                  </div>
+               </div>
+               <div class="leader-card__body">
+                  <h3 class="leader-card__name"><button type="button" class="leader-card__open" data-leader-open aria-haspopup="dialog" data-leader-name>Sean E Reagan</button></h3>
+                  <p class="leader-card__role" data-leader-role>Independent Director</p>
+               </div>
+               <div class="leader-bio" data-leader-bio hidden>
+                  <p>Sean E Reagan provides international corporate taxation, cross-border treasury and financial compliance oversight to the Board.</p>
+                  <p>A senior finance executive with over 25 years of leadership experience across the chemicals, plastics and automotive sectors, Mr Reagan currently serves as Vice President, Global Tax, at Garrett Motion in Switzerland. Prior to this, he was with Dow Chemical for over 15 years in various roles, including as Chief Financial Officer for Southeast Asia based in Mumbai. He is also a current and former Director for companies in several countries, including in India, the United States and Switzerland.</p>
+                  <p>He holds a bachelor’s degree in Economics and History from Albion College, Michigan, a Juris Doctor from the Michigan State University College of Law, and a master’s degree of Laws, Taxation, from Georgetown University Law Center, Washington DC.</p>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </section>
+   <!--Our Board of Directors END-->
+
+   <!--Leader profile modal: one shared dialog, filled from the clicked card-->
+   <dialog class="leader-modal" id="leader-modal" aria-labelledby="leader-modal-name">
+      <div class="leader-modal__backdrop" data-leader-close></div>
+      <div class="leader-modal__panel">
+         <button type="button" class="leader-modal__close" data-leader-close aria-label="Close profile">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+         </button>
+         <div class="leader-modal__scroll" data-lenis-prevent tabindex="-1" autofocus>
+            <div class="leader-modal__media">
+               <div class="leader-modal__photo">
+                  <img src="" alt="" data-leader-modal-photo>
+               </div>
+            </div>
+            <div class="leader-modal__content">
+               <h2 class="leader-modal__name" id="leader-modal-name" data-leader-modal-name></h2>
+               <p class="leader-modal__role" data-leader-modal-role></p>
+               <span class="leader-modal__rule" aria-hidden="true"></span>
+               <div class="leader-modal__bio" data-leader-modal-bio></div>
+            </div>
+         </div>
+      </div>
+   </dialog>
+   <!--Leader profile modal END-->
+
+@section Scripts {
+   <script src="~/Assets/js/leadership.js" asp-append-version="true"></script>
+}

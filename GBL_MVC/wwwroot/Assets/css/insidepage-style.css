@@ -207,3 +207,10 @@ background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 70%,rgba(
   .page-intro-inner{width: 100%;}
   .page-intro-inner, .middle-container .container{ max-width:min(100vw, 1100px);}
 }
+
+
+/* 150% zoom — 1920×1080 → ~1280×720 */
+@media screen and (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-width: 1025px) and (min-resolution: 144dpi) {
+.innerbanner-caption {
+    bottom: 2vw;}
+}

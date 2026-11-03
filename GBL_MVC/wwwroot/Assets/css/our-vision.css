@@ -151,6 +151,7 @@
   shape-rendering: geometricPrecision;
 }
 .principle-item__icon svg path {
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -178,14 +179,26 @@
   padding-block: clamp(2.5rem, 3.75vw, 4.5rem) clamp(9rem, 13.65vw, 16.375rem);
   background: var(--color-white);
 }
-.our-mission.bg-parallax-section .our-mission__bg {
+.our-mission__bg {
+  position: absolute;
+  inset: 0;
   z-index: -1;
+  overflow: hidden;
 }
-.our-mission.bg-parallax-section .parallax-img {
-  top: -15%;
-  height: 130%;
-  object-position: 50% 75%;
+/* Anchored to the image's bottom edge so the landscape is not cropped;
+   extra height is only what the small parallax in our-vision.js needs. */
+.our-mission__img {
+  position: absolute;
+  left: 0;
+  top: -16%;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 120%;
+  object-fit: cover;
+  object-position: 50% 100%;
   opacity: 0.5;
+  will-change: transform;
 }
 .our-mission__title {
   margin: 0 0 clamp(1.5rem, 2.1vw, 2.5rem);

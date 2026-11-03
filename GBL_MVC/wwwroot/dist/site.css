@@ -17,6 +17,8 @@
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
     --font-weight-light: 300;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -800,6 +802,12 @@
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -1242,8 +1250,8 @@
       width: calc(var(--spacing) * 10);
     }
   }
-  @media (width >= 64rem) {
-    .lg\:block {
+  .lg\:block {
+    @media (width >= 64rem) {
       display: block;
     }
   }

@@ -1,137 +1,126 @@
 /**
  * Our Vision page — guiding principle icons
- * Icons are filled shapes, so the outline of each shape is drawn first and
- * the fill fades in once the line is complete. Plays when the panel enters
- * the viewport and resets when scrolling back above it.
+ * Same stroke draw as the CSR "Impact in Action" icons: each path is hidden
+ * with a dash, then drawn when the panel scrolls into view. Replays on the
+ * way back in, and resets when scrolling back above the panel.
  */
 document.addEventListener("DOMContentLoaded", function () {
   var panel = document.querySelector(".guiding-principles__panel");
   if (!panel) return;
-
-  var images = Array.from(panel.querySelectorAll(".principle-item__icon img"));
-  if (!images.length) return;
-
-  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (typeof fetch === "undefined" || typeof DOMParser === "undefined") return;
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
 
-  gsap.registerPlugin(ScrollTrigger);
+  var items = Array.from(panel.querySelectorAll(".principle-item"));
+  if (!items.length) return;
 
-  var isMobile = window.matchMedia("(max-width: 992px)").matches;
-  var isStacked = window.matchMedia("(max-width: 639px)").matches;
-  var stScroller = isMobile ? window : document.documentElement;
-  var LINE_DRAW = {
-    strokePx: 1.25,
-    drawDuration: 1.6,
-    pathStagger: 0.04,
-    fillDuration: 0.5,
-    iconStagger: 0.18,
-    start: "top 75%",
-  };
-
-  /* Keep the icons hidden until they are ready to draw. */
-  gsap.set(images, { autoAlpha: 0 });
-
-  /** Swap an <img> for its inline SVG; the <img> stays if the file can't load. */
   function inlineIcon(img) {
     return fetch(img.currentSrc || img.src)
-      .then(function (res) {
-        if (!res.ok) throw new Error("Icon request failed");
-        return res.text();
-      })
+      .then(function (res) { return res.text(); })
       .then(function (text) {
-        var svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement;
-        if (svg.nodeName.toLowerCase() !== "svg") throw new Error("Icon is not an SVG");
+        var holder = document.createElement("div");
+        holder.innerHTML = text.trim();
+        var svg = holder.querySelector("svg");
+        if (!svg) return;
+        svg.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+        svg.querySelectorAll("[clip-path]").forEach(function (el) { el.removeAttribute("clip-path"); });
         svg.setAttribute("aria-hidden", "true");
         svg.setAttribute("focusable", "false");
         svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
         svg.setAttribute("shape-rendering", "geometricPrecision");
-        svg.querySelectorAll("[clip-path]").forEach(function (node) {
-          node.removeAttribute("clip-path");
-        });
         img.replaceWith(svg);
-        return svg;
       })
-      .catch(function () {
-        gsap.set(img, { autoAlpha: 1 });
-        return null;
-      });
+      .catch(function () {});
   }
 
-  /** Line draw for one icon, added to the given timeline at a position. */
-  function addLineDraw(tl, svg, position) {
-    var vb = svg.viewBox.baseVal;
-    var bounds = svg.getBoundingClientRect();
-    var unit = bounds.height > 0 && vb.height ? bounds.height / vb.height : 1;
-    var strokeWidth = LINE_DRAW.strokePx / unit;
-    var paths = Array.from(svg.querySelectorAll("path")).filter(function (path) {
-      return path.getTotalLength() > 0;
+  /** One timeline and trigger for a group of cards that draw together. */
+  function createIconDraw(group, trigger, stScroller) {
+    var iconTl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "power1.inOut" }
     });
+    var allPaths = [];
 
-    paths.forEach(function (path) {
-      var length = path.getTotalLength();
-      gsap.set(path, {
-        stroke: "#fff",
-        strokeWidth: strokeWidth,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeMiterlimit: 2,
-        strokeOpacity: 1,
-        fillOpacity: 0,
-        strokeDasharray: length,
-        strokeDashoffset: length,
+    group.forEach(function (item, i) {
+      var paths = item.querySelectorAll(".principle-item__icon path");
+      paths.forEach(function (path, p) {
+        var len = path.getTotalLength();
+        if (!len) return;
+        allPaths.push(path);
+        gsap.set(path, { strokeDasharray: len, strokeDashoffset: len, strokeOpacity: 0, fill: "#fff", fillOpacity: 0 });
+        /* Round caps show as dots while the dash is hidden, so keep the stroke off until it draws. */
+        iconTl.set(path, { strokeOpacity: 1 }, i * 0.12 + p * 0.08);
+        iconTl.fromTo(
+          path,
+          { strokeDashoffset: len },
+          { strokeDashoffset: 0, duration: 0.7 },
+          i * 0.12 + p * 0.08
+        );
       });
     });
 
-    tl.to(
-      paths,
-      {
-        strokeDashoffset: 0,
-        duration: LINE_DRAW.drawDuration,
-        stagger: LINE_DRAW.pathStagger,
-        ease: "sine.inOut",
-      },
-      position
-    ).to(
-      paths,
-      {
-        fillOpacity: 1,
-        strokeOpacity: 0,
-        duration: LINE_DRAW.fillDuration,
-        ease: "none",
-      },
-      ">-0.1"
-    );
-  }
+    /* These icons are outlined shapes, so the stroke traces both edges of each
+       line. Filling at the end closes that into a single solid line, like CSR. */
+    iconTl.to(allPaths, { fillOpacity: 1, duration: 0.35, ease: "none" }, iconTl.duration() - 0.1);
 
-  function createTimeline(trigger) {
-    return gsap.timeline({
-      scrollTrigger: {
-        trigger: trigger,
-        scroller: stScroller,
-        start: LINE_DRAW.start,
-        toggleActions: "play none none reverse",
-        invalidateOnRefresh: true,
-      },
+    /* Top of the panel, not its bottom as on CSR: this panel gets much taller on
+       smaller screens, and the first icons must not sit blank while in view. */
+    ScrollTrigger.create({
+      trigger: trigger,
+      scroller: stScroller,
+      start: "top 70%",
+      onEnter: function () { iconTl.restart(); },
+      onEnterBack: function () { iconTl.restart(); },
+      onLeaveBack: function () { iconTl.pause(0); }
     });
   }
 
-  Promise.all(images.map(inlineIcon)).then(function (svgs) {
-    svgs = svgs.filter(Boolean);
-    if (!svgs.length) return;
+  Promise.all(Array.from(panel.querySelectorAll(".principle-item__icon img")).map(inlineIcon)).then(function () {
+    gsap.registerPlugin(ScrollTrigger);
+    var stScroller = window.matchMedia("(max-width: 992px)").matches
+      ? window
+      : document.documentElement;
 
     /* Stacked on phones: each icon draws as its own card arrives. */
-    if (isStacked) {
-      svgs.forEach(function (svg) {
-        addLineDraw(createTimeline(svg.closest(".principle-item")), svg, 0);
+    if (window.matchMedia("(max-width: 639px)").matches) {
+      items.forEach(function (item) {
+        createIconDraw([item], item, stScroller);
       });
     } else {
-      var tl = createTimeline(panel);
-      svgs.forEach(function (svg, i) {
-        addLineDraw(tl, svg, i * LINE_DRAW.iconStagger);
-      });
+      createIconDraw(items, panel, stScroller);
     }
 
     ScrollTrigger.refresh();
   });
+});
+
+/**
+ * Our Mission background — lighter parallax than the site-wide one, whose
+ * travel would crop the landscape at the bottom of this image.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  var section = document.querySelector(".our-mission");
+  var img = section && section.querySelector(".our-mission__img");
+  if (!img) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    img,
+    { yPercent: -3 },
+    {
+      yPercent: 3,
+      ease: "none",
+      force3D: true,
+      scrollTrigger: {
+        trigger: section,
+        scroller: window.matchMedia("(max-width: 992px)").matches ? window : document.documentElement,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.8,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
 });
