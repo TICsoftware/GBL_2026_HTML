@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* ---------------------------------------
      Impact counters play only once their tile
-     has finished rising and is on screen, so
+     has finished sliding in and is on screen, so
      the whole roll is seen. They reset below
      the viewport or when the tile fades out,
      ready to play again on the way back down.
-     (Load after card-animation.js)
+     (Load after social-impact-animation.js)
   --------------------------------------- */
   const SHOWN_OPACITY = 0.95;
   const HIDDEN_OPACITY = 0.05;
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const tiles = Array.from(
-    document.querySelectorAll("[data-counter-deferred] .card-rise")
+    document.querySelectorAll("[data-counter-deferred] .social-impact__stat")
   ).filter(function (tile) {
     return tile.querySelector(".counter");
   });

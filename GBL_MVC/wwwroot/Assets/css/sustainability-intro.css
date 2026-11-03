@@ -782,6 +782,10 @@
 
 
 
+/* Tiles slide in sideways (social-impact-animation.js); keep that off the page width */
+.social-impact {
+  overflow-x: clip;
+}
 
 .social-impact__head {
   display: flex;

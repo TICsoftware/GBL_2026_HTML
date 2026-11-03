@@ -97,9 +97,7 @@ LEARNING & DEVELOPMENT PAGE
 .ld-split__copy .site-btn {
   margin-top: 1.5rem;
 }
-.ld-split__copy .list-icon {
-  margin: 0 0 1.5rem;
-}
+
 
 @media (max-width: 991px) {
   .ld-head,

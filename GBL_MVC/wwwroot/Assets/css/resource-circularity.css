@@ -808,31 +808,6 @@
   color: var(--color-primary);
 }
 
-.rc-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.rc-bullets li {
-  position: relative;
-  padding-left: 1.5rem;
-  font-size: var(--text-p);
-  line-height: 1.45;
-  color: var(--color-primary);
-}
-.rc-bullets li::before {
-  content: "";
-  position: absolute;
-  top: 0.5em;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background: var(--color-secondary);
-}
-
 /* Water results */
 .rc-results {
   display: grid;
@@ -840,7 +815,6 @@
   margin-top: 3rem;
 }
 .rc-results__list {
-  gap: 1rem;
   padding: 2.5rem clamp(1.5rem, 2.5vw, 3rem);
   background: var(--color-white);
 }
