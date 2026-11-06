@@ -43,6 +43,24 @@ namespace GBL_MVC.Routes
                 pattern: "news",
                 defaults: new { controller = "News", action = "Index" }
             );
+
+            app.MapControllerRoute(
+                name: "media-kit",
+                pattern: "media-kit",
+                defaults: new { controller = "MediaKit", action = "Index" }
+            );
+
+            app.MapControllerRoute(
+                name: "privacy-policy",
+                pattern: "privacy-policy",
+                defaults: new { controller = "PrivacyPolicy", action = "Index" }
+            );
+
+            app.MapControllerRoute(
+                name: "disclaimer",
+                pattern: "disclaimer",
+                defaults: new { controller = "Disclaimer", action = "Index" }
+            );
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"

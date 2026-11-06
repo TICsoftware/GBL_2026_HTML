@@ -91,11 +91,23 @@
     <div class="site-footer-bottom">
       <p class="site-footer-copy">&copy; 2016 Godavari Biorefineries LTD.</p>
       <ul class="site-footer-legal">
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="#">Sitemap</a></li>
         <li><a href="https://www.ticworks.com/" target="_blank" rel="noopener noreferrer">TIC</a></li>
       </ul>
     </div>
   </div>
 </footer>
+
+<div class="cookie-bar" id="cookie-bar" hidden>
+  <p class="cookie-bar__text">
+    This website uses cookies in order to offer you the most relevant information. By continuing to browse this site you are consenting to the use of cookies on this website.
+    Please accept cookies for optimal performance. Agree and consent to the <a href="/disclaimer#terms-of-use">User Agreement</a>, its policies, and the <a href="/privacy-policy">Privacy Policy</a>.
+  </p>
+  <div class="cookie-bar__actions">
+    <button type="button" class="cookie-bar__btn cookie-bar__btn--accept" data-cookie-accept>Accept</button>
+    <button type="button" class="cookie-bar__btn cookie-bar__btn--close" data-cookie-close>Close</button>
+  </div>
+</div>
+<script src="~/Assets/js/cookie-bar.js" asp-append-version="true"></script>
