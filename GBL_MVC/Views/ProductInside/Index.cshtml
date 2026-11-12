@@ -5,6 +5,7 @@
 @section Styles {
    <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/insidepage-style.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/Assets/css/contact-us.css" asp-append-version="true" />
    <link rel="stylesheet" href="~/Assets/css/product-only-inside.css" asp-append-version="true" />
 }
    <!--===========================
@@ -281,18 +282,150 @@
                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </span>
                      </a>
-                     <a href="/contact-us" class="site-btn site-btn--outline">
+                     <button type="button" class="site-btn site-btn--outline" data-enquiry-open aria-haspopup="dialog" aria-controls="enquiry-modal">
                         <span class="site-btn__label">Enquire Now</span>
                         <span class="site-btn__arrow" aria-hidden="true">
                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </span>
-                     </a>
+                     </button>
                   </div>
               </div>
            </div>
         </div>
      </div>
    </section>
+
+   <dialog class="enquiry-modal" id="enquiry-modal" aria-labelledby="enquiry-modal-title">
+      <div class="enquiry-modal__backdrop" data-enquiry-close></div>
+      <div class="enquiry-modal__panel">
+         <button type="button" class="enquiry-modal__close" data-enquiry-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+         </button>
+         <div class="enquiry-modal__scroll" data-lenis-prevent tabindex="-1">
+            <h2 class="text-h2 contact-query__title" id="enquiry-modal-title">Submit your query</h2>
+            <div class="contact-form-card">
+               <form class="contact-form" id="enquiry-form" action="#" method="post">
+                  <div class="contact-form__grid">
+                     <div class="cf-field">
+                        <input type="text" id="enquiry-name" placeholder=" " name="FullName" class="cf-field__control" autocomplete="name" required>
+                        <label for="enquiry-name" class="cf-field__label">Full Name</label>
+                        <span class="cf-field__error">Please enter your full name.</span>
+                     </div>
+
+                     <div class="cf-field">
+                        <input type="text" id="enquiry-company" placeholder=" " name="CompanyName" class="cf-field__control" autocomplete="organization">
+                        <label for="enquiry-company" class="cf-field__label">Company name</label>
+                     </div>
+
+                     <div class="cf-field">
+                        <input type="tel" id="enquiry-phone" placeholder=" " name="PhoneNumber" class="cf-field__control" autocomplete="tel" inputmode="tel" pattern="^[+]?[0-9\s\-()]{7,20}$" required>
+                        <label for="enquiry-phone" class="cf-field__label">Phone number</label>
+                        <span class="cf-field__error">Please enter a valid phone number.</span>
+                     </div>
+
+                     <div class="cf-field">
+                        <input type="email" id="enquiry-email" placeholder=" " name="Email" class="cf-field__control" autocomplete="email" required>
+                        <label for="enquiry-email" class="cf-field__label">Email</label>
+                        <span class="cf-field__error">Please enter a valid email address.</span>
+                     </div>
+
+                     <div class="cf-field cf-field--select" data-lenis-prevent>
+                        <select id="enquiry-location" name="SiteLocation" class="cf-field__control" required>
+                           <option value="" selected hidden></option>
+                           <option value="Mumbai">Mumbai</option>
+                           <option value="Pune">Pune</option>
+                           <option value="Ahmednagar">Ahmednagar</option>
+                           <option value="Bagalkot">Bagalkot</option>
+                           <option value="Bangalore">Bangalore</option>
+                           <option value="New Delhi">New Delhi</option>
+                           <option value="Other">Other</option>
+                        </select>
+                        <label for="enquiry-location" class="cf-field__label">Site location (city and district)</label>
+                        <svg class="cf-field__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                           <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cf-field__error">Please select a site location.</span>
+                     </div>
+
+                     <div class="cf-field cf-field--select" data-lenis-prevent>
+                        <select id="enquiry-state" name="State" class="cf-field__control" required>
+                           <option value="" selected hidden></option>
+                           <option>Andhra Pradesh</option>
+                           <option>Arunachal Pradesh</option>
+                           <option>Assam</option>
+                           <option>Bihar</option>
+                           <option>Chhattisgarh</option>
+                           <option>Goa</option>
+                           <option>Gujarat</option>
+                           <option>Haryana</option>
+                           <option>Himachal Pradesh</option>
+                           <option>Jharkhand</option>
+                           <option>Karnataka</option>
+                           <option>Kerala</option>
+                           <option>Madhya Pradesh</option>
+                           <option>Maharashtra</option>
+                           <option>Manipur</option>
+                           <option>Meghalaya</option>
+                           <option>Mizoram</option>
+                           <option>Nagaland</option>
+                           <option>Odisha</option>
+                           <option>Punjab</option>
+                           <option>Rajasthan</option>
+                           <option>Sikkim</option>
+                           <option>Tamil Nadu</option>
+                           <option>Telangana</option>
+                           <option>Tripura</option>
+                           <option>Uttar Pradesh</option>
+                           <option>Uttarakhand</option>
+                           <option>West Bengal</option>
+                           <option>Andaman and Nicobar Islands</option>
+                           <option>Chandigarh</option>
+                           <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                           <option>Delhi</option>
+                           <option>Jammu and Kashmir</option>
+                           <option>Ladakh</option>
+                           <option>Lakshadweep</option>
+                           <option>Puducherry</option>
+                           <option>Outside India</option>
+                        </select>
+                        <label for="enquiry-state" class="cf-field__label">State</label>
+                        <svg class="cf-field__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                           <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cf-field__error">Please select a state.</span>
+                     </div>
+
+                     <div class="cf-field cf-field--full">
+                        <textarea id="enquiry-message" name="Message" class="cf-field__control" rows="2" placeholder=" "></textarea>
+                        <label for="enquiry-message" class="cf-field__label">Message</label>
+                     </div>
+                  </div>
+
+                  <div class="contact-form__captcha">
+                     <label class="cf-captcha">
+                        <input type="checkbox" name="NotARobot" value="true" class="cf-captcha__check" required>
+                        <span class="cf-captcha__box" aria-hidden="true"></span>
+                        <span class="cf-captcha__text">I'm not a robot</span>
+                        <span class="cf-captcha__brand" aria-hidden="true">
+                           <img src="@Url.Content("~/Assets/images/icons/recaptcha-logo.svg")" alt="" class="cf-captcha__logo">
+                           <span class="cf-captcha__name">reCAPTCHA</span>
+                           <span class="cf-captcha__links">Privacy - Terms</span>
+                        </span>
+                     </label>
+                     <span class="cf-captcha__error">Please confirm you are not a robot.</span>
+                  </div>
+
+                  <button type="submit" class="site-btn site-btn--fill">
+                     <span class="site-btn__label">Submit</span>
+                     <span class="site-btn__arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </span>
+                  </button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </dialog>
 
 @section Scripts {
    <script src="~/Assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
